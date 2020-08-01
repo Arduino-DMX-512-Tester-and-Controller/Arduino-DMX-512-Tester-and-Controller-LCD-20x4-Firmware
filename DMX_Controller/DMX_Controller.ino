@@ -3,7 +3,7 @@
 // **																														**
 // **										Arduino DMX-512 Tester Controller												**
 // **																														**
-// **	- Firmware v0.4																										**
+// **	- Firmware v0.5																										**
 // **	- Hardware v0.0 - v0.2																								**
 // **																														**
 // **	- Compilado en Arduino IDE v1.0.6																					**
@@ -178,7 +178,7 @@ void Back_Light_En()
 void GUI_About()
 	{
 		byte Firm_Ver_Ent = 0;
-		byte Firm_Ver_Dec = 4;
+		byte Firm_Ver_Dec = 5;
 		byte Hard_Ver_Ent = 0;
 		byte Hard_Ver_Dec = 0;
 		byte ID = 20;
@@ -294,6 +294,7 @@ void GUI_Control_Matrix()
 						{
 							Num_Row_Pos = 0;
 							Num_Col_Pos = 13;
+							Num_Val = Inicial;	// para dejar el numero que estaba si no se cambia
 							Numerico_Calc(0);
 							if (Num_Val > 498)	// limite de matriz
 								{
@@ -304,26 +305,28 @@ void GUI_Control_Matrix()
 									Num_Val = 1;
 								}
 							Inicial = Num_Val;
-							goto inicio;
+							goto Banco;
 						}
 				// Banco Final
 					if (LCD_Col_Pos == 16 && LCD_Row_Pos == 0)
 						{
 							Num_Row_Pos = 0;
 							Num_Col_Pos = 17;
+							if (Inicial == 1)
+								Num_Val = 15;
+							else	
+								Num_Val = Inicial - 14;	// para dejar el numero que estaba si no se cambia
 							Numerico_Calc(0);
-							if (Num_Val > 512)	// limite de matriz
+							if (Num_Val > 512)		// limite de matriz
 								{
 									Inicial = 498;
-									goto inicio;
 								}
-							if (Num_Val < 15)	// limite de matriz
+							if (Num_Val < 15)		// limite de matriz
 								{
 									Inicial = 1;
-									goto inicio;
 								}
 							Inicial = Num_Val - 14;
-							goto inicio;
+							goto Banco;
 						}
 				// posicion 1
 					if (LCD_Col_Pos == 0 && LCD_Row_Pos == 1)
@@ -418,6 +421,7 @@ void GUI_Control_Matrix()
 		Salida_DMX:
 			Num_Row_Pos = LCD_Row_Pos;
 			Num_Col_Pos = LCD_Col_Pos + 1;
+			Num_Val = DMX_Values[Canal_Actual];		// para dejar el numero que estaba si no se cambia
 			Numerico_Calc(1);
 			if (Num_Val == 612)		// ubicar
 				{
@@ -1015,7 +1019,6 @@ void GUI_Config()
 								Num_Val = 255;
 								Numerico_Write (255, 16, 2);
 							}
-						EEPROM.write(513, Num_Val);				// guardar valor nuevo
 						analogWrite(Back_Light_PWM, Num_Val);
 						if (Num_Val == 0)
 							{
@@ -1061,7 +1064,7 @@ void GUI_Config()
 
 void GUI_Control_Multiply()
 	{
-		int First_Channel  = 1;
+		int  First_Channel = 1;
 		long Multiply 	   = 0;
 		long Quantity 	   = 0;
 		int  Value         = 255;
@@ -1153,6 +1156,7 @@ void GUI_Control_Multiply()
 						{
 							Num_Row_Pos = 1;
 							Num_Col_Pos = 9;
+							Num_Val = First_Channel;	// para dejar el numero que estaba si no se cambia
 							Numerico_Calc(0);
 							First_Channel = Num_Val;
 							if (First_Channel == 0)
@@ -1171,6 +1175,7 @@ void GUI_Control_Multiply()
 						{
 							Num_Row_Pos = 2;
 							Num_Col_Pos = 9;
+							Num_Val = Multiply;			// para dejar el numero que estaba si no se cambia
 							Numerico_Calc(0);
 							Multiply = Num_Val;
 							if (Multiply == 0)
@@ -1189,6 +1194,7 @@ void GUI_Control_Multiply()
 						{
 							Num_Row_Pos = 3;
 							Num_Col_Pos = 9;
+							Num_Val = Quantity;			// para dejar el numero que estaba si no se cambia
 							Numerico_Calc(0);
 							Quantity = Num_Val;
 							if (Quantity == 0)
@@ -1207,6 +1213,7 @@ void GUI_Control_Multiply()
 						{
 							Num_Row_Pos = 0;
 							Num_Col_Pos = 9;
+							Num_Val = Value;			// para dejar el numero que estaba si no se cambia
 							Numerico_Calc(1);
 							Value = Num_Val;
 							if (Value > 255)
@@ -1310,6 +1317,7 @@ void GUI_Control_Chaser()
 						{
 							Num_Row_Pos = 1;
 							Num_Col_Pos = 9;
+							Num_Val = Delay;	// para dejar el numero que estaba si no se cambia
 							Numerico_Calc(0);
 							Delay = Num_Val;
 						}
@@ -1318,6 +1326,7 @@ void GUI_Control_Chaser()
 						{
 							Num_Row_Pos = 2;
 							Num_Col_Pos = 9;
+							Num_Val = First;	// para dejar el numero que estaba si no se cambia
 							Numerico_Calc(0);
 							First = Num_Val;
 							if (First == 0)
@@ -1336,6 +1345,7 @@ void GUI_Control_Chaser()
 						{
 							Num_Row_Pos = 3;
 							Num_Col_Pos = 9;
+							Num_Val = Final;	// para dejar el numero que estaba si no se cambia
 							Numerico_Calc(0);
 							Final = Num_Val;
 							if (Final == 0)
@@ -1409,6 +1419,7 @@ void GUI_Control_Unit()
 						Numerico_Write(Canal_Actual, 9, 2);
 						Num_Row_Pos = 2;
 						Num_Col_Pos = 9;
+						Num_Val = Canal_Actual;		// para dejar el numero que estaba si no se cambia
 						Numerico_Calc (0);
 						if (Num_Val > 512)
 							{
@@ -1429,8 +1440,9 @@ void GUI_Control_Unit()
 					{
 						Num_Row_Pos = 3;
 						Num_Col_Pos = 9;
+						Num_Val = DMX_Values[Canal_Actual];		// para dejar el numero que estaba si no se cambia
 						Numerico_Calc (1);
-						if (Num_Val == 612)		// ubicar
+						if (Num_Val == 612)						// ubicar
 							{
 								Ubicar();
 							}
@@ -1485,7 +1497,7 @@ void Numerico_Calc(byte value)
 		lcd.setCursor (Num_Col_Pos, Num_Row_Pos);
 		lcd.print("___");
 		lcd.blink();								// mostrar cursor
-		Num_Val = 0;
+		//Num_Val = 0;
 		Num_Col_Pos = Num_Col_Pos + 2;
 		lcd.setCursor (Num_Col_Pos, Num_Row_Pos);
 		// primer numero
