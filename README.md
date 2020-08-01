@@ -2,7 +2,7 @@
 
 ## **Firmware - LCD 20x4**
 
-[![version](https://img.shields.io/badge/version-0.6_release-brightgreen.svg)](CHANGELOG.md)
+[![version](https://img.shields.io/badge/version-0.7_release-brightgreen.svg)](CHANGELOG.md)
 [![license](https://img.shields.io/badge/licence-GNU_GPL_v3.0-blue)](https://github.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/blob/master/LICENCE.md)
 
 ![GitHub issues](https://img.shields.io/github/issues/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware)
@@ -91,7 +91,17 @@ Herramienta Open Hardware, para pruebas y control de iluminación de espectácul
 
 ### ![**Changelog**](CHANGELOG.md)
 
-- **AGREGADO,** la función para cuando se da enter en un numero para cambiarlo, si de da enter de nuevo se quede el número que estaba
+- **AGREGADO,** en chaser el cursor en blink cuando hace la secuencia
+- **AGREGADO,** función de Black Out desde el menú de Memory, pone todos los canales en 0 y los regresa a lo que tenían, para salir dar en center
+- **CORREGIDO,** en config contraste el límite inferior no se mostraba
+- **CORREGIDO,** en gui about se retiró variable id, no se usa
+- **CORREGIDO,** en chaser se quitó el label iniciar, no se usa
+- **CORREGIDO,** en numérico calc se quitó la variable salida, no se usa
+- **CORREGIDO,** en numérico calc se quitó la variable Num_Val_Temp_3, no se usa
+- **CORREGIDO,** en chaser ya no guarda los valores de los cambios aplicados, al salir los regresa a su lugar
+- **CORREGIDO,** en multiply cuando hace en calculó se cambia apply por calc..
+- **CORREGIDO,** en ubicar se agrega cancelar con center
+- **CORREGIDO,** se cambió la url del about apuntando al Wiki
 
 ***
 
