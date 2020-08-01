@@ -2,7 +2,7 @@
 
 ## **Firmware - LCD 20x4**
 
-[![version](https://img.shields.io/badge/version-0.4_release-brightgreen.svg)](CHANGELOG.md)
+[![version](https://img.shields.io/badge/version-0.5_release-brightgreen.svg)](CHANGELOG.md)
 [![license](https://img.shields.io/badge/licence-GNU_GPL_v3.0-blue)](https://github.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/blob/master/LICENCE.md)
 
 ![GitHub issues](https://img.shields.io/github/issues/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware)
@@ -98,20 +98,7 @@ Herramienta Open Hardware, para pruebas y control de iluminación de espectácul
 
 ### ![**Changelog**](CHANGELOG.md)
 
-- **CORREGIDO,** se retira del about el ID
-- **CORREGIDO,** se cambia en config el menú exit por Ctrl
-- **AGREGADO,** void Back_Light_En() para encender o apagar el back light desde el teclado numúrico
-- **AGREGADO,** void Back_Light_Init() para encender o apagar el back light desde la última configuración
-- **AGREGADO,** a Control Options el menú Config
-- **AGREGADO,** void GUI_Config() con las opciones de la configuración, el LCD y la salida al pwm
-- **AGREGADO,** control del back light a gui_navegar, siempre está activo
-- **AGREGADO,** se actualiza el about con el nombre del proyecto
-- **AGREGADO,** al config el about
-- **AGREGADO,** al about desde config espera a que se presione center para salir
-- **AGREGADO,** al config mas info sobre el backlight
-- **AGREGADO,** a control options Memory options
-- **AGREGADO,** en matrix la opción de poner el valor final de la matriz
-- **AGREGADO,** a la lectura numúrica centro como enter
+- **AGREGADO,** la función para cuando se da enter en un numero para cambiarlo, si de da enter de nuevo se quede el número que estaba
 
 ***
 
