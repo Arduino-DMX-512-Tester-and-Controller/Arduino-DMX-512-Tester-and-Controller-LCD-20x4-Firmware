@@ -56,7 +56,7 @@ Herramienta Open Hardware, para pruebas y control de iluminación de espectácul
 - Compilado en Arduino IDE v1.0.6
 - Instalación de librerías DMX:
 	- Instalar Arduino IDE v1.0.6 (carpeta .../Software/) (Windows 10 64 bits, ok!)
-	- Instalar la libreri´a del encoder:
+	- Instalar la librería del encoder:
 		- Menú Sketch, Importar librería, Add Library
 		- Seleccionar el archivo Encoder.zip (carpeta .../Firmware/Documentacion/Librerias/)
 		- Abrir
@@ -94,4 +94,20 @@ Herramienta Open Hardware, para pruebas y control de iluminación de espectácul
 		- avrdude: verification error, first mismatch at byte 0x0b60 0x50 != 0xd7
 		- avrdude: verification error; content mismatch
     
+***
+
+### ![**Changelog**](CHANGELOG.md)
+
+- **CORREGIDO,** cambiar en gui unit a "Unitary"
+- **CORREGIDO,** cambiar en GUI multi a "Matrix"
+- **CORREGIDO,** hacer los barridos de la memoria más rápidos, se agrega efecto de carga y no baja la velocidad
+- **CORREGIDO,** agregar al menú memory "Cancel"
+- **CORREGIDO,** se agrega 100ms mas a la lectura de los cursores
+- **CORREGIDO,** cuando se escribe un numero en la matriz o en unit, mayor o menor al límite la variable funciona pero el visual no
+- **CORREGIR,** en GUI_Multi no hay vista de posición
+- **AGREGADO,** líneas bajas cuando se está escribiendo un número, se quitaron los ceros
+- **AGREGADO,** se implementa para el caso de los valores "A" para 255 y "B" para 000
+- **AGREGADO,** se implementa para los valores la tecla "C" para ubicar la lámpara, parpadea y deja de hacerlo al volverla a presionar
+- **AGREGADO,** se implementa en la matriz el valor "C" que indica el canal donde está posicionado el cursor
+
 ***
