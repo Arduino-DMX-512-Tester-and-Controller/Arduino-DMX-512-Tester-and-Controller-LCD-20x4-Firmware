@@ -2,7 +2,7 @@
 
 ## **Firmware - LCD 20x4**
 
-[![version](https://img.shields.io/badge/version-0.1_release-brightgreen.svg)](CHANGELOG.md)
+[![version](https://img.shields.io/badge/version-0.2_release-brightgreen.svg)](CHANGELOG.md)
 [![license](https://img.shields.io/badge/licence-GNU_GPL_v3.0-blue)](https://github.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/blob/master/LICENCE.md)
 
 ![GitHub issues](https://img.shields.io/github/issues/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware)
@@ -98,17 +98,23 @@ Herramienta Open Hardware, para pruebas y control de iluminación de espectácul
 
 ### ![**Changelog**](CHANGELOG.md)
 
-- **CORREGIDO,** cambiar en gui unit a "Unitary"
-- **CORREGIDO,** cambiar en GUI multi a "Matrix"
-- **CORREGIDO,** hacer los barridos de la memoria más rápidos, se agrega efecto de carga y no baja la velocidad
-- **CORREGIDO,** agregar al menú memory "Cancel"
-- **CORREGIDO,** se agrega 100ms mas a la lectura de los cursores
-- **CORREGIDO,** cuando se escribe un numero en la matriz o en unit, mayor o menor al límite la variable funciona pero el visual no
-- **CORREGIR,** en GUI_Multi no hay vista de posición
-- **AGREGADO,** líneas bajas cuando se está escribiendo un número, se quitaron los ceros
-- **AGREGADO,** se implementa para el caso de los valores "A" para 255 y "B" para 000
-- **AGREGADO,** se implementa para los valores la tecla "C" para ubicar la lámpara, parpadea y deja de hacerlo al volverla a presionar
-- **AGREGADO,** se implementa en la matriz el valor "C" que indica el canal donde está posicionado el cursor
+- **CORREGIR,** retirar del setup las variables de la versión y pasarlas directamente a su void
+- **CORREGIR,** en GUI_About se retirar el delay en el efecto binario
+- **CORREGIR,** eeprom save, load empty y clear retirar el delay de efecto binario
+- **CORREGIR,** agregar al inicio del programa un about
+- **CORREGIR,** checar el tema del puerto de data flux, no se asigna
+- **CORREGIDO,** se cambió gui_init por gui_about
+- **CORREGIDO,** se cambia en unitary control, matrix por control y apunta a gui control options
+- **CORREGIDO,** se cambia en matrix control, ubi por con y apunta a gui control options
+- **CORREGIDO,** se quita la opción about es muy repetitiva
+- **AGREGADO,** control options about
+- **AGREGADO,** control options Chaser
+- **AGREGADO,** control options multiply
+- **AGREGADO,** actualización del texto "about"
+- **AGREGADO,** actualización del texto "memory initial"
+- **AGREGADO,** al GUI_Memory "empty" para borrar la RAM
+- **AGREGADO,** el control multiply
+- **AGREGADO,** a about al inicio el efecto del binario corriendo
 
 ***
 
