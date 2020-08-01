@@ -2,7 +2,7 @@
 
 ## **Firmware - LCD 20x4**
 
-[![version](https://img.shields.io/badge/version-0.8_release-brightgreen.svg)](CHANGELOG.md)
+[![version](https://img.shields.io/badge/version-0.9_release-brightgreen.svg)](CHANGELOG.md)
 [![license](https://img.shields.io/badge/licence-GNU_GPL_v3.0-blue)](https://github.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/blob/master/LICENCE.md)
 
 ![GitHub issues](https://img.shields.io/github/issues/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware)
@@ -90,7 +90,55 @@ Herramienta Open Hardware, para pruebas y control de iluminación de espectácul
 
 ### ![**Changelog**](CHANGELOG.md)
 
-- **AGREGADO,** compatibilidad con Hardware v0.3 - v0.4
+- **CORREGIR,** GUI_Secuencer provoca over flow y se reinicia, demasiada RAM usada
+- **CORREGIDO,** GUI_Navegar se cambió la variable Boton_Delay_Cursor de long a int
+- **CORREGIDO,** Contrast_Init se limita a no menor de 150 el valor del pwm
+- **CORREGIDO,** GUI_Config solo en control options
+- **CORREGIDO,** esta encimado en control options unitary
+- **CORREGIDO,** GUI Control Options se quitó iniciar:, no se usa
+- **CORREGIDO,** se agregó variable global BackLight_Add para dirección de EEPROM
+- **CORREGIDO,** se agregó variable global Contrast_Add para dirección de EEPROM
+- **CORREGIDO,** Se quitó el efecto binario cuando se usa la memoria EEPROM
+- **AGREGADO,** GUI_Secuencer limitado delay entre 0 y 999 x 100 mS
+- **AGREGADO,** GUI_Secuencer limitado final y first entre 1 y 8
+- **AGREGADO,** a GUI_About bink del cursor
+- **AGREGADO,** GUI_Memory_Bank
+- **AGREGADO,** GUI_Memory_Bank, regresa 1 si se selecciona salir para regresar al menú anterior
+- **AGREGADO,** a GUI_Memory_Bank, retardo cuando entra al banco de memoria
+- **AGREGADO,** a matrix el número de banco actual, si el banco no se seleccionó muestra "-"
+- **AGREGADO,** a memory options el número de banco actual, si el banco no se seleccionó muestra "-"
+- **AGREGADO,** a unitary control el número de banco actual, si el banco no se seleccionó muestra "-"
+- **AGREGADO,** a multiply control el número de banco actual, si el banco no se seleccionó muestra "-"
+- **AGREGADO,** a GUI Memory la configuración
+- **AGREGADO,** a GUI Control Options el número de banco actual, si el banco no se seleccionó muestra "-"
+- **AGREGADO,** a GUI Control Options la configuración
+- **AGREGADO,** a GUI_EEPROM_Empty la leyenda del banco que se está modificando "RAM"
+- **AGREGADO,** a GUI_EEPROM_Empty el blink del lcd para saber que está trabajando
+- **AGREGADO,** a EEPROM_Clear control de universos guardados
+- **AGREGADO,** a EEPROM_Clear al final y al principio el número de banco
+- **AGREGADO,** a EEPROM_Clear el blink del lcd para saber que está trabajando
+- **AGREGADO,** a EEPROM_Clear regresa 1 si se selecciona exit
+- **AGREGADO,** a EEPROM_Clear más tiempo para mensaje final
+- **AGREGADO,** a EEPROM_Load control de universos guardados
+- **AGREGADO,** a EEPROM_Load, regresa 1 si se selecciona exit
+- **AGREGADO,** a EEPROM_Load al final el número de banco
+- **AGREGADO,** a EEPROM_Load el blink del lcd para saber que está trabajando
+- **AGREGADO,** a EEPROM_Load más tiempo para mensaje final
+- **AGREGADO,** a EEPROM_Save control de universos guardados
+- **AGREGADO,** a EEPROM_Save al final el número de banco
+- **AGREGADO,** a EEPROM_Save, regresa 1 si se selecciona exit
+- **AGREGADO,** a EEPROM_Save el blink del lcd para saber que está trabajando
+- **AGREGADO,** a EEPROM_Save más tiempo para mensaje final
+- **AGREGADO,** a GUI_Memory_Init control de universos
+- **AGREGADO,** a GUI_Memory_Init manejo cuando se selecciona exit en los bancos de memoria
+- **AGREGADO,** a GUI_Memory control de salida desde bancos de memoria
+- **AGREGADO,** a GUI_Memory salida inmediata después de la lectura de opción
+- **AGREGADO,** a GUI_About la leyenda open hardware
+- **AGREGADO,** a GUI_About más tiempo para mostrar
+- **AGREGADO,** GUI Secuencer
+- **AGREGADO,** el banco 8 solo llegaría a 500 por el contraste y el backlight
+- **AGREGADO,** Los bancos de memoria no aplican a memory empty
+- **AGREGADO,** GUI_Memory_Bank solo activa en cambios de EEPROM
 
 ***
 
