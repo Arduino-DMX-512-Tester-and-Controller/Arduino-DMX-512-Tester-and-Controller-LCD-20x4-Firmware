@@ -3,7 +3,7 @@
 // **				                                                                                                        **
 // **											Arduino DMX-512 Tester Controller				                            **
 // **																	                                                    **
-// **	- Firmware v1.1																										**
+// **	- Firmware v1.2																										**
 // **	- Hardware v0.3	- v0.4																								**
 // **																														**
 // **	- Compilado en Arduino IDE v1.0.6																					**
@@ -21,51 +21,68 @@
 // **																														**
 // **	Autor:																												**
 // **																														**
-// **	Daniel Roberto Becerril Angeles																						**
+// **	Copyright (C) 2015 - Daniel Roberto Becerril Angeles																**
 // **	daniel3514@gmail.com																								**
 // **	https://github.com/daniel3514/Arduino-DMX-512-Tester-Controller/wiki												**
 // **																														**
 // **	Licenciamiento:																										**
 // **																														**
-// **	GNU General Pubic Licence Version 3																					**
+// **	Firmware:																											**		
+// **		GNU General Pubic Licence Version v3																			**
 // **		https://www.gnu.org/copyleft/gpl.html																			**
+// **																														**
+// **	Hardware:																											**
+// **		Open Source Hardware (OSHW) v1.0																				**
+// **		http://freedomdefined.org/OSHW#Licenses_and_Hardware															**
+// **		http://www.oshwa.org/definition/																				**
+// **																														**
+// **	Este programa es software libre: usted puede redistribuirlo y / o modificarlo bajo los términos de la 				**
+// **	Licencia Pública General GNU publicada por la Free Software Foundation, bien de la versión 3 de la Licencia, 		**
+// **	o (A su elección) cualquier versión posterior.																		**
+// **																														**
+// **   Este programa se distribuye con la esperanza de que sea útil, pero SIN NINGUNA GARANTÍA; ni siquiera la garantía 	**
+// **	implícita de COMERCIALIZACIÓN o IDONEIDAD PARA UN PROPÓSITO PARTICULAR. Vea el GNU General Public License 			**
+// **	para más detalles.																									**
+// **																														**
+// ** 	Esto es software libre, y le invitamos a redistribuirlo bajo ciertas condiciones									**
+// **																														**
+// **   Debería haber recibido una copia de la Licencia Pública General GNU													**
+// **   junto con este programa. Si no es así, consulte <http://www.gnu.org/licenses/>.										**
 // **																														**
 // ***************************************************************************************************************************
 // ***************************************************************************************************************************
 
 // Librerias
-#include <LiquidCrystal.h>			// libreria para LCD
+#include <LiquidCrystal.h>		// libreria para LCD
 #include <Wire.h>
 #include <EEPROM.h>
 #include <string.h>
-#include <lib_dmx.h>  				// libreria DMX 4 universos deskontrol four universes DMX library  - http://www.deskontrol.net/blog
+#include <lib_dmx.h>  			// libreria DMX 4 universos deskontrol four universes DMX library  - http://www.deskontrol.net/blog
 
 // DMX Library
-#define    DMX512	  (0)  	 		// (250 kbaud - 2 to 512 channels) Standard USITT DMX-512
-//#define  DMX1024  (1)   			// (500 kbaud - 2 to 1024 channels) Completely non standard - TESTED ok
-//#define  DMX2048  (2)   			// (1000 kbaud - 2 to 2048 channels) called by manufacturers DMX1000K, DMX 4x or DMX 1M ???
+#define    DMX512	  (0)  	 	// (250 kbaud - 2 to 512 channels) Standard USITT DMX-512
+//#define  DMX1024    (1)   	// (500 kbaud - 2 to 1024 channels) Completely non standard - TESTED ok
+//#define  DMX2048    (2)   	// (1000 kbaud - 2 to 2048 channels) called by manufacturers DMX1000K, DMX 4x or DMX 1M ???
 
 // Puertos, variables
 // DMX
-int 	DMX_Data_Flux 	= 2;		// control de flujo de datos para dmx, 0 por default 
-int  	DMX_Values 			[515];  // array de valores actuales DMX
-int  	Canal_Actual 		= 1;
+int 	DMX_Data_Flux 	= 2;	// control de flujo de datos para dmx, 0 por default 
+int  	DMX_Values 		[515];  // array de valores actuales DMX
+int  	Canal_Actual 	= 1;
 byte 	Universo_Actual	= 0;
 // Botones cursor
 int  Boton_Up     		= 9; 
 int  Boton_Down   		= 12;	
-int  Boton_Left  			= 8;	
+int  Boton_Left  		= 8;	
 int  Boton_Right  		= 10;	
-int  Boton_Center			= 11;	
-byte LCD_Col_Pos 			= 0;	// posicion en tiempo real de lcd
-byte LCD_Row_Pos 			= 0;	// posicion en tiempo real de lcd
+int  Boton_Center		= 11;	
+byte LCD_Col_Pos 		= 0;	// posicion en tiempo real de lcd
+byte LCD_Row_Pos 		= 0;	// posicion en tiempo real de lcd
 // config de posiciones de lcd Col Row
-byte Cursor_Conf[4][20] = {
-													{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0  },		
-													{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0  },
-													{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0  },
-													{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0  }	
-													};		
+byte Cursor_Conf[4][20] = {	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },		
+							{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+							{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+							{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }	};		
 // Botones Numerico Array
 int  Boton_Array_1	= 38;
 int  Boton_Array_2	= 40;
@@ -78,7 +95,7 @@ int  Boton_Array_D  = 36;
 byte Boton_Calc 	= 17;		// valor calculado	# E * F, 17 sin valor calculado
 byte Num_Col_Pos  	= 0;		// posicion en tiempo real de lcd
 byte Num_Row_Pos 	= 0;		// posicion en tiempo real de lcd
-int  Num_Val			= 0;	// valor generado al calculo
+int  Num_Val		= 0;		// valor generado al calculo
 long Boton_Delay_Teclado = 100;	// delay de lectura de boton
 // Potenciometro
 int  Pot			= A15;		// entrada de potenciometro
@@ -90,12 +107,13 @@ int  LCD_D5 		= 49;
 int  LCD_D6 		= 51;
 int  LCD_D7			= 53;
 LiquidCrystal lcd(LCD_RS, LCD_E, LCD_D4, LCD_D5, LCD_D6, LCD_D7);  //LCD setup
-int  Back_Light_PWM	= 13;		// salida para PWM de Back Light de LCD
+int  Back_Light_PWM		= 13;	// salida para PWM de Back Light de LCD
 int  Contrast_PWM		= 4;	// salida para pwm de contraste de LCD
 byte Back_Light_On_Off	= 0;	// saber si esta encendida o apagada
 // EEPROM
 int BackLight_Add 		= 4094;	// direccion de eeprom
 int Contrast_Add		= 4095;	// direccion de eeprom
+int Bank_Init_Add		= 4093;	// direccion de eeprom
 
 void setup() 
 {
@@ -213,6 +231,7 @@ void loop()
 	digitalWrite(2, HIGH);	// max 485 como salida
 	Back_Light_Init();
 	Contrast_Init();
+	EEPROM_Load_Init();
 	GUI_About();
 	GUI_Memory_Init();
 }
@@ -270,10 +289,67 @@ void Back_Light_En()
 	delay(300);									// para impedir repeticion del comando
 }
 
+void GUI_Licence()
+{
+	int retardo = 4000;
+	lcd.clear ();
+	lcd.setCursor(0, 0);
+	lcd.print("  This program is");
+	lcd.setCursor(0, 1);
+	lcd.print("distributed in the");
+	lcd.setCursor(0, 2);
+	lcd.print("hope that it will be");
+	lcd.setCursor(0, 3);
+	lcd.print("useful, but");
+	delay(retardo);
+	
+	lcd.clear ();
+	lcd.setCursor(0, 0);
+	lcd.print("WITHOUT ANY WARRANTY");
+	lcd.setCursor(0, 1);
+	lcd.print("without even the");
+	lcd.setCursor(0, 2);
+	lcd.print("implied warranty of");
+	lcd.setCursor(0, 3);
+	lcd.print("MERCHANTABILITY of");
+	delay(retardo);
+	
+	lcd.clear ();
+	lcd.setCursor(0, 0);
+	lcd.print("FITNESS FOR A");
+	lcd.setCursor(0, 1);
+	lcd.print("PARTICULAR PORPUSE.");
+	lcd.setCursor(0, 2);
+	lcd.print("    This is free ");
+	lcd.setCursor(0, 3);
+	lcd.print("software and you are");
+	delay(retardo);
+	
+	lcd.clear ();
+	lcd.setCursor(0, 0);
+	lcd.print("welcome to");
+	lcd.setCursor(0, 1);
+	lcd.print("redistribute it");
+	lcd.setCursor(0, 2);
+	lcd.print("under certain");
+	lcd.setCursor(0, 3);
+	lcd.print("conditions");
+	delay(retardo);
+	
+	lcd.clear ();
+	lcd.setCursor(0, 0);
+	lcd.print("See the GNU GENERAL");
+	lcd.setCursor(0, 1);
+	lcd.print("PUBLIC LICENCE");
+	lcd.setCursor(0, 2);
+	lcd.print("for more details...");
+	delay(retardo);	
+}
+
 void GUI_About()
 {
 	byte Firm_Ver_Ent = 1;
-	byte Firm_Ver_Dec = 1;
+	byte Firm_Ver_Dec = 2;
 	byte Hard_Ver_Ent = 0;
 	byte Hard_Ver_Dec = 4;
 	lcd.clear ();
@@ -299,7 +375,18 @@ void GUI_About()
 	lcd.print(Hard_Ver_Ent);
 	lcd.print(".");
 	lcd.print(Hard_Ver_Dec);
-	lcd.setCursor(2, 0);
+	// bank
+	lcd.setCursor(9, 2);
+	lcd.print("b");
+	if (Universo_Actual == 0)
+	{
+		lcd.print("-");
+	}
+	else
+	{
+		lcd.print(Universo_Actual);
+	}
+	lcd.setCursor(10, 2);	// Blink
 	// lectura del boton centro
 	while (digitalRead(Boton_Center) == HIGH)
 	{
@@ -307,11 +394,27 @@ void GUI_About()
 	}
 	delay (300);	// rebote de boton
 	lcd.clear ();
-	lcd.setCursor(3, 1);
+	lcd.setCursor(3, 0);
 	lcd.print("Open Hardware!");
+	lcd.setCursor(0, 1);
+	lcd.print("Firm: GNU GPL v3");
+	lcd.setCursor(0, 2);
+	lcd.print("Hard: OSHW    v1");
 	lcd.setCursor(0, 3);
-	lcd.print("http://goo.gl/5nqJKt");
+	lcd.print("Wiki: goo.gl/5nqJKt");
 	lcd.setCursor(2, 1);
+	// bank
+	lcd.setCursor(18, 1);
+	lcd.print("b");
+	if (Universo_Actual == 0)
+	{
+		lcd.print("-");
+	}
+	else
+	{
+		lcd.print(Universo_Actual);
+	}
+	lcd.setCursor(19, 1);
 	// lectura del boton centro	
 	while (digitalRead(Boton_Center) == HIGH)				
 	{
@@ -886,6 +989,17 @@ void GUI_Memory_Init()
 	lcd.print("Load");
 	lcd.setCursor (15, 2);
 	lcd.print("Clear");
+	// bank
+	lcd.setCursor(18, 0);
+	lcd.print("b");
+	if (Universo_Actual == 0)
+	{
+		lcd.print("-");
+	}
+	else
+	{
+		lcd.print(Universo_Actual);
+	}
 	// Cursor
 	LCD_Col_Pos = 1;			// posicion de cursor
 	LCD_Row_Pos = 2;
@@ -1534,9 +1648,9 @@ int EEPROM_Save()
 				break;
 			case 8:
 				EEPROM_Add = 3584 + Canal;
-				if (EEPROM_Add > 4093)
+				if (EEPROM_Add > 4092)
 				{
-					EEPROM_Add = 4093;
+					EEPROM_Add = 4092;
 				}
 				break;
 		}
@@ -1597,9 +1711,9 @@ int EEPROM_Load()
 				break;
 			case 8:
 				EEPROM_Add = 3584 + Canal - 1;
-				if (EEPROM_Add > 4093)
+				if (EEPROM_Add > 4092)
 				{
-					EEPROM_Add = 4093;
+					EEPROM_Add = 4092;
 				}
 				break;
 		}
@@ -1618,6 +1732,66 @@ int EEPROM_Load()
 	lcd.noBlink();
 	salida:
 	return cancel;
+}
+
+void EEPROM_Load_Init()
+{
+	// carga los valores en la eeprom al inicio
+	int EEPROM_Add = 0;
+	Universo_Actual = EEPROM.read(Bank_Init_Add);
+	if (Universo_Actual == 0)
+	{
+		goto salir;
+	}
+	for(int Canal = 1; Canal <= 512; Canal ++)
+	{
+		// Escritura de universo EEPROM
+		switch (Universo_Actual)
+		{
+			case 1:
+				EEPROM_Add = 0 + Canal - 1;
+				break;
+			case 2:
+				EEPROM_Add = 512 + Canal - 1;
+				break;
+			case 3:
+				EEPROM_Add = 1024 + Canal - 1;
+				break;
+			case 4:
+				EEPROM_Add = 1536 + Canal - 1;
+				break;
+			case 5:
+				EEPROM_Add = 2048 + Canal - 1;
+				break;
+			case 6:
+				EEPROM_Add = 2560 + Canal - 1;
+				break;
+			case 7:
+				EEPROM_Add = 3072 + Canal - 1;
+				break;
+			case 8:
+				EEPROM_Add = 3584 + Canal - 1;
+				if (EEPROM_Add > 4092)
+				{
+					EEPROM_Add = 4092;
+				}
+				break;
+		}
+		DMX_Values[Canal] = EEPROM.read(EEPROM_Add);          	// lectura desde EEPROM
+		ArduinoDmx0.TxBuffer[Canal - 1] = DMX_Values[Canal]; 	// salida a DMX
+	}
+	lcd.clear ();
+	lcd.setCursor (3, 1);
+	lcd.print ("Memory Loaded!");
+	lcd.setCursor (3, 2);
+	lcd.print ("Bank: ");
+	lcd.print (Universo_Actual);
+	lcd.setCursor (10, 2);
+	lcd.blink();
+	delay (2000);
+	lcd.noBlink();
+	salir: 
+	{}
 }
 
 void EEPROM_Empty()
@@ -1830,44 +2004,58 @@ void GUI_Control_Options()
 void GUI_Config()
 {
 	Inicio:	
-	byte Back_Light_Value = EEPROM.read(BackLight_Add);
-	byte Contrast_Value = EEPROM.read(Contrast_Add);
+	byte Back_Light_Value 	= EEPROM.read(BackLight_Add);
+	byte Contrast_Value 	= EEPROM.read(Contrast_Add);
+	byte Bank_Init_Value	= EEPROM.read(Bank_Init_Add);
 	// GUI
 	lcd.clear ();
 	lcd.setCursor (0, 0);
-	lcd.print ("LCD Config:");
-	lcd.setCursor (15, 0);
+	lcd.print ("Config:");
+	lcd.setCursor (15, 2);
 	lcd.print ("About");
-	lcd.setCursor (3, 1);
-	lcd.print ("Back Light:");
-	Numerico_Write(Back_Light_Value, 15, 1);
-	lcd.setCursor (5, 2);
+	lcd.setCursor (0, 1);
+	lcd.print ("BackLight:");
+	Numerico_Write(Back_Light_Value, 11, 1);
+	lcd.setCursor (1, 2);
 	lcd.print ("Contrast:");
-	Numerico_Write(Contrast_Value, 15, 2);
+	Numerico_Write(Contrast_Value, 11, 2);
 	lcd.setCursor (15, 3);
-	lcd.print ("Ctrl");	
+	lcd.print ("Exit");
+	// Bank
+	lcd.setCursor (1, 3);
+	lcd.print ("BankInit:");
+	if (Bank_Init_Value > 8 || Bank_Init_Value < 1)
+	{
+		lcd.setCursor (11, 3);
+		lcd.print ("---");
+	}
+	else
+	{
+		Numerico_Write(Bank_Init_Value, 11, 3);
+	}
 	// Cursor
-	LCD_Col_Pos = 14;			// posicion de cursor
-	LCD_Row_Pos = 2;			// posicion e cursor
+	LCD_Col_Pos = 10;			// posicion de cursor
+	LCD_Row_Pos = 1;			// posicion e cursor
 	// configuracion de cursor	
 	Cursor_Conf_Clear();		// limpiar array
 	// Cursores
-	Cursor_Conf[1][14]  = 1;	// Back Light Value
-	Cursor_Conf[2][14]  = 1;	// Contrast Value
-	Cursor_Conf[3][14]  = 1;	// control
-	Cursor_Conf[0][14]  = 1;	// About
+	Cursor_Conf[1][10]  = 1;	// Back Light Value
+	Cursor_Conf[2][10]  = 1;	// Contrast Value
+	Cursor_Conf[3][10]  = 1;	// Bank init Value
+	Cursor_Conf[3][14]  = 1;	// Exit
+	Cursor_Conf[2][14]  = 1;	// About
 	Navegacion:
 	GUI_Navegar(0, 0);
 	// Acciones
 	//Back Light Value
-	if (LCD_Col_Pos == 14 && LCD_Row_Pos == 1)
+	if (LCD_Col_Pos == 10 && LCD_Row_Pos == 1)
 	{
 		Num_Row_Pos = 1;
-		Num_Col_Pos = 15;
+		Num_Col_Pos = 11;
 		Numerico_Calc (1);
 		if (Num_Val == 712)
 		{
-			lcd.setCursor (14, 1);
+			lcd.setCursor (10, 1);
 			lcd.print("a");								// indicar que es analogo
 			digitalWrite(Boton_Array_3, LOW);			// lectura linea 3
 			lcd.blink();
@@ -1875,7 +2063,7 @@ void GUI_Config()
 			{
 				Num_Val = analogRead(Pot);				// lectura desde el potenciometro
 				Num_Val = Num_Val / 4;					// / 4 porque es de 12 bits
-				Numerico_Write(Num_Val, 15, 1);
+				Numerico_Write(Num_Val, 11, 1);
 				analogWrite(Back_Light_PWM, Num_Val);
 				delay(50);								// retardo de lectura
 			}
@@ -1887,7 +2075,7 @@ void GUI_Config()
 		if (Num_Val > 255)
 		{
 			Num_Val = 255;
-			Numerico_Write (255, 15, 1);
+			Numerico_Write (255, 11, 1);
 		}
 		analogWrite(Back_Light_PWM, Num_Val);
 		salida:
@@ -1904,14 +2092,14 @@ void GUI_Config()
 		goto Navegacion;
 	}
 	//Contrast Value
-	if (LCD_Col_Pos == 14 && LCD_Row_Pos == 2)
+	if (LCD_Col_Pos == 10 && LCD_Row_Pos == 2)
 	{
 		Num_Row_Pos = 2;
-		Num_Col_Pos = 15;
+		Num_Col_Pos = 11;
 		Numerico_Calc (1);
 		if (Num_Val == 712)
 		{
-			lcd.setCursor (14, 2);
+			lcd.setCursor (10, 2);
 			lcd.print("a");								// indicar que es analogo
 			digitalWrite(Boton_Array_3, LOW);			// lectura linea 3
 			lcd.blink();
@@ -1921,12 +2109,12 @@ void GUI_Config()
 				Num_Val = Num_Val / 4;					// / 4 porque es de 12 bits
 				if (Num_Val > 149)						// limite menor de contraste LCD						
 				{
-					Numerico_Write(Num_Val, 15, 2);
+					Numerico_Write(Num_Val, 11, 2);
 					analogWrite(Contrast_PWM, Num_Val);
 				}
 				if (Num_Val < 149)
 				{
-					Numerico_Write(150, 15, 2);
+					Numerico_Write(150, 11, 2);
 				}
 				delay(50);								// retardo de lectura
 			}
@@ -1938,16 +2126,35 @@ void GUI_Config()
 		if (Num_Val > 255)
 		{
 			Num_Val = 255;
-			Numerico_Write (255, 15, 2);
+			Numerico_Write (255, 11, 2);
 		}
 		if (Num_Val < 150)
 		{
 			Num_Val = 150;								// limite menor de contraste LCD
-			Numerico_Write (150, 15, 2);
+			Numerico_Write (150, 11, 2);
 		}
 		analogWrite(Contrast_PWM, Num_Val);
 		salir:	
 		EEPROM.write(Contrast_Add, Num_Val);			// guardar valor nuevo
+		goto Navegacion;
+	}
+	//Bank init Value
+	if (LCD_Col_Pos == 10 && LCD_Row_Pos == 3)
+	{
+		Num_Row_Pos = 3;
+		Num_Col_Pos = 11;
+		Numerico_Calc (1);
+		if (Num_Val > 8)
+		{
+			Num_Val = 8;
+			Numerico_Write (8, 11, 3);
+		}
+		if (Num_Val == 0)
+		{
+			lcd.setCursor (11, 3);
+			lcd.print("---");	
+		}
+		EEPROM.write(Bank_Init_Add, Num_Val);			// guardar valor nuevo
 		goto Navegacion;
 	}
 	// Exit
@@ -1957,9 +2164,10 @@ void GUI_Config()
 		goto Navegacion;
 	}
 	// About
-	if (LCD_Col_Pos == 14 && LCD_Row_Pos == 0)
+	if (LCD_Col_Pos == 14 && LCD_Row_Pos == 2)
 	{
 		GUI_About();
+		GUI_Licence();
 		goto Inicio;
 	}
 	goto Navegacion;
@@ -2469,58 +2677,58 @@ void Numerico_Calc(byte value)
 		Num_Val = Boton_Calc;			// valor calculado
 		Num_Val_Temp_1 = Boton_Calc;	// valor temporal para el acarreo
 	}
-	if (Boton_Calc == 14)			// enter
+	if (Boton_Calc == 14)		// enter
 	{
-		goto Salida;				// num val = 0		
+		goto Salida;			// num val = 0		
 	}
 	if (value == 1)				// si es un valor
 	{
-		if (Boton_Calc == 10)		// 255
+		if (Boton_Calc == 10)	// 255
 		{
 			Num_Val = 255;
 			goto Salida;
 		}
-		if (Boton_Calc == 11)		// 000
+		if (Boton_Calc == 11)	// 000
 		{
 			Num_Val = 0;
 			goto Salida;
 		}
-		if (Boton_Calc == 12)		// ubicar
+		if (Boton_Calc == 12)	// ubicar
 		{
 			Num_Val = 612;
 			goto Salida_Option;
 		}
-		if (Boton_Calc == 13)		// analogo
+		if (Boton_Calc == 13)	// analogo
 		{
 			Num_Val = 712;
 			goto Salida_Option;
 		}
 	}
 	// segundo numero
-	Numerico_Read();				// leer boton
-	if (Boton_Calc == 14)			// enter
+	Numerico_Read();			// leer boton
+	if (Boton_Calc == 14)		// enter
 	{
 		Num_Val = Num_Val_Temp_1;	
-		goto Salida;				// num val = num val anterior
+		goto Salida;			// num val = num val anterior
 	}
 	if (value == 1)				// si es un valor
 	{
-		if (Boton_Calc == 10)		// 255
+		if (Boton_Calc == 10)	// 255
 		{
 			Num_Val = 255;
 			goto Salida;
 		}
-		if (Boton_Calc == 11)		// 000
+		if (Boton_Calc == 11)	// 000
 		{
 			Num_Val = 0;
 			goto Salida;
 		}
-		if (Boton_Calc == 12)		// ubicar
+		if (Boton_Calc == 12)	// ubicar
 		{
 			Num_Val = 612;
 			goto Salida_Option;
 		}
-		if (Boton_Calc == 13)		// analogo
+		if (Boton_Calc == 13)	// analogo
 		{
 			Num_Val = 712;
 			goto Salida_Option;
@@ -2539,30 +2747,30 @@ void Numerico_Calc(byte value)
 		lcd.setCursor (Num_Col_Pos, Num_Row_Pos);
 	}
 	// Tercer numero
-	Numerico_Read();				// leer boton
-	if (Boton_Calc == 14)			// enter
+	Numerico_Read();			// leer boton
+	if (Boton_Calc == 14)		// enter
 	{	
 		Num_Val = (Num_Val_Temp_1 * 10) + Num_Val_Temp_2;
 		goto Salida;
 	}
 	if (value == 1)				// si es un valor
 	{
-		if (Boton_Calc == 10)		// 255
+		if (Boton_Calc == 10)	// 255
 		{
 			Num_Val = 255;
 			goto Salida;
 		}
-		if (Boton_Calc == 11)		// 000
+		if (Boton_Calc == 11)	// 000
 		{
 			Num_Val = 0;
 			goto Salida;
 		}
-		if (Boton_Calc == 12)		// ubicar
+		if (Boton_Calc == 12)	// ubicar
 		{
 			Num_Val = 612;
 			goto Salida_Option;
 		}
-		if (Boton_Calc == 13)		// analogo
+		if (Boton_Calc == 13)	// analogo
 		{
 			Num_Val = 712;
 			goto Salida_Option;
@@ -2584,7 +2792,7 @@ void Numerico_Calc(byte value)
 	Salida:
 	lcd.noBlink();
 	// pintar los ceros antes del numero
-	Numerico_Write (Num_Val, Num_Col_Pos - 2, Num_Row_Pos);
+	Numerico_Write (Num_Val, Num_Col_Pos - 2, Num_Row_Pos); 
 	Num_Col_Pos = Num_Col_Pos - 4;
 	// regresar el cursor a su ligar
 	lcd.setCursor (Num_Col_Pos, Num_Row_Pos);
@@ -2599,8 +2807,8 @@ void Numerico_Calc(byte value)
 void Numerico_Read()
 {
 	long Num_Barrido_Time = 5;		// tiempo entre barrido de keys
-	Boton_Calc = 17;					// limpiar valor para lectura
-	while (Boton_Calc == 17)			// valor calculado	# E * F, 17 sin valor calculado
+	Boton_Calc = 17;				// limpiar valor para lectura
+	while (Boton_Calc == 17)		// valor calculado	# E * F, 17 sin valor calculado
 	{	
 		// Barrido
 		// Linea 1
@@ -2746,13 +2954,13 @@ void Analog_Read_DMX(byte col, byte row)
 	int read;
 	lcd.setCursor (col - 1, row);
 	lcd.print("a");						// indicar que es analogo
-	digitalWrite(Boton_Array_3, LOW);		// lectura linea 3
+	digitalWrite(Boton_Array_3, LOW);	// lectura linea 3
 	lcd.blink();
 	int valores = 0;
 	while (digitalRead(Boton_Array_D) == HIGH && digitalRead(Boton_Center) == HIGH) // enter y center para paro
 	{
-		read = analogRead(Pot);				// lectura desde el potenciometro
-		read = read / 4;					// / 4 porque es de 12 bits
+		read = analogRead(Pot);			// lectura desde el potenciometro
+		read = read / 4;				// / 4 porque es de 12 bits
 		delay(50);
 		if (valores != read)
 		{
@@ -2762,7 +2970,7 @@ void Analog_Read_DMX(byte col, byte row)
 		 valores = read;
 	 }
  }
- lcd.noBlink();
+	lcd.noBlink();
 	digitalWrite(Boton_Array_3, HIGH);	// lectura linea 3
 	delay(300);							// delay para salir de la lectura analoga
 }
