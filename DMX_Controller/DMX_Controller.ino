@@ -3,7 +3,7 @@
 // **																														**
 // **										Arduino DMX-512 Tester Controller												**
 // **																														**
-// **	- Firmware v0.6																										**
+// **	- Firmware v0.7																										**
 // **	- Hardware v0.0 - v0.2																								**
 // **																														**
 // **	- Compilado en Arduino IDE v1.0.6																					**
@@ -265,10 +265,9 @@ void Back_Light_En()
 void GUI_About()
 	{
 		byte Firm_Ver_Ent = 0;
-		byte Firm_Ver_Dec = 6;
+		byte Firm_Ver_Dec = 7;
 		byte Hard_Ver_Ent = 0;
 		byte Hard_Ver_Dec = 0;
-		byte ID = 20;
 		lcd.clear ();
 		lcd.noBlink();									// ocultar cursor
 		lcd.setCursor(0, 0);
@@ -278,7 +277,7 @@ void GUI_About()
 			}
 		lcd.clear ();
 		lcd.setCursor(0, 3);
-		lcd.print("http://goo.gl/kdYlj7");
+		lcd.print("http://goo.gl/5nqJKt");
 		lcd.setCursor(3, 0);
 		lcd.print("Arduino DMX-512");
 		lcd.setCursor(1, 1);
@@ -893,6 +892,8 @@ void GUI_Memory()
 			lcd.print("Empty");
 			lcd.setCursor (7, 3);
 			lcd.print("Clear");
+			lcd.setCursor (14, 2);
+			lcd.print("Black");
 			lcd.setCursor (14, 3);
 			lcd.print("Cancel");
 		// Cursor
@@ -905,8 +906,10 @@ void GUI_Memory()
 				Cursor_Conf[3][0]  = 1; // Load
 				Cursor_Conf[3][6]  = 1;	// Clear
 				Cursor_Conf[2][6]  = 1;	// Empty
+				Cursor_Conf[2][13] = 1;	// Black Out
 				Cursor_Conf[3][13] = 1;	// Cancel
 		// navegar
+		inicio:
 			GUI_Navegar(0, 0);
 		// Acciones
 			// Load
@@ -929,11 +932,41 @@ void GUI_Memory()
 					{
 						EEPROM_Empty();
 					}
+			// Black Out
+				if (LCD_Col_Pos == 13 && LCD_Row_Pos == 2)
+					{
+						Black_Out();
+						goto inicio;
+					}
 			// Cancel
 				if (LCD_Col_Pos == 3 && LCD_Row_Pos == 13)
 					{
 
 					}
+	}
+	
+void Black_Out()
+	{
+		lcd.setCursor (19, 2);
+		lcd.blink();
+		// limpiar universo
+			for(int Canal = 1; Canal <= 512; Canal ++)
+				{
+					ArduinoDmx0.TxBuffer[Canal - 1] = 0; 
+				}
+		// esperar al boton centro para cancelar
+			while (digitalRead(Boton_Center) == HIGH)
+				{
+
+				}
+			delay(300);		// retardo de rebote de boton
+		// regresar el universo a su lugar
+			for(int Canal = 1; Canal <= 512; Canal ++)
+				{
+					ArduinoDmx0.TxBuffer[Canal - 1] = DMX_Values[Canal];
+				}
+		lcd.setCursor (13, 2);
+		lcd.noBlink();
 	}
 
 void EEPROM_Save()
@@ -1166,6 +1199,10 @@ void GUI_Config()
 												Numerico_Write(Num_Val, 15, 2);
 												analogWrite(Contrast_PWM, Num_Val);
 											}
+										if (Num_Val < 149)
+											{
+												Numerico_Write(150, 15, 2);
+											}
 										delay(50);								// retardo de lectura
 									}
 								lcd.noBlink();
@@ -1271,6 +1308,8 @@ void GUI_Control_Multiply()
 							// calcular
 								lcd.setCursor(13, 0);
 								lcd.print("       ");
+								lcd.setCursor(14, 3);
+								lcd.print("Calc..");
 								long canal;
 								for (long conteo = 1; conteo <= Quantity; conteo++)
 									{
@@ -1295,6 +1334,8 @@ void GUI_Control_Multiply()
 									}
 								lcd.setCursor(13, 0);
 								lcd.print("Ok!");
+								lcd.setCursor(14, 3);
+								lcd.print("Apply ");
 								goto Siguiente;
 						}
 				// First Channel
@@ -1376,7 +1417,6 @@ void GUI_Control_Chaser()
 		long Delay     = 1;
 		long First 	   = 1;
 		long Final 	   = 0;
-		iniciar:
 			// LCD
 				lcd.clear ();
 				lcd.setCursor (0, 0);
@@ -1408,6 +1448,11 @@ void GUI_Control_Chaser()
 				// Control
 					if (LCD_Col_Pos == 14 && LCD_Row_Pos == 2)
 						{
+							// regresar el universo a su lugar
+								for(int Canal = 1; Canal <= 512; Canal ++)
+									{
+										ArduinoDmx0.TxBuffer[Canal - 1] = DMX_Values[Canal];
+									}
 							GUI_Control_Options();
 						}
 				// Start
@@ -1419,10 +1464,10 @@ void GUI_Control_Chaser()
 							int  canal 			= First;
 							lcd.setCursor(15,3);
 							lcd.print("Stop ");
+							lcd.blink();
 							// borrar canales previos
 								for(int Canales = 0; Canales <= 512; Canales ++)
 									{
-										DMX_Values[Canales] = 0;          		// lectura desde EEPROM
 										ArduinoDmx0.TxBuffer[Canales] = 0; 		// salida a DMX
 									}
 							while (digitalRead(Boton_Center) == HIGH)			// lectura del boton centro
@@ -1442,17 +1487,16 @@ void GUI_Control_Chaser()
 														for (long contar = First; contar <= Final; contar ++)
 															{
 																ArduinoDmx0.TxBuffer[contar - 1] = 0;
-																DMX_Values[contar] = 0;
 															}
 													// encender el siguiente
 														ArduinoDmx0.TxBuffer[canal - 1] = 255;
-														DMX_Values[canal] = 255;
 													Delay_Cont = 0;
 													canal = canal + 1;
 												}
 											ciclo = 0;
 										}
 								}
+							lcd.noBlink();
 							lcd.setCursor(15,3);
 							lcd.print("Start");
 							delay (300); 		// evita que le gane la descarga del capacitor
@@ -1624,7 +1668,7 @@ void GUI_Control_Unit()
 void Ubicar()
 	{
 		digitalWrite(Boton_Array_4, LOW);
-		while (digitalRead(Boton_Array_C) == HIGH)
+		while (digitalRead(Boton_Array_C) == HIGH && digitalRead(Boton_Center) == HIGH)
 			{
 				ArduinoDmx0.TxBuffer[Canal_Actual - 1] = 255;
 				Numerico_Write (255, Num_Col_Pos - 2, Num_Row_Pos);
@@ -1635,16 +1679,15 @@ void Ubicar()
 				delay (100);
 			}
 		digitalWrite(Boton_Array_4, HIGH);
+		delay(300); // rebote de boton enter
 		lcd.setCursor (Num_Col_Pos, Num_Row_Pos);
 	}
 	
 void Numerico_Calc(byte value)
 	{
 	// escritura del numero desde el teclado numerico si value es 1 entra opcion de A 255 y B 0
-		byte 	Salida			 = 0;
 		int 	Num_Val_Temp_1 	 = 0;
 		int 	Num_Val_Temp_2 	 = 0;
-		int 	Num_Val_Temp_3 	 = 0;
 		lcd.setCursor (Num_Col_Pos, Num_Row_Pos);
 		lcd.print("___");
 		lcd.blink();								// mostrar cursor

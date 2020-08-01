@@ -2,7 +2,7 @@
 
 ## **Firmware - LCD 20x4**
 
-[![version](https://img.shields.io/badge/version-0.6_release-brightgreen.svg)](CHANGELOG.md)
+[![version](https://img.shields.io/badge/version-0.7_release-brightgreen.svg)](CHANGELOG.md)
 [![license](https://img.shields.io/badge/licence-GNU_GPL_v3.0-blue)](https://github.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/blob/master/LICENCE.md)
 
 ![GitHub issues](https://img.shields.io/github/issues/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware)
@@ -91,23 +91,17 @@ Herramienta Open Hardware, para pruebas y control de iluminación de espectácul
 
 ### ![**Changelog**](CHANGELOG.md)
 
-- **CORREGIDO,** los valores limites superiores de config se escribían un carácter después
-- **CORREGIDO,** hacer a partir de 155 el dimmer del contraste
-- **CORREGIDO,** botón * de back light funciona errático - faltaba delay para evitar repetición
-- **CORREGIDO,** quitar en config el dimmer 0-255, no aplica al contraste
-- **CORREGIDO,** las io no usadas son salidas low
-- **CORREGIDO,** no inicializa el contraste
-- **CORREGIDO,** en matrix no se aplican los cambios en los bancos
-- **CORREGIDO,** en matrix el valor final del banco se pasa de 512
-- **CORREGIDO,** en config backlight el valor no se guardaba en eeprom
-- **CORREGIDO,** en config backlight se recorrían todas las opciones de botones, se agregó mecanismo para sacar del bucle
-- **CORREGIDO,** se bajó el delay de la lectura análoga para evitar pasos escalonados
-- **AGREGADO,** potenciómetro para valores DMX con tecla "D" solo en valores, para detenerlo presionar # o center
-- **AGREGADO,** análogo a unitary
-- **AGREGADO,** análogo a matrix
-- **AGREGADO,** análogo a config back light
-- **AGREGADO,** an-alogo a config contrast
-- **AGREGADO,** en la lectura análogo mecanismo para escribir el valor solo cuando cambia y no todo el tiempo
+- **AGREGADO,** en chaser el cursor en blink cuando hace la secuencia
+- **AGREGADO,** función de Black Out desde el menú de Memory, pone todos los canales en 0 y los regresa a lo que tenían, para salir dar en center
+- **CORREGIDO,** en config contraste el límite inferior no se mostraba
+- **CORREGIDO,** en gui about se retiró variable id, no se usa
+- **CORREGIDO,** en chaser se quitó el label iniciar, no se usa
+- **CORREGIDO,** en numérico calc se quitó la variable salida, no se usa
+- **CORREGIDO,** en numérico calc se quitó la variable Num_Val_Temp_3, no se usa
+- **CORREGIDO,** en chaser ya no guarda los valores de los cambios aplicados, al salir los regresa a su lugar
+- **CORREGIDO,** en multiply cuando hace en calculó se cambia apply por calc..
+- **CORREGIDO,** en ubicar se agrega cancelar con center
+- **CORREGIDO,** se cambió la url del about apuntando al Wiki
 
 ***
 
