@@ -3,8 +3,8 @@
 // **																														**
 // **										Arduino DMX-512 Tester Controller												**
 // **																														**
-// **	- Firmware v0.2																										**
-// **	- Hardware v0.0	- v0.2																								**
+// **	- Firmware v0.3																										**
+// **	- Hardware v0.0 - v0.2																								**
 // **																														**
 // **	- Compilado en Arduino IDE v1.0.6																					**
 // **		http://www.arduino.cc/en/Main/OldSoftwareReleases																**
@@ -63,68 +63,62 @@
 								   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 								   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};		
 	// Botones Numerico Array
-		int Boton_Array_1		= 36;
-		int Boton_Array_2		= 34;
-		int Boton_Array_3		= 32;
-		int Boton_Array_4		= 30;
-		int Boton_Array_A		= 44;	
-		int Boton_Array_B		= 42;
-		int Boton_Array_C   	= 40;
-		int Boton_Array_D   	= 38;
+		int  Boton_Array_1		= 36;
+		int  Boton_Array_2		= 34;
+		int  Boton_Array_3		= 32;
+		int  Boton_Array_4		= 30;
+		int  Boton_Array_A		= 44;	
+		int  Boton_Array_B		= 42;
+		int  Boton_Array_C   	= 40;
+		int  Boton_Array_D   	= 38;
 		byte Boton_Calc 		= 17;	// valor calculado	# E * F, 17 sin valor calculado
 		byte Num_Col_Pos  		= 0;	// posicion en tiempo real de lcd
 		byte Num_Row_Pos 		= 0;	// posicion en tiempo real de lcd
-		int Num_Val				= 0;	// valor generado al calculo
+		int  Num_Val			= 0;	// valor generado al calculo
 	// LCD
-		int LCD_RS = 8;					// puertos de conexion de LCD
-		int LCD_E  = 9;
-		int LCD_D4 = 10;
-		int LCD_D5 = 11;
-		int LCD_D6 = 12;
-		int LCD_D7 = 13;
+		int LCD_RS 				= 8;	// puertos de conexion de LCD
+		int LCD_E  				= 9;
+		int LCD_D4 				= 10;
+		int LCD_D5 				= 11;
+		int LCD_D6 				= 12;
+		int LCD_D7				= 13;
 		LiquidCrystal lcd(LCD_RS, LCD_E, LCD_D4, LCD_D5, LCD_D6, LCD_D7);  //LCD setup
-	// Versiones
-		const byte Firm_Ver_Ent = 0;
-		const byte Firm_Ver_Dec = 2;
-		const byte Hard_Ver_Ent = 0;
-		const byte Hard_Ver_Dec = 0;
-		const byte ID = 20;
 
 void setup() 
 	{
 		// DMX
-			pinMode(DMX_Data_Flux, OUTPUT);
+			pinMode(DMX_Data_Flux, 		OUTPUT);
 		// Botones cursor
-			pinMode(Boton_Up,     INPUT_PULLUP);
-			pinMode(Boton_Down,   INPUT_PULLUP);
-			pinMode(Boton_Left,   INPUT_PULLUP);
-			pinMode(Boton_Right,  INPUT_PULLUP);
-			pinMode(Boton_Center, INPUT_PULLUP);
+			pinMode(Boton_Up,      		INPUT_PULLUP);
+			pinMode(Boton_Down,    		INPUT_PULLUP);
+			pinMode(Boton_Left,    		INPUT_PULLUP);
+			pinMode(Boton_Right,   		INPUT_PULLUP);
+			pinMode(Boton_Center,  		INPUT_PULLUP);
 		// Botones numerico
-			pinMode(Boton_Array_1, OUTPUT);
-			pinMode(Boton_Array_2, OUTPUT);
-			pinMode(Boton_Array_3, OUTPUT);
-			pinMode(Boton_Array_4, OUTPUT);
-			pinMode(Boton_Array_A, INPUT_PULLUP);
-			pinMode(Boton_Array_B, INPUT_PULLUP);
-			pinMode(Boton_Array_C, INPUT_PULLUP);
-			pinMode(Boton_Array_D, INPUT_PULLUP);
+			pinMode(Boton_Array_1, 		OUTPUT);
+			pinMode(Boton_Array_2, 		OUTPUT);
+			pinMode(Boton_Array_3, 		OUTPUT);
+			pinMode(Boton_Array_4,		OUTPUT);
+			pinMode(Boton_Array_A, 		INPUT_PULLUP);
+			pinMode(Boton_Array_B, 		INPUT_PULLUP);
+			pinMode(Boton_Array_C, 		INPUT_PULLUP);
+			pinMode(Boton_Array_D, 		INPUT_PULLUP);
 			digitalWrite(Boton_Array_1, HIGH);
 			digitalWrite(Boton_Array_2, HIGH);
 			digitalWrite(Boton_Array_3, HIGH);
 			digitalWrite(Boton_Array_4, HIGH);
 		// LCD
-			pinMode(LCD_RS, OUTPUT);
-			pinMode(LCD_E,  OUTPUT);
-			pinMode(LCD_D7, OUTPUT);
-			pinMode(LCD_D6, OUTPUT);
-			pinMode(LCD_D5, OUTPUT);
-			pinMode(LCD_D4, OUTPUT);
-			lcd.begin(20, 4);					//tamaño de LCD				
+			pinMode(LCD_RS, 			OUTPUT);
+			pinMode(LCD_E,  			OUTPUT);
+			pinMode(LCD_D7, 			OUTPUT);
+			pinMode(LCD_D6, 			OUTPUT);
+			pinMode(LCD_D5, 			OUTPUT);
+			pinMode(LCD_D4, 			OUTPUT);
+			lcd.begin(20, 4);							//tamaño de LCD				
 		// DMX
-			ArduinoDmx0.set_tx_address(1);      // poner aqui la direccion de inicio de DMX 
-			ArduinoDmx0.set_tx_channels(512);   // poner aqui el numero de canales a transmitir 
-			ArduinoDmx0.init_tx(DMX512);        // iniciar transmision universo 0, modo estandar DMX512
+			ArduinoDmx0.set_tx_address(1);      		// poner aqui la direccion de inicio de DMX 
+			ArduinoDmx0.set_tx_channels(512);   		// poner aqui el numero de canales a transmitir 
+			ArduinoDmx0.init_tx(DMX512);        		// iniciar transmision universo 0, modo estandar DMX512
 	}    
 
 void loop()
@@ -136,13 +130,17 @@ void loop()
 	
 void GUI_About()
 	{
+		byte Firm_Ver_Ent = 0;
+		byte Firm_Ver_Dec = 3;
+		byte Hard_Ver_Ent = 0;
+		byte Hard_Ver_Dec = 0;
+		byte ID = 20;
 		lcd.clear ();
 		lcd.noBlink();									// ocultar cursor
 		lcd.setCursor(0, 0);
 		for(int numero = 0; numero <= 512; numero ++)	// efecto binario en lcd
 			{
 				lcd.print (numero, BIN);
-				delay (1);
 			}
 		lcd.clear ();
 		lcd.setCursor(0, 0);
@@ -745,7 +743,6 @@ void EEPROM_Save()
 			{
 				EEPROM.write(Canal, DMX_Values[Canal]);          		// lectura desde EEPROM
 				lcd.print (Canal, BIN);
-				delay (1);
 			}
 		lcd.clear ();
 		lcd.setCursor (3, 1);
@@ -762,7 +759,6 @@ void EEPROM_Load()
 				DMX_Values[Canal] = EEPROM.read(Canal);          		// lectura desde EEPROM
 				ArduinoDmx0.TxBuffer[Canal - 1] = DMX_Values[Canal]; 	// salida a DMX
 				lcd.print (Canal, BIN);
-				delay (1);
 			}
 		lcd.clear ();
 		lcd.setCursor (3, 1);
@@ -779,7 +775,6 @@ void EEPROM_Empty()
 				DMX_Values[Canal] = 0;          		// lectura desde EEPROM
 				ArduinoDmx0.TxBuffer[Canal] = 0; 		// salida a DMX
 				lcd.print (Canal, BIN);
-				delay (1);
 			}
 		lcd.clear ();
 		lcd.setCursor (3, 1);
@@ -797,7 +792,6 @@ void EEPROM_Clear()
 				ArduinoDmx0.TxBuffer[Canal] = 0; 		// salida a DMX
 				EEPROM.write (Canal, 0);				// escritura EEPROM
 				lcd.print (Canal, BIN);
-				delay (1);
 			}
 		lcd.clear ();
 		lcd.setCursor (3, 1);
@@ -1024,7 +1018,7 @@ void GUI_Control_Chaser()
 				lcd.setCursor (0, 0);
 				lcd.print ("ChaserCH ---");
 				lcd.setCursor (3, 1);
-				lcd.print ("Delay     x10=mS");
+				lcd.print ("Delay    x10=mS");
 				lcd.setCursor (0, 2);
 				lcd.print ("First CH       Ctrl");
 				lcd.setCursor (0, 3);
@@ -1406,7 +1400,6 @@ void Numerico_Calc(byte value)
 
 void Numerico_Read()
 	{
-	// lectura desde el teclado numerico
 		long Boton_Delay_Teclado = 100;		// delay de lectura de boton
 		long Num_Barrido_Time = 5;			// tiempo entre barrido de keys
 		Boton_Calc = 17;					// limpiar valor para lectura
