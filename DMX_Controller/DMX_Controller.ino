@@ -3,8 +3,8 @@
 // **				                                                                                                        **
 // **											Arduino DMX-512 Tester Controller				                            **
 // **																	                                                    **
-// **	- Firmware v1.2																										**
-// **	- Hardware v0.3	- v0.4																								**
+// **	- Firmware v1.3																										**
+// **	- Hardware v0.4																								**
 // **																														**
 // **	- Compilado en Arduino IDE v1.0.6																					**
 // ** 	- Editado en Note++																									**
@@ -84,36 +84,40 @@ byte Cursor_Conf[4][20] = {	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
 							{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
 							{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }	};		
 // Botones Numerico Array
-int  Boton_Array_1	= 38;
-int  Boton_Array_2	= 40;
-int  Boton_Array_3	= 42;
-int  Boton_Array_4	= 44;
-int  Boton_Array_A	= 30;	
-int  Boton_Array_B	= 32;
-int  Boton_Array_C  = 34;
-int  Boton_Array_D  = 36;
-byte Boton_Calc 	= 17;		// valor calculado	# E * F, 17 sin valor calculado
-byte Num_Col_Pos  	= 0;		// posicion en tiempo real de lcd
-byte Num_Row_Pos 	= 0;		// posicion en tiempo real de lcd
-int  Num_Val		= 0;		// valor generado al calculo
-long Boton_Delay_Teclado = 100;	// delay de lectura de boton
+int  Boton_Array_1			= 38;
+int  Boton_Array_2			= 40;
+int  Boton_Array_3			= 42;
+int  Boton_Array_4			= 44;
+int  Boton_Array_A			= 30;	
+int  Boton_Array_B			= 32;
+int  Boton_Array_C 			= 34;
+int  Boton_Array_D  		= 36;
+byte Boton_Calc 			= 17;	// valor calculado	# E * F, 17 sin valor calculado
+byte Num_Col_Pos  			= 0;	// posicion en tiempo real de lcd
+byte Num_Row_Pos 			= 0;	// posicion en tiempo real de lcd
+int  Num_Val				= 0;	// valor generado al calculo
+long Boton_Delay_Teclado 	= 100;	// delay de lectura de boton
 // Potenciometro
-int  Pot			= A15;		// entrada de potenciometro
+int  Pot					= A15;	// entrada de potenciometro
 // LCD
-int  LCD_RS 		= 43;		// puertos de conexion de LCD
-int  LCD_E  		= 45;
-int  LCD_D4 		= 47;
-int  LCD_D5 		= 49;
-int  LCD_D6 		= 51;
-int  LCD_D7			= 53;
+int  LCD_RS 				= 43;	// puertos de conexion de LCD
+int  LCD_E  				= 45;
+int  LCD_D4 				= 47;
+int  LCD_D5 				= 49;
+int  LCD_D6 				= 51;
+int  LCD_D7					= 53;
 LiquidCrystal lcd(LCD_RS, LCD_E, LCD_D4, LCD_D5, LCD_D6, LCD_D7);  //LCD setup
-int  Back_Light_PWM		= 13;	// salida para PWM de Back Light de LCD
-int  Contrast_PWM		= 4;	// salida para pwm de contraste de LCD
-byte Back_Light_On_Off	= 0;	// saber si esta encendida o apagada
+int  Back_Light_PWM			= 13;	// salida para PWM de Back Light de LCD
+int  Contrast_PWM			= 4;	// salida para pwm de contraste de LCD
+byte Light_On_Off			= 0;	// saber si esta encendida o apagada, back y key
+// Key Light
+int  Key_Light_PWM			= 3;	// salida para pwm de key light
 // EEPROM
-int BackLight_Add 		= 4094;	// direccion de eeprom
-int Contrast_Add		= 4095;	// direccion de eeprom
-int Bank_Init_Add		= 4093;	// direccion de eeprom
+int BackLight_Add 			= 4094;	// direccion de eeprom
+int Contrast_Add			= 4095;	// direccion de eeprom
+int Bank_Init_Add			= 4093;	// direccion de eeprom
+int Key_Light_Add			= 4092;	// direccion de eeprom
+int EEPROM_Limit			= 4091;	// limite de espacios en eeprom para universos
 
 void setup() 
 {
@@ -146,7 +150,9 @@ void setup()
 	pinMode(LCD_D5, 		OUTPUT);
 	pinMode(LCD_D4, 		OUTPUT);
 	pinMode(Back_Light_PWM,	OUTPUT);
-	lcd.begin(20, 4);					//tamaño de LCD				
+	lcd.begin(20, 4);					//tamaño de LCD		
+	// Key Light
+	pinMode(Key_Light_PWM,	OUTPUT);
 	// DMX
 	ArduinoDmx0.set_tx_address(1);      // poner aqui la direccion de inicio de DMX 
 	ArduinoDmx0.set_tx_channels(512);   // poner aqui el numero de canales a transmitir 
@@ -243,11 +249,26 @@ void Back_Light_Init()
 	analogWrite(Back_Light_PWM, Back_Light_Value);
 	if (Back_Light_Value == 0)
 	{
-		Back_Light_On_Off = 0;
+		Light_On_Off = 0;
 	}
 	if (Back_Light_Value > 0)
 	{
-		Back_Light_On_Off = 1;
+		Light_On_Off = 1;
+	}	
+}
+
+void Key_Light_Init()
+{
+	// ultimo estado del Key Light
+	byte Key_Light_Value = EEPROM.read(Key_Light_Add);
+	analogWrite(Key_Light_PWM, Key_Light_Value);
+	if (Key_Light_Value == 0)
+	{
+		Light_On_Off = 0;
+	}
+	if (Key_Light_Value > 0)
+	{
+		Light_On_Off = 1;
 	}	
 }
 
@@ -262,31 +283,66 @@ void Contrast_Init()
 	analogWrite(Contrast_PWM, Contrast_Value);
 }
 
-void Back_Light_En()
+void Light_En()
 {
-	byte Back_Light_Value = EEPROM.read(513);	// lectura del ultimo valor desde la eeprom, 513 es donde se guarda el valor
+	// encender back y key desde la tecla *
+	byte Back_Light_Value 	= EEPROM.read(BackLight_Add);	// lectura del ultimo valor desde la eeprom
+	byte Key_Light_Value	= EEPROM.read(Key_Light_Add);	// lectura del ultimo valor desde la eeprom
+	long delay_dimmer		= 1;
 	// encender
-	if (Back_Light_On_Off == 0)					// si esta apagada encenderla
+	if (Light_On_Off == 0)									// si esta apagada encenderla
 	{
-		if (Back_Light_Value == 0)				// la encendemos de todos modos
+		// si el valor es 0 lo encendemos de todos modos
+		if (Back_Light_Value == 0)
 		{
-			analogWrite(Back_Light_PWM, 127);	// aqui el valor a encender en el caso que se haya establecido apagado el back light
+			for(int contar = 0; contar <= 127; contar ++)
+			{
+				analogWrite(Back_Light_PWM, contar);		// aqui el valor a encender en el caso que se haya establecido apagado
+				delay(delay_dimmer);
+			}	
 		}
+		if (Key_Light_Value == 0)
+		{
+			for(int contar = 0; contar <= 127; contar ++)
+			{
+				analogWrite(Key_Light_PWM, 127);			// aqui el valor a encender en el caso que se haya establecido apagado
+				delay(delay_dimmer);
+			}
+		}
+		// solo encender
 		if (Back_Light_Value > 0)
 		{
-			analogWrite(Back_Light_PWM, Back_Light_Value);	// encender con el valor de la eeprom
+			for(int contar = 0; contar <= Back_Light_Value; contar ++)
+			{
+				analogWrite(Back_Light_PWM, contar);		// encender con el valor de la eeprom
+				delay(delay_dimmer);
+			}
 		}
-		Back_Light_On_Off = 1;
+		if (Key_Light_Value > 0)
+		{
+			for(int contar = 0; contar <= Back_Light_Value; contar ++)
+			{
+				analogWrite(Key_Light_PWM, Key_Light_Value);// encender con el valor de la eeprom
+				delay(delay_dimmer);
+			}
+		}
+		Light_On_Off = 1;
 		goto salida;
 	}
 	// apagar
-	if (Back_Light_On_Off == 1)					// si esta encendida apagarla
+	if (Light_On_Off == 1)									// si esta encendida apagarla
 	{
-		analogWrite(Back_Light_PWM, 0);
-		Back_Light_On_Off = 0;
+		for(int contar = Back_Light_Value; contar != 0; contar --)
+		{
+			analogWrite(Back_Light_PWM, contar);
+			delay(delay_dimmer);
+		}
+		analogWrite(Back_Light_PWM, 0);	
+		analogWrite(Key_Light_PWM, 0);
+		Light_On_Off = 0;
 	}
 	salida:
-	delay(300);									// para impedir repeticion del comando
+	delay(300);												// para impedir repeticion del comando
 }
 
 void GUI_Licence()
@@ -349,13 +405,40 @@ void GUI_Licence()
 void GUI_About()
 {
 	byte Firm_Ver_Ent = 1;
-	byte Firm_Ver_Dec = 2;
+	byte Firm_Ver_Dec = 3;
 	byte Hard_Ver_Ent = 0;
 	byte Hard_Ver_Dec = 4;
+	byte Key_Light_Value 	= EEPROM.read(Key_Light_Add);
+	byte Back_Light_Value 	= EEPROM.read(BackLight_Add);
 	lcd.clear ();
+	analogWrite(Key_Light_PWM, 0);
+	analogWrite(Back_Light_PWM, 0);
 	for(int numero = 0; numero <= 512; numero ++)	// efecto binario en lcd
 	{
+		// binario
 		lcd.print (numero, BIN);
+		// key light
+		if(Key_Light_Value > 0)
+		{
+			if(numero <= 255)
+			{
+				if(numero <= Key_Light_Value)
+				{
+					analogWrite(Key_Light_PWM, numero);
+				}
+			}
+		}
+		// back light
+		if(Back_Light_Value > 0)
+		{
+			if(numero <= 255)
+			{
+				if(numero <= Back_Light_Value)
+				{
+					analogWrite(Back_Light_PWM, numero);
+				}
+			}
+		}
 	}
 	lcd.clear ();
 	lcd.blink ();
@@ -394,8 +477,8 @@ void GUI_About()
 	}
 	delay (300);	// rebote de boton
 	lcd.clear ();
-	lcd.setCursor(3, 0);
-	lcd.print("Open Hardware!");
+	lcd.setCursor(0, 0);
+	lcd.print("Open Source License:");
 	lcd.setCursor(0, 1);
 	lcd.print("Firm: GNU GPL v3");
 	lcd.setCursor(0, 2);
@@ -702,7 +785,7 @@ void GUI_Navegar(byte matrix, int banco)
 	if (digitalRead(Boton_Array_D) == LOW)
 	{
 		delay(Boton_Delay_Teclado);
-		Back_Light_En();
+		Light_En();
 	}
 	digitalWrite(Boton_Array_1, HIGH);	// lectura linea 1
 	// Left
@@ -1648,9 +1731,9 @@ int EEPROM_Save()
 				break;
 			case 8:
 				EEPROM_Add = 3584 + Canal;
-				if (EEPROM_Add > 4092)
+				if (EEPROM_Add > EEPROM_Limit)
 				{
-					EEPROM_Add = 4092;
+					EEPROM_Add = EEPROM_Limit;
 				}
 				break;
 		}
@@ -1711,9 +1794,9 @@ int EEPROM_Load()
 				break;
 			case 8:
 				EEPROM_Add = 3584 + Canal - 1;
-				if (EEPROM_Add > 4092)
+				if (EEPROM_Add > EEPROM_Limit)
 				{
-					EEPROM_Add = 4092;
+					EEPROM_Add = EEPROM_Limit;
 				}
 				break;
 		}
@@ -1771,9 +1854,9 @@ void EEPROM_Load_Init()
 				break;
 			case 8:
 				EEPROM_Add = 3584 + Canal - 1;
-				if (EEPROM_Add > 4092)
+				if (EEPROM_Add > EEPROM_Limit)
 				{
-					EEPROM_Add = 4092;
+					EEPROM_Add = EEPROM_Limit;
 				}
 				break;
 		}
@@ -1867,9 +1950,9 @@ int EEPROM_Clear()
 				break;
 			case 8:
 				EEPROM_Add = 3584 + Canal;
-				if (EEPROM_Add > 4093)
+				if (EEPROM_Add > EEPROM_Limit)
 				{
-					EEPROM_Add = 4093;
+					EEPROM_Add = EEPROM_Limit;
 				}
 				break;
 		}
@@ -1891,7 +1974,6 @@ int EEPROM_Clear()
 void EEPROM_Clear_All()
 {
 	// Pone en ceros la memoria EEPROM toda
-	int EEPROM_Add = 0;			// direccion de eeprom para universos
 	lcd.clear ();
 	lcd.setCursor (1, 1);
 	lcd.print ("All");
@@ -1899,7 +1981,7 @@ void EEPROM_Clear_All()
 	lcd.print ("Memory Cleaning...");
 	lcd.setCursor (19, 2);
 	lcd.blink();
-	for(int Canal = 0; Canal <= 4093; Canal ++)
+	for(int Canal = 0; Canal <= EEPROM_Limit; Canal ++)
 	{
 		EEPROM.write (Canal, 0);				// escritura EEPROM
 		if (Canal <= 511)
@@ -2007,10 +2089,12 @@ void GUI_Config()
 	byte Back_Light_Value 	= EEPROM.read(BackLight_Add);
 	byte Contrast_Value 	= EEPROM.read(Contrast_Add);
 	byte Bank_Init_Value	= EEPROM.read(Bank_Init_Add);
+	byte Key_Light_Value	= EEPROM.read(Key_Light_Add);
 	// GUI
 	lcd.clear ();
 	lcd.setCursor (0, 0);
-	lcd.print ("Config:");
+	lcd.print (" KeyLight:");
+	Numerico_Write(Key_Light_Value, 11, 0);
 	lcd.setCursor (15, 2);
 	lcd.print ("About");
 	lcd.setCursor (0, 1);
@@ -2042,6 +2126,7 @@ void GUI_Config()
 	Cursor_Conf[1][10]  = 1;	// Back Light Value
 	Cursor_Conf[2][10]  = 1;	// Contrast Value
 	Cursor_Conf[3][10]  = 1;	// Bank init Value
+	Cursor_Conf[0][10]  = 1;	// Key Light Value
 	Cursor_Conf[3][14]  = 1;	// Exit
 	Cursor_Conf[2][14]  = 1;	// About
 	Navegacion:
@@ -2082,13 +2167,57 @@ void GUI_Config()
 		// mecanismo para on off Enable
 		if (Num_Val == 0)
 		{
-			Back_Light_On_Off = 0;
+			Light_On_Off = 0;
 		}
 		if (Num_Val > 0)
 		{
-			Back_Light_On_Off = 1;
+			Light_On_Off = 1;
 		}
 		EEPROM.write(BackLight_Add, Num_Val);			// guardar valor nuevo
+		goto Navegacion;
+	}
+	//Key Light Value
+	if (LCD_Col_Pos == 10 && LCD_Row_Pos == 0)
+	{
+		Num_Row_Pos = 0;
+		Num_Col_Pos = 11;
+		Numerico_Calc (1);
+		if (Num_Val == 712)
+		{
+			lcd.setCursor (10, 0);
+			lcd.print("a");								// indicar que es analogo
+			digitalWrite(Boton_Array_3, LOW);			// lectura linea 3
+			lcd.blink();
+			while (digitalRead(Boton_Array_D) == HIGH && digitalRead(Boton_Center) == HIGH) // enter y center para paro
+			{
+				Num_Val = analogRead(Pot);				// lectura desde el potenciometro
+				Num_Val = Num_Val / 4;					// / 4 porque es de 12 bits
+				Numerico_Write(Num_Val, 11, 0);
+				analogWrite(Key_Light_PWM, Num_Val);
+				delay(50);								// retardo de lectura
+			}
+			lcd.noBlink();
+			digitalWrite(Boton_Array_3, HIGH);			// lectura linea 3
+			delay(300);									// retraso para center	
+			goto salida_key;
+		}
+		if (Num_Val > 255)
+		{
+			Num_Val = 255;
+			Numerico_Write (255, 11, 0);
+		}
+		analogWrite(Key_Light_PWM, Num_Val);
+		salida_key:
+		// mecanismo para on off Enable
+		if (Num_Val == 0)
+		{
+			Light_On_Off = 0;
+		}
+		if (Num_Val > 0)
+		{
+			Light_On_Off = 1;
+		}
+		EEPROM.write(Key_Light_Add, Num_Val);			// guardar valor nuevo
 		goto Navegacion;
 	}
 	//Contrast Value
