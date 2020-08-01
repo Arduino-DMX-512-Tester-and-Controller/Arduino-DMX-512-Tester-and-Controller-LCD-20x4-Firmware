@@ -3,7 +3,7 @@
 // **				                                                                                                        **
 // **											Arduino DMX-512 Tester Controller				                            **
 // **																	                                                    **
-// **	- Firmware v1.4																										**
+// **	- Firmware v1.5																										**
 // **	- Hardware v0.4																										**
 // **																														**
 // **	- Compilado en Arduino IDE v1.0.6																					**
@@ -405,7 +405,7 @@ void GUI_Licence()
 void GUI_About()
 {
 	byte Firm_Ver_Ent = 1;
-	byte Firm_Ver_Dec = 4;
+	byte Firm_Ver_Dec = 5;
 	byte Hard_Ver_Ent = 0;
 	byte Hard_Ver_Dec = 4;
 	byte Key_Light_Value 	= EEPROM.read(Key_Light_Add);
@@ -3303,6 +3303,7 @@ void Analog_Read_DMX(byte col, byte row)
 		if (valores != read)
 		{
 		 Numerico_Write(read, col, row);
+		 lcd.setCursor (col + 2, row);
 		 ArduinoDmx0.TxBuffer[Canal_Actual - 1] = read;
 		 DMX_Values[Canal_Actual] = read;
 		 valores = read;
