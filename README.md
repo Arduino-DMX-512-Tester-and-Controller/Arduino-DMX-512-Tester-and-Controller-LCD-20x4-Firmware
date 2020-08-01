@@ -52,3 +52,46 @@ Herramienta Open Hardware, para pruebas y control de iluminación de espectácul
 - Fuente externa, el arduino se calentaba
 
 ***
+
+- Compilado en Arduino IDE v1.0.6
+- Instalación de librerías DMX:
+	- Instalar Arduino IDE v1.0.6 (carpeta .../Software/) (Windows 10 64 bits, ok!)
+	- Instalar la libreri´a del encoder:
+		- Menú Sketch, Importar librería, Add Library
+		- Seleccionar el archivo Encoder.zip (carpeta .../Firmware/Documentacion/Librerias/)
+		- Abrir
+		- Mensaje: Library added to you libraries
+	- Instalar la librería del LCD:
+		- Menú Sketch, Importar librería, Add Library
+		- Seleccionar el archivo LiquidCrystal_V1.2.1.zip (carpeta .../Firmware/Documentacion/Librerias/)
+		- Abrir
+		- Mensaje: Library added to you libraries
+	- Instalar la librería del DMX:
+		- Copiar la carpeta DMX desde .../Firmware/Documentacion/Librerias/DMX/Dmx/
+		- Pegarla en la carpeta de .../Arduino/libraries/ el los archivos de programa (para el caso de Windows 10 64 bits, C:\Program Files (x86)\Arduino\libraries)
+		- Reiniciar Arduino IDE
+		- Revisar el menú Sketch, Importar librería..., Dmx
+- Cargando el Firmware:
+	- Seleccionar el firmware que vamos a cargar
+	- Lo abrimos desde Arduino IDE
+	- Menú Herramientas, Tarjeta, Arduino Mega 2560 or Mega ADK
+	- Conectar el Arduino Mega al PC
+	- Verificar que Windows lo dé de alta correctamente:
+		- Panel de control\Sistema y seguridad\Sistema
+		- Administrador de dispositivos
+		- Puertos (COM y LPT)
+		- Arduino Mega 2560 (COMx)
+	- En Arduino IDE seleccionamos nuestro Arduino Mega:
+		- Menú Herramientas, Puerto Serial, COMx
+	- Clic en el icono Cargar...
+	- Salen estos errores:
+		- avrdude: stk500v2_recv(): checksum error
+		- avrdude: stk500v2_recv(): checksum error
+		- avrdude: stk500v2_recv(): checksum error
+		- avrdude: stk500v2_recv(): checksum error
+		- avrdude: stk500v2_recv(): checksum error
+		- avrdude: stk500v2_recv(): checksum error
+		- avrdude: verification error, first mismatch at byte 0x0b60 0x50 != 0xd7
+		- avrdude: verification error; content mismatch
+    
+***
