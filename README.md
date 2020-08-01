@@ -2,7 +2,7 @@
 
 ## **Firmware - LCD 20x4**
 
-[![version](https://img.shields.io/badge/version-1.2_release-brightgreen.svg)](CHANGELOG.md)
+[![version](https://img.shields.io/badge/version-1.3_release-brightgreen.svg)](CHANGELOG.md)
 [![license](https://img.shields.io/badge/licence-GNU_GPL_v3.0-blue)](https://github.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/blob/master/LICENCE.md)
 
 ![GitHub issues](https://img.shields.io/github/issues/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware)
@@ -90,22 +90,18 @@ Herramienta Open Hardware, para pruebas y control de iluminación de espectácul
 
 ### ![**Changelog**](CHANGELOG.md)
 
-- **AGREGADO,** al arranque toma el banco de la eeprom previamente elegido desde config
-- **AGREGADO,** a config el banco que lee a arranque
-- **AGREGADO,** al about el banco actual
-- **AGREGADO,** a about reacomodo de datos
-- **AGREGADO,** a about licencias open source
-- **AGREGADO,** a initial memory el bank actual
-- **AGREGADO,** en EEPROM add 4093 para guardar banco a correr al inicio
-- **AGREGADO,** Bank 8 solo tiene 509 canales disponibles
-- **AGREGADO,** a EEPROM Load el límite en bank 8 de 4092
-- **AGREGADO,** a EEPROM Save el límite en bank 8 de 4092
-- **CORREGIDO,** GUI Config de LCD config solo a config
-- **CORREGIDO,** GUI Config de Control a exit
-- **AGREGADO,** a GUI Config opción bank init
-- **AGREGADO,** EEPROM_Load_Init para cargar el universo pre configurado al inicio
-- **CORREGIDO,** GUI about cambio de disposición y url por wiki
-- **AGREGADO,** GUI_Licence a config
+- **CORREGIR,** en control matrix cuando se selecciona un canal de la esquina el cursor parpadeando queda fuera de lugar
+- **AGREGADO,** Control de iluminación para teclado
+- **AGREGADO,** a EEPROM la posición 4092 para guardar key light
+- **AGREGADO,** la variable global int EEPROM_Limit para controlar el límite de escritura de eeprom de universos
+- **AGREGADO,** EEPROM_Limit a todas las funciones de memoria EEPROM
+- **AGREGADO,** el control * en el teclado controla el back light y el key light 
+- **AGREGADO,** variable global Light_On_Off para control desde tecla * de la iluminacion de teclado y back
+- **AGREGADO,** al about un dimmer en key y back durante el efecto binario
+- **AGREGADO,** a la tecla de light * un dimmer de on y off para key y back
+- **CORREGIDO,** en Back_Light_En, byte Back_Light_Value = EEPROM.read(513); el valor esta fuera de rango
+- **CORREGIDO,** unused variable 'EEPROM_Add'
+- **CORREGIDO,** en about "open hardware!" por "Open Source License:"
 
 ***
 
