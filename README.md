@@ -154,9 +154,9 @@ Permite el acceso rápido a un canal en específico
 
 ![Unitary Control](https://github.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/blob/master/media/Control%20Unitary.JPG)
 
-### **Matrix Control**
-
 ***
+
+### **Matrix Control**
 
 Permite visualizar una matriz de 3 x 5 con los valores actuales de los diferentes canales DMX
 
