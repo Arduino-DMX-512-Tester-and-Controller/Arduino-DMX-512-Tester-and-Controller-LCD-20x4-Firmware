@@ -2,7 +2,7 @@
 
 ## **Firmware - LCD 20x4**
 
-[![version](https://img.shields.io/badge/version-1.5_release-brightgreen.svg)](CHANGELOG.md)
+[![version](https://img.shields.io/badge/version-1.6_release-brightgreen.svg)](CHANGELOG.md)
 [![license](https://img.shields.io/badge/licence-GNU_GPL_v3.0-blue)](https://github.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/blob/master/LICENCE.md)
 
 ![GitHub issues](https://img.shields.io/github/issues/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware)
@@ -90,14 +90,20 @@ Herramienta Open Hardware, para pruebas y control de iluminación de espectácul
 
 ### ![**Changelog**](CHANGELOG.md)
 
-- Ultima versión con potenciómetro
-- **CORREGIDO,** el cursor en el análogo se mostraba el blink fuera del numero y se encimaba
+- **CORREGIDO,** se agrega un encoder KEYES Rotary encoder module KY-040 para remplazar el potenciómetro
+- **AGREGADO,** el botón del centro es el mismo del encoder
+- **AGREGADO,** encoder CLK en 6 DT en 7
+- **CORREGIDO,** el pin del potenciómetro se elimina
+- **AGREGADO,** encoder library 
+	- https://www.pjrc.com/teensy/td_libs_Encoder.html
+- **CORREGIDO,** lectura análoga de valor, se agrega el valor anterior en la escritura del LCD
+- **CORREGIDO,** lectura análoga en valor el cursor blink se queda en la "a" y no sobre el numero
 
 ***
 
 ### ![**Hardware**](https://github.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Hardware)
 
-- v0.3 a v0.4
+- v0.5 a v0.6
 
 ***
 
