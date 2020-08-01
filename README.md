@@ -112,6 +112,12 @@ Herramienta Open Hardware, para pruebas y control de iluminación de espectácul
 
 ***
 
+### ![**Hardware**](https://github.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Hardware)
+
+- v0.0 a v0.2
+
+***
+
 ## **Licenciamiento:**
 
 ![](https://raw.githubusercontent.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Hardware/master/Social/Logos/GPLv3.png)
@@ -137,4 +143,3 @@ Herramienta Open Hardware, para pruebas y control de iluminación de espectácul
 [![Hackster](https://raw.githubusercontent.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Hardware/master/Social/Logos/hackster%2050x50.png)](https://www.hackster.io/daniel3514/arduino-dmx-512-tester-controller-977c89)
 
 ***
-
