@@ -2,7 +2,7 @@
 
 ## **Firmware - LCD 20x4**
 
-[![version](https://img.shields.io/badge/version-1.0_release-brightgreen.svg)](CHANGELOG.md)
+[![version](https://img.shields.io/badge/version-1.1_release-brightgreen.svg)](CHANGELOG.md)
 [![license](https://img.shields.io/badge/licence-GNU_GPL_v3.0-blue)](https://github.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/blob/master/LICENCE.md)
 
 ![GitHub issues](https://img.shields.io/github/issues/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware)
@@ -90,19 +90,9 @@ Herramienta Open Hardware, para pruebas y control de iluminación de espectácul
 
 ### ![**Changelog**](CHANGELOG.md)
 
-- **CORREGIDO,** seceuncer no tiene reversa
-- **CORREGIDO,** secuencer no tiene salida de dmx, el uso de memoria eeprom descartaba valores
-- **CORREGIDO,** GUI_Secuencer se cambió el método de lectura de memoria, se hace en tiempo real, evita over flow
-- **CORREGIDO,** GUI_Secuencer se cambió a GUI_Control_Secuencer
-- **CORREGIDO,** tabulacion
-- **CORREGIDO,** manejo de memoria EEPROM al guardar y leer el conteo es en 1 y no en 0
-- **CORREGIDO,** GUI_Chasser el cursor blink no se mostraba después de stop 
-- **CORREGIDO,** GUI_Control_Options, el cursor no se mostraba en unitary
-- **CORREGIDO,** disminución de tiempo mensaje final de opciones de acceso a eeprom
-- **AGREGADO,** lectura de botón "center" en el about
-- **AGREGADO,** a GUI_Secuencer límite de delay a 100
-- **AGREGADO,** a GUI_Secuencer en la salida a control regresa al dmx los datos desde la RAM
-- **AGREGADO,** a GUI_Unitary el canal anterior y siguiente en el gui
+- **AGREGADO,** memory a control options
+- **AGREGADO,** a memory gui ClearAll para borrar todos los bancos de la eeprom
+- **AGREGADO,** a memory gui reacomodo de menús
 
 ***
 
