@@ -99,19 +99,19 @@ Herramienta Open Hardware, para pruebas y control de iluminación de espectácul
 ### ![**Changelog**](CHANGELOG.md)
 
 - **CORREGIDO,** se retira del about el ID
-- **CORREGIDO,** se cambia en config el men� exit por Ctrl
-- **AGREGADO,** void Back_Light_En() para encender o apagar el back light desde el teclado num�rico
-- **AGREGADO,** void Back_Light_Init() para encender o apagar el back light desde la �ltima configuraci�n
-- **AGREGADO,** a Control Options el men� Config
-- **AGREGADO,** void GUI_Config() con las opciones de la configuraci�n, el LCD y la salida al pwm
-- **AGREGADO,** control del back light a gui_navegar, siempre est� activo
+- **CORREGIDO,** se cambia en config el menú exit por Ctrl
+- **AGREGADO,** void Back_Light_En() para encender o apagar el back light desde el teclado numúrico
+- **AGREGADO,** void Back_Light_Init() para encender o apagar el back light desde la última configuración
+- **AGREGADO,** a Control Options el menú Config
+- **AGREGADO,** void GUI_Config() con las opciones de la configuración, el LCD y la salida al pwm
+- **AGREGADO,** control del back light a gui_navegar, siempre está activo
 - **AGREGADO,** se actualiza el about con el nombre del proyecto
 - **AGREGADO,** al config el about
 - **AGREGADO,** al about desde config espera a que se presione center para salir
 - **AGREGADO,** al config mas info sobre el backlight
 - **AGREGADO,** a control options Memory options
-- **AGREGADO,** en matrix la opci�n de poner el valor final de la matriz
-- **AGREGADO,** a la lectura num�rica centro como enter
+- **AGREGADO,** en matrix la opción de poner el valor final de la matriz
+- **AGREGADO,** a la lectura numúrica centro como enter
 
 ***
 
