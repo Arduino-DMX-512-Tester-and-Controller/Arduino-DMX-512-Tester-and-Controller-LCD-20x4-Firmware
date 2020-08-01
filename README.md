@@ -91,7 +91,23 @@ Herramienta Open Hardware, para pruebas y control de iluminación de espectácul
 
 ### ![**Changelog**](CHANGELOG.md)
 
-- **AGREGADO,** la función para cuando se da enter en un numero para cambiarlo, si de da enter de nuevo se quede el número que estaba
+- **CORREGIDO,** los valores limites superiores de config se escribían un carácter después
+- **CORREGIDO,** hacer a partir de 155 el dimmer del contraste
+- **CORREGIDO,** botón * de back light funciona errático - faltaba delay para evitar repetición
+- **CORREGIDO,** quitar en config el dimmer 0-255, no aplica al contraste
+- **CORREGIDO,** las io no usadas son salidas low
+- **CORREGIDO,** no inicializa el contraste
+- **CORREGIDO,** en matrix no se aplican los cambios en los bancos
+- **CORREGIDO,** en matrix el valor final del banco se pasa de 512
+- **CORREGIDO,** en config backlight el valor no se guardaba en eeprom
+- **CORREGIDO,** en config backlight se recorrían todas las opciones de botones, se agregó mecanismo para sacar del bucle
+- **CORREGIDO,** se bajó el delay de la lectura análoga para evitar pasos escalonados
+- **AGREGADO,** potenciómetro para valores DMX con tecla "D" solo en valores, para detenerlo presionar # o center
+- **AGREGADO,** análogo a unitary
+- **AGREGADO,** análogo a matrix
+- **AGREGADO,** análogo a config back light
+- **AGREGADO,** an-alogo a config contrast
+- **AGREGADO,** en la lectura análogo mecanismo para escribir el valor solo cuando cambia y no todo el tiempo
 
 ***
 
