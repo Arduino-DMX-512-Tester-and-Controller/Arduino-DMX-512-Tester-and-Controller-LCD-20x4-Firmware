@@ -3,8 +3,8 @@
 // **																														**
 // **										Arduino DMX-512 Tester Controller												**
 // **																														**
-// **	- Firmware v0.7																										**
-// **	- Hardware v0.0 - v0.2																								**
+// **	- Firmware v0.8																										**
+// **	- Hardware v0.3 - v0.4																								**
 // **																														**
 // **	- Compilado en Arduino IDE v1.0.6																					**
 // **		http://www.arduino.cc/en/Main/OldSoftwareReleases																**
@@ -47,14 +47,14 @@
 // Puertos, variables
 	// DMX
 		//int DMX_Data_Flux 		= 2;	// control de flujo de datos para dmx, 0 por default 
-		int  DMX_Values [515];      	// array de valores actuales DMX
+		int  DMX_Values [515];      		// array de valores actuales DMX
 		int  Canal_Actual 		= 1;
 	// Botones cursor
-		int  Boton_Up     		= 51; 
-		int  Boton_Down   		= 45;	
-		int  Boton_Left   		= 53;	
-		int  Boton_Right  		= 49;	
-		int  Boton_Center		= 47;	
+		int  Boton_Up     		= 9; 
+		int  Boton_Down   		= 12;	
+		int  Boton_Left   		= 8;	
+		int  Boton_Right  		= 10;	
+		int  Boton_Center		= 11;	
 		byte LCD_Col_Pos 		= 0;	// posicion en tiempo real de lcd
 		byte LCD_Row_Pos 		= 0;	// posicion en tiempo real de lcd
 		byte Cursor_Conf[4][20] = {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},		// config de posiciones de lcd Col Row
@@ -62,14 +62,14 @@
 								   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 								   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};		
 	// Botones Numerico Array
-		int  Boton_Array_1		= 36;
-		int  Boton_Array_2		= 34;
-		int  Boton_Array_3		= 32;
-		int  Boton_Array_4		= 30;
-		int  Boton_Array_A		= 44;	
-		int  Boton_Array_B		= 42;
-		int  Boton_Array_C   	= 40;
-		int  Boton_Array_D   	= 38;
+		int  Boton_Array_1		= 38;
+		int  Boton_Array_2		= 40;
+		int  Boton_Array_3		= 42;
+		int  Boton_Array_4		= 44;
+		int  Boton_Array_A		= 30;	
+		int  Boton_Array_B		= 32;
+		int  Boton_Array_C   	= 34;
+		int  Boton_Array_D   	= 36;
 		byte Boton_Calc 		= 17;	// valor calculado	# E * F, 17 sin valor calculado
 		byte Num_Col_Pos  		= 0;	// posicion en tiempo real de lcd
 		byte Num_Row_Pos 		= 0;	// posicion en tiempo real de lcd
@@ -78,14 +78,14 @@
 	// Potenciometro
 		int  Pot				= A15;	// entrada de potenciometro
 	// LCD
-		int  LCD_RS 			= 8;	// puertos de conexion de LCD
-		int  LCD_E  			= 9;
-		int  LCD_D4 			= 10;
-		int  LCD_D5 			= 11;
-		int  LCD_D6 			= 12;
-		int  LCD_D7				= 13;
+		int  LCD_RS 			= 43;	// puertos de conexion de LCD
+		int  LCD_E  			= 45;
+		int  LCD_D4 			= 47;
+		int  LCD_D5 			= 49;
+		int  LCD_D6 			= 51;
+		int  LCD_D7				= 53;
 		LiquidCrystal lcd(LCD_RS, LCD_E, LCD_D4, LCD_D5, LCD_D6, LCD_D7);  //LCD setup
-		int  Back_Light_PWM		= 3;	// salida para PWM de Back Light de LCD
+		int  Back_Light_PWM		= 13;	// salida para PWM de Back Light de LCD
 		int  Contrast_PWM		= 4;	// salida para pwm de contraste de LCD
 		byte Back_Light_On_Off	= 0;	// saber si esta encendida o apagada
 
@@ -98,7 +98,7 @@ void setup()
 			pinMode(Boton_Down,    		INPUT_PULLUP);
 			pinMode(Boton_Left,    		INPUT_PULLUP);
 			pinMode(Boton_Right,   		INPUT_PULLUP);
-			pinMode(Boton_Center,  		INPUT_PULLUP);
+			pinMode(11,					INPUT_PULLUP);	//Boton_Center,  		INPUT_PULLUP);
 		// Botones numerico
 			pinMode(Boton_Array_1, 		OUTPUT);
 			pinMode(Boton_Array_2, 		OUTPUT);
@@ -160,8 +160,6 @@ void setup()
 			digitalWrite(39, LOW);
 			pinMode(41, OUTPUT);
 			digitalWrite(41, LOW);
-			pinMode(43, OUTPUT);
-			digitalWrite(43, LOW);
 			pinMode(46, OUTPUT);
 			digitalWrite(46, LOW);
 			pinMode(48, OUTPUT);
@@ -204,7 +202,7 @@ void setup()
 
 void loop()
 	{
-		digitalWrite(2, HIGH);							// max 485 como salida
+		digitalWrite(2, HIGH);	// max 485 como salida
 		Back_Light_Init();
 		Contrast_Init();
 		GUI_About();
@@ -265,9 +263,9 @@ void Back_Light_En()
 void GUI_About()
 	{
 		byte Firm_Ver_Ent = 0;
-		byte Firm_Ver_Dec = 7;
+		byte Firm_Ver_Dec = 8;
 		byte Hard_Ver_Ent = 0;
-		byte Hard_Ver_Dec = 0;
+		byte Hard_Ver_Dec = 3;
 		lcd.clear ();
 		lcd.noBlink();									// ocultar cursor
 		lcd.setCursor(0, 0);
