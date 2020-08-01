@@ -3,7 +3,7 @@
 // **																														**
 // **										Arduino DMX-512 Tester Controller												**
 // **																														**
-// **	- Firmware v0.3																										**
+// **	- Firmware v0.4																										**
 // **	- Hardware v0.0 - v0.2																								**
 // **																														**
 // **	- Compilado en Arduino IDE v1.0.6																					**
@@ -21,8 +21,7 @@
 // **	Autor:																												**
 // **																														**
 // **	Daniel Roberto Becerril Angeles																						**
-// **	daniel3514@gmail.com																								**
-// **	Facebook - https://www.facebook.com/daniel.3514																		**
+// **	daniel3514@gmail.com																								**																										**
 // **	https://github.com/daniel3514/Arduino-DMX-512-Tester-Controller/													**
 // **																														**
 // **	Licenciamiento:																										**
@@ -75,6 +74,7 @@
 		byte Num_Col_Pos  		= 0;	// posicion en tiempo real de lcd
 		byte Num_Row_Pos 		= 0;	// posicion en tiempo real de lcd
 		int  Num_Val			= 0;	// valor generado al calculo
+		long Boton_Delay_Teclado = 100;	// delay de lectura de boton
 	// LCD
 		int LCD_RS 				= 8;	// puertos de conexion de LCD
 		int LCD_E  				= 9;
@@ -83,6 +83,9 @@
 		int LCD_D6 				= 12;
 		int LCD_D7				= 13;
 		LiquidCrystal lcd(LCD_RS, LCD_E, LCD_D4, LCD_D5, LCD_D6, LCD_D7);  //LCD setup
+		int Back_Light_PWM		= 3;	// salida para PWM de Back Light de LCD
+		int Contrast_PWM		= 4;	// salida para pwm de contraste de LCD
+		byte Back_Light_On_Off	= 0;	// saber si esta encendida o apagada
 
 void setup() 
 	{
@@ -114,6 +117,7 @@ void setup()
 			pinMode(LCD_D6, 			OUTPUT);
 			pinMode(LCD_D5, 			OUTPUT);
 			pinMode(LCD_D4, 			OUTPUT);
+			pinMode(Back_Light_PWM,		OUTPUT);
 			lcd.begin(20, 4);							//tamaño de LCD				
 		// DMX
 			ArduinoDmx0.set_tx_address(1);      		// poner aqui la direccion de inicio de DMX 
@@ -124,14 +128,57 @@ void setup()
 void loop()
 	{
 		digitalWrite(2, HIGH);							// max 485 como salida
+		Back_Light_Init();
 		GUI_About();
 		GUI_Memory_Init();
+	}
+
+void Back_Light_Init()
+	{
+		// ultimo estado del back light
+			byte Back_Light_Value = EEPROM.read(513);
+			analogWrite(Back_Light_PWM, Back_Light_Value);
+			if (Back_Light_Value == 0)
+				{
+					Back_Light_On_Off = 0;
+				}
+			if (Back_Light_Value > 0)
+				{
+					Back_Light_On_Off = 1;
+				}
+	}
+	
+void Back_Light_En()
+	{
+		byte Back_Light_Value = EEPROM.read(513);				// lectura del ultimo valor desde la eeprom, 513 es donde se guarda el valor
+		// encender
+			if (Back_Light_On_Off == 0)							// si esta apagada encenderla
+				{
+					if (Back_Light_Value == 0)					// la encendemos de todos modos
+						{
+							analogWrite(Back_Light_PWM, 127);	// aqui el valor a encender en el caso que se haya establecido apagado el back light
+						}
+					if (Back_Light_Value > 0)
+						{
+							analogWrite(Back_Light_PWM, Back_Light_Value);	// encender con el valor de la eeprom
+						}
+					Back_Light_On_Off = 1;
+					goto salida;
+				}
+		// apagar
+			if (Back_Light_On_Off == 1)							// si esta encendida apagarla
+				{
+					analogWrite(Back_Light_PWM, 0);
+					Back_Light_On_Off = 0;
+				}
+		salida:
+			{}
 	}
 	
 void GUI_About()
 	{
 		byte Firm_Ver_Ent = 0;
-		byte Firm_Ver_Dec = 3;
+		byte Firm_Ver_Dec = 4;
 		byte Hard_Ver_Ent = 0;
 		byte Hard_Ver_Dec = 0;
 		byte ID = 20;
@@ -143,28 +190,24 @@ void GUI_About()
 				lcd.print (numero, BIN);
 			}
 		lcd.clear ();
-		lcd.setCursor(0, 0);
+		lcd.setCursor(0, 3);
 		lcd.print("http://goo.gl/kdYlj7");
-		lcd.setCursor(0, 1);
-		lcd.print("DMX-512");
-		lcd.setCursor(8, 1);
-		lcd.print("<Controller>");
+		lcd.setCursor(3, 0);
+		lcd.print("Arduino DMX-512");
+		lcd.setCursor(1, 1);
+		lcd.print("Tester & Controller");
 		// Firmware
-			lcd.setCursor(7, 2);
-			lcd.print("Firmware v");
+			lcd.setCursor(0, 2);
+			lcd.print("Firm v");
 			lcd.print(Firm_Ver_Ent);
 			lcd.print(".");
 			lcd.print(Firm_Ver_Dec);
 		// Hardware
-			lcd.setCursor(7, 3);
-			lcd.print("Hardware v");
+			lcd.setCursor(11, 2);
+			lcd.print("Hard v");
 			lcd.print(Hard_Ver_Ent);
 			lcd.print(".");
 			lcd.print(Hard_Ver_Dec);
-		// ID
-			lcd.setCursor(0, 3);
-			lcd.print("ID:");
-			lcd.print(ID);
 		delay(2000);  									//retardo de muestra de mensaje
 	}
 
@@ -210,7 +253,8 @@ void GUI_Control_Matrix()
 			// Row 0
 				Cursor_Conf[0][4]  = 1;	// Memory
 				Cursor_Conf[0][8]  = 1;	// Unit
-				Cursor_Conf[0][12] = 1;	// Banco
+				Cursor_Conf[0][12] = 1;	// Banco Inicial
+				Cursor_Conf[0][16] = 1;	// Banco Final
 			// Row 1
 				Cursor_Conf[1][0]  = 1;
 				Cursor_Conf[1][4]  = 1;
@@ -245,7 +289,7 @@ void GUI_Control_Matrix()
 							GUI_Control_Options();
 							goto inicio;
 						}
-				// Banco
+				// Banco Inicial
 					if (LCD_Col_Pos == 12 && LCD_Row_Pos == 0)
 						{
 							Num_Row_Pos = 0;
@@ -260,6 +304,25 @@ void GUI_Control_Matrix()
 									Num_Val = 1;
 								}
 							Inicial = Num_Val;
+							goto inicio;
+						}
+				// Banco Final
+					if (LCD_Col_Pos == 16 && LCD_Row_Pos == 0)
+						{
+							Num_Row_Pos = 0;
+							Num_Col_Pos = 17;
+							Numerico_Calc(0);
+							if (Num_Val > 512)	// limite de matriz
+								{
+									Inicial = 498;
+									goto inicio;
+								}
+							if (Num_Val < 15)	// limite de matriz
+								{
+									Inicial = 1;
+									goto inicio;
+								}
+							Inicial = Num_Val - 14;
 							goto inicio;
 						}
 				// posicion 1
@@ -396,6 +459,14 @@ void GUI_Navegar(byte matrix, int banco)
 		// navegacion
 			Dibujar:
 				byte Dibujar_Cursor = 0;		// saber si dibujar cursor para evitar repeticiones en lcd, 0 no dibujar, 1 dibujar >, 2 dibujar +
+				// LCD Back Light *
+					digitalWrite(Boton_Array_1, LOW);	// lectura linea 1
+						if (digitalRead(Boton_Array_D) == LOW)
+							{
+								delay(Boton_Delay_Teclado);
+								Back_Light_En();
+							}
+					digitalWrite(Boton_Array_1, HIGH);	// lectura linea 1
 				// Left
 					if (digitalRead(Boton_Left) == LOW)
 						{
@@ -517,99 +588,130 @@ void GUI_Navegar(byte matrix, int banco)
 									// matrix print posicion
 										if (matrix == 1)
 											{
-												// bancos
+												// banco inicial
 													if (LCD_Col_Pos == 12 && LCD_Row_Pos == 0)
 														{
 															lcd.setCursor(1, 0);
 															lcd.print("---");
+															goto salida;
+														}
+												// banco  final
+													if (LCD_Col_Pos == 16 && LCD_Row_Pos == 0)
+														{
+															lcd.setCursor(1, 0);
+															lcd.print("---");
+															goto salir;
 														}
 												// Memory
 													if (LCD_Col_Pos == 4 && LCD_Row_Pos == 0)
 														{
 															lcd.setCursor(1, 0);
 															lcd.print("---");
+															goto salida;
 														}
 												// Unitary
 													if (LCD_Col_Pos == 8 && LCD_Row_Pos == 0)
 														{
 															lcd.setCursor(1, 0);
 															lcd.print("---");
+															goto salida;
 														}
 												// banco 1
 													if (LCD_Col_Pos == 0 && LCD_Row_Pos == 1)
 														{
 															Numerico_Write (banco, 1, 0);
+															goto salida;
 														}
 												// banco 2
 													if (LCD_Col_Pos == 4 && LCD_Row_Pos == 1)
 														{
 															Numerico_Write (banco + 1, 1, 0);
+															goto salida;
 														}
 												// banco 3
 													if (LCD_Col_Pos == 8 && LCD_Row_Pos == 1)
 														{
 															Numerico_Write (banco + 2, 1, 0);
+															goto salida;
 														}
 												// banco 4
 													if (LCD_Col_Pos == 12 && LCD_Row_Pos == 1)
 														{
 															Numerico_Write (banco + 3, 1, 0);
+															goto salida;
 														}
 												// banco 5
 													if (LCD_Col_Pos == 16 && LCD_Row_Pos == 1)
 														{
 															Numerico_Write (banco + 4, 1, 0);
+															goto salida;
 														}
 												// banco 6
 													if (LCD_Col_Pos == 0 && LCD_Row_Pos == 2)
 														{
 															Numerico_Write (banco + 5, 1, 0);
+															goto salida;
 														}
 												// banco 7
 													if (LCD_Col_Pos == 4 && LCD_Row_Pos == 2)
 														{
 															Numerico_Write (banco + 6, 1, 0);
+															goto salida;
 														}
 												// banco 8
 													if (LCD_Col_Pos == 8 && LCD_Row_Pos == 2)
 														{
 															Numerico_Write (banco + 7, 1, 0);
+															goto salida;
 														}
 												// banco 9
 													if (LCD_Col_Pos == 12 && LCD_Row_Pos == 2)
 														{
 															Numerico_Write (banco + 8, 1, 0);
+															goto salida;
 														}
 												// banco 10
 													if (LCD_Col_Pos == 16 && LCD_Row_Pos == 2)
 														{
 															Numerico_Write (banco + 9, 1, 0);
+															goto salida;
 														}
 												// banco 11
 													if (LCD_Col_Pos == 0 && LCD_Row_Pos == 3)
 														{
 															Numerico_Write (banco + 10, 1, 0);
+															goto salida;
 														}
 												// banco 12
 													if (LCD_Col_Pos == 4 && LCD_Row_Pos == 3)
 														{
 															Numerico_Write (banco + 11, 1, 0);
+															goto salida;
 														}
 												// banco 13
 													if (LCD_Col_Pos == 8 && LCD_Row_Pos == 3)
 														{
 															Numerico_Write (banco + 12, 1, 0);
+															goto salida;
 														}
 												// banco 14
 													if (LCD_Col_Pos == 12 && LCD_Row_Pos == 3)
 														{
 															Numerico_Write (banco + 13, 1, 0);
+															goto salida;
 														}
 												// banco 15
 													if (LCD_Col_Pos == 16 && LCD_Row_Pos == 3)
 														{
 															Numerico_Write (banco + 14, 1, 0);
+															goto salida;
 														}
+												// escribir guion de bancos
+												salida:
+													lcd.setCursor(16, 0);
+													lcd.print("-");
+												salir:
+													{}
 											}
 								}
 							else
@@ -801,51 +903,160 @@ void EEPROM_Clear()
 	
 void GUI_Control_Options()
 	{
-		// LCD
+		iniciar:
+			// LCD
+				lcd.clear ();
+				lcd.setCursor (0, 0);
+				lcd.print ("Control Options:");
+				lcd.setCursor (2, 2);
+				lcd.print ("Unitary");
+				lcd.setCursor (2, 3);
+				lcd.print ("Matrix");
+				lcd.setCursor (12, 2);
+				lcd.print ("Chaser");
+				lcd.setCursor (12, 3);
+				lcd.print ("Multiply");
+				lcd.setCursor (12, 1);
+				lcd.print ("Config");
+				lcd.setCursor (2, 1);
+				lcd.print ("Memory");
+			// Cursor
+				LCD_Col_Pos = 1;				// posicion de cursor
+				LCD_Row_Pos = 2;
+			// configuracion de cursor	
+				Cursor_Conf_Clear();			// limpiar array
+				// Acciones
+					Cursor_Conf[2][1]   = 1;	// Unitary
+					Cursor_Conf[3][1]   = 1; 	// Matrix
+					Cursor_Conf[2][11]  = 1; 	// Chaser
+					Cursor_Conf[3][11]  = 1; 	// Multiply
+					Cursor_Conf[1][11]  = 1; 	// Config
+					Cursor_Conf[1][1]  = 1; 	// Memory
+			// navegar
+				GUI_Navegar(0, 0);
+			// Acciones
+				// Unitary
+					if (LCD_Col_Pos == 1 && LCD_Row_Pos == 2)
+						{
+							GUI_Control_Unit();
+						}
+				// Matrix
+					if (LCD_Col_Pos == 1 && LCD_Row_Pos == 3)
+						{
+							GUI_Control_Matrix();
+						}
+				// Chaser
+					if (LCD_Col_Pos == 11 && LCD_Row_Pos == 2)
+						{
+							GUI_Control_Chaser();
+						}
+				// Multiply
+					if (LCD_Col_Pos == 11 && LCD_Row_Pos == 3)
+						{
+							GUI_Control_Multiply();
+						}
+				// Config
+					if (LCD_Col_Pos == 11 && LCD_Row_Pos == 1)
+						{
+							GUI_Config();
+						}
+				// Config
+					if (LCD_Col_Pos == 1 && LCD_Row_Pos == 1)
+						{
+							GUI_Memory();
+							goto iniciar;
+						}
+	}
+
+void GUI_Config()
+	{
+	Inicio:	
+		byte Back_Light_Value = EEPROM.read(513);
+		byte Contrast_Value = EEPROM.read(514);
+		// GUI
 			lcd.clear ();
 			lcd.setCursor (0, 0);
-			lcd.print ("Control Options:");
-			lcd.setCursor (2, 2);
-			lcd.print ("Unitary");
-			lcd.setCursor (2, 3);
-			lcd.print ("Matrix");
-			lcd.setCursor (12, 2);
-			lcd.print ("Chaser");
-			lcd.setCursor (12, 3);
-			lcd.print ("Multiply");
+			lcd.print ("LCD Config:");
+			lcd.setCursor (15, 0);
+			lcd.print ("About");
+			lcd.setCursor (3, 1);
+			lcd.print ("Back Light:");
+			Numerico_Write(Back_Light_Value, 15, 1);
+			lcd.setCursor (5, 2);
+			lcd.print ("Contrast:");
+			Numerico_Write(Contrast_Value, 15, 2);
+			lcd.setCursor (0, 3);
+			lcd.print ("dimmer 0-255");
+			lcd.setCursor (15, 3);
+			lcd.print ("Ctrl");
+			
 		// Cursor
-			LCD_Col_Pos = 1;				// posicion de cursor
-			LCD_Row_Pos = 2;
+			LCD_Col_Pos = 14;			// posicion de cursor
+			LCD_Row_Pos = 2;			// posicion e cursor
 		// configuracion de cursor	
-			Cursor_Conf_Clear();			// limpiar array
-			// Acciones
-				Cursor_Conf[2][1]   = 1;	// Unitary
-				Cursor_Conf[3][1]   = 1; 	// Matrix
-				Cursor_Conf[2][11]  = 1; 	// Chaser
-				Cursor_Conf[3][11]  = 1; 	// Multiply
+			Cursor_Conf_Clear();		// limpiar array
+		// Cursores
+			Cursor_Conf[1][14]  = 1;	// Back Light Value
+			Cursor_Conf[2][14]  = 1;	// Contrast Value
+			Cursor_Conf[3][14]  = 1;	// control
+			Cursor_Conf[0][14]  = 1;	// About
 		// navegar
+	Navegacion:
 			GUI_Navegar(0, 0);
 		// Acciones
-			// Unitary
-				if (LCD_Col_Pos == 1 && LCD_Row_Pos == 2)
+			//Back Light Value
+				if (LCD_Col_Pos == 14 && LCD_Row_Pos == 1)
 					{
-						GUI_Control_Unit();
+						Num_Row_Pos = 1;
+						Num_Col_Pos = 15;
+						Numerico_Calc (1);
+						if (Num_Val > 255)
+							{
+								Num_Val = 255;
+								Numerico_Write (255, 16, 2);
+							}
+						EEPROM.write(513, Num_Val);				// guardar valor nuevo
+						analogWrite(Back_Light_PWM, Num_Val);
+						if (Num_Val == 0)
+							{
+								Back_Light_On_Off = 0;
+							}
+						if (Num_Val > 0)
+							{
+								Back_Light_On_Off = 1;
+							}
 					}
-			// Matrix
-				if (LCD_Col_Pos == 1 && LCD_Row_Pos == 3)
+			//Contrast Value
+				if (LCD_Col_Pos == 14 && LCD_Row_Pos == 2)
 					{
-						GUI_Control_Matrix();
+						Num_Row_Pos = 2;
+						Num_Col_Pos = 15;
+						Numerico_Calc (1);
+						if (Num_Val > 255)
+							{
+								Num_Val = 255;
+								Numerico_Write (255, 16, 2);
+							}
+						EEPROM.write(514, Num_Val);				// guardar valor nuevo
+						analogWrite(Contrast_PWM, Num_Val);
 					}
-			// Chaser
-				if (LCD_Col_Pos == 11 && LCD_Row_Pos == 2)
+			// Exit
+				if (LCD_Col_Pos == 14 && LCD_Row_Pos == 3)
 					{
-						GUI_Control_Chaser();
+						GUI_Control_Options();
 					}
-			// Multiply
-				if (LCD_Col_Pos == 11 && LCD_Row_Pos == 3)
+			// About
+				if (LCD_Col_Pos == 14 && LCD_Row_Pos == 0)
 					{
-						GUI_Control_Multiply();
+						GUI_About();
+						while (digitalRead(Boton_Center) == HIGH)
+							{
+									// esperamos a que se precione enter
+							}
+						delay(300);	// retardo para el rebote del boton
+						goto Inicio;
 					}
+			goto Navegacion;
 	}
 
 void GUI_Control_Multiply()
@@ -1400,7 +1611,6 @@ void Numerico_Calc(byte value)
 
 void Numerico_Read()
 	{
-		long Boton_Delay_Teclado = 100;		// delay de lectura de boton
 		long Num_Barrido_Time = 5;			// tiempo entre barrido de keys
 		Boton_Calc = 17;					// limpiar valor para lectura
 		while (Boton_Calc == 17)			// valor calculado	# E * F, 17 sin valor calculado
@@ -1533,5 +1743,12 @@ void Numerico_Read()
 									}
 							delay(Num_Barrido_Time);
 							digitalWrite(Boton_Array_4, HIGH);	// lectura linea 4
+							
+							// Cursor center "enter"
+								if (digitalRead(Boton_Center) == LOW)
+									{
+										Boton_Calc = 14;
+										delay(Boton_Delay_Teclado);
+									}
 			}
 	}
