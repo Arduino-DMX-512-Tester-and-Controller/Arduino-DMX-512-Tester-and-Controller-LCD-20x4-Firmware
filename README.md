@@ -95,3 +95,9 @@ Herramienta Open Hardware, para pruebas y control de iluminación de espectácul
 		- avrdude: verification error; content mismatch
     
 ***
+
+### ![**Hardware**](https://github.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Hardware)
+
+- v0.0 a v0.2
+
+***
