@@ -101,7 +101,7 @@ Herramienta Open Hardware, para pruebas y control de iluminación de espectácul
 
 ***
 
-## ** Entrada de Usuario **
+### **Entrada de Usuario**
 
 - Al arranque presenta las opciones de Initial Memory, para establecer los valores iniciales de la memoria RAM
 - El símbolo ">" indica el lugar donde se está posicionado en el menú
@@ -118,7 +118,7 @@ Herramienta Open Hardware, para pruebas y control de iluminación de espectácul
 
 ***
 
-## ** Initial Memory: **
+### **Initial Memory:**
 
 Establece los valores iniciales de la memoria RAM, leídos desde la EEPROM:
 
@@ -130,7 +130,7 @@ Establece los valores iniciales de la memoria RAM, leídos desde la EEPROM:
 
 ***
 
-## Control Options:
+### **Control Options**
 
 El usuario selecciona el método de control de los distintos canales DMX
 
@@ -141,7 +141,9 @@ El usuario selecciona el método de control de los distintos canales DMX
 - Multiply - asignar un valor a un número de canales específico, con un salto numérico especifico
 - Config   - accede a la configuración del sistema
 
-## Unitary Control
+***
+
+### **Unitary Control**
 
 Permite el acceso rápido a un canal en específico
 
@@ -152,7 +154,9 @@ Permite el acceso rápido a un canal en específico
 
 ![Unitary Control](https://github.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/blob/master/media/Control%20Unitary.JPG)
 
-## Matrix Control
+### **Matrix Control**
+
+***
 
 Permite visualizar una matriz de 3 x 5 con los valores actuales de los diferentes canales DMX
 
@@ -163,7 +167,9 @@ Permite visualizar una matriz de 3 x 5 con los valores actuales de los diferente
 
 ![Matrix](https://raw.githubusercontent.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/master/media/Control%20Matrix.JPG)
 
-## Chaser Control
+***
+
+### **Chaser Control**
 
 Permite hacer una secuencia entre canales específicos
 
@@ -181,7 +187,9 @@ El resultado es una secuencia desde el canal 1 hasta el 512 y el paso entre los 
 
 ![Chaser Control](https://raw.githubusercontent.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/master/media/Control%20Chaser.JPG)
 
-## Multiply Control
+***
+
+### **Multiply Control**
 
 Permite asignar un valor a un número de canales específico, con un salto numérico especifico
 
@@ -203,7 +211,7 @@ El resultado es: 170 canales a partir del canal 1 hasta el 510, de 3 en 3 con el
 
 ***
 
-## Memory Options
+### **Memory Options**
 
 Acceso fácil a las opciones de la memoria EEPROM
 
@@ -218,7 +226,7 @@ Acceso fácil a las opciones de la memoria EEPROM
 
 ***
 
-## Config
+### **Config**
 
 Configuración general del sistema
 
@@ -230,7 +238,7 @@ Configuración general del sistema
 
 ***
 
-## About
+### **About**
 
 Muestra el "Acerca de.." del proyecto y las versiones de hardware y firmware instaladas
 
