@@ -25,7 +25,6 @@ Herramienta Open Hardware, para pruebas y control de iluminación de espectácul
 
 ***
 
-- Compatible con [Hardware v0.0 a v0.6](https://github.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Hardware/tree/master)
 - Navegación desde cursor de fácil acceso e intuitivo
 - Inserción rápida de valores desde el teclado numérico
 - Inserción de valores desde potenciómetro análogo
@@ -91,23 +90,13 @@ Herramienta Open Hardware, para pruebas y control de iluminación de espectácul
 
 ### ![**Changelog**](CHANGELOG.md)
 
-- **AGREGADO,** en chaser el cursor en blink cuando hace la secuencia
-- **AGREGADO,** función de Black Out desde el menú de Memory, pone todos los canales en 0 y los regresa a lo que tenían, para salir dar en center
-- **CORREGIDO,** en config contraste el límite inferior no se mostraba
-- **CORREGIDO,** en gui about se retiró variable id, no se usa
-- **CORREGIDO,** en chaser se quitó el label iniciar, no se usa
-- **CORREGIDO,** en numérico calc se quitó la variable salida, no se usa
-- **CORREGIDO,** en numérico calc se quitó la variable Num_Val_Temp_3, no se usa
-- **CORREGIDO,** en chaser ya no guarda los valores de los cambios aplicados, al salir los regresa a su lugar
-- **CORREGIDO,** en multiply cuando hace en calculó se cambia apply por calc..
-- **CORREGIDO,** en ubicar se agrega cancelar con center
-- **CORREGIDO,** se cambió la url del about apuntando al Wiki
+- **AGREGADO,** compatibilidad con Hardware v0.3 - v0.4
 
 ***
 
 ### ![**Hardware**](https://github.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Hardware)
 
-- v0.0 a v0.2
+- v0.3 a v0.4
 
 ***
 
