@@ -5,6 +5,7 @@
 ![follows](https://img.shields.io/github/followers/Arduino-DMX-512-Tester-and-Controller?style=social)
 
 ![size](https://img.shields.io/github/repo-size/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware)
+![GitHub_downloads](https://img.shields.io/github/downloads/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/total)
 
 [![version](https://img.shields.io/badge/version-2.2_release-brightgreen.svg)](CHANGELOG.md)
 [![license](https://img.shields.io/badge/licence-GNU_GPL_v3.0-blue)](https://github.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/blob/master/LICENCE.md)
@@ -14,8 +15,6 @@
 ![GitHub forks](https://img.shields.io/github/forks/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware?style=social)
 ![GitHub stars](https://img.shields.io/github/stars/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware?style=social)
 ![GitHub watchers](https://img.shields.io/github/watchers/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware?style=social)
-
-![GitHub_downloads](https://img.shields.io/github/downloads/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/total)
 
 ***
 
