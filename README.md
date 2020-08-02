@@ -2,7 +2,7 @@
 
 ## **Firmware - LCD 20x4**
 
-[![version](https://img.shields.io/badge/version-1.9_release-brightgreen.svg)](CHANGELOG.md)
+[![version](https://img.shields.io/badge/version-2.0_release-brightgreen.svg)](CHANGELOG.md)
 [![license](https://img.shields.io/badge/licence-GNU_GPL_v3.0-blue)](https://github.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/blob/master/LICENCE.md)
 
 ![GitHub issues](https://img.shields.io/github/issues/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware)
@@ -90,38 +90,40 @@ Herramienta Open Hardware, para pruebas y control de iluminación de espectácul
 
 ### ![**Changelog**](CHANGELOG.md)
 
-- **PENDIENTE,** - funciones en teclado back light, agregar a lectura numerico write
-- **PENDIENTE,** - sacar numérico write y remplazar por numérico print
-- **PENDIENTE,** - Convert, cambiar cursor de navegación de binarios
-- **PENDIENTE,** - tecla *, para backlight y key light, en esta versión no está activa
-- **PENDIENTE,** - tecla #, quitarla de enter, no se usa, sustituye encoder center
-- **PENDIENTE,** - DMX_Controller.ino: In function 'int Numerico_Write(int, int, byte, byte, byte, int)':
-	- DMX_Controller.ino:5971: warning: control reaches end of non-void function
-- **PENDIENTE,** - DMX_Controller.ino:5747: warning: 'numero_total' may be used uninitialized in this function
-- **PENDIENTE,** - link de repositorio a bitbucket https://goo.gl/7RsKo1
-- **AGREGADO,**  - modelo de programación de LCD - Encoder - keypad
-	- https://github.com/daniel3514/Arduino-LCD-Encoder-KeyPad-Examples/tree/master/Examples/LCD%20-%20Encoder%20-%20Key%20Pad/v0.0
-- **AGREGADO,** canal actual a eeprom
-- **AGREGADO,** canal actual salvar en eeprom cuando se sale de algún control
-- **AGREGADO,** Control Unit, función para escribir valores repetidos en la matriz, ejemplo si hay dos unos ambos se actualizan
-- **AGREGADO,** Control Matrix, Ubicar, valor anterior al final
-- **AGREGADO,** Control Matrix, ubicar a inicial y final
-- **AGREGADO,** Control Matrix, mostrar canal a inicial y final
-- **CORREGIDO,** menú, memoria, cambio de orden de items
-- **CORREGIDO,** menú, Config, límites y vista
-- **CORREGIDO,** Control Unitary, rediseño de GUI
-- **AGREGADO,** Control Unitary, 8 unitarios distintos no consecutivos
-- **AGREGADO,** Convert, opción de ubicar canal
-- **CORREGIDO,** Convert, rediseño de interface gráfica
-- **CORREGIDO,** Convert, modelo de navegación de binarios
-- **CORREGIDO,** Control Chaser, rediseño de interface gráfica
-- **AGREGADO,** Control Chaser. canal actual como first
-- **AGREGADO,** Control Chaser, canal actual inicia encendido
-- **AGREGADO,** Control Chaser, repasar canales desde encoder
-- **CORREGIDO,** Control Secuencer, rediseño de GUI
-- **CORREGIDO,** Config, la ventana de acción del contraste se queda en los límites de 0 a 255
-- **AGREGADO,** Secuencer, el universo inicial siempre es 1
-- **AGREGADO,** Multiply, valores preestablecidos
+- **AGREGADO,** a config, external light
+- **CAMBIADO,** en config, redistribución de menú
+- **ELIMINADO,** interruptores de lights, los sustituye teclado
+- **AGREGADO,** en teclado *, on off de external light
+- **AGREGADO,** en teclado #, on off de backlight y key light
+- **AGREGADO,** en Navegar, la lectura de * y # para lights
+- **CORREGIDO,** en GUI_Memory_Init, la llamada a GUI_Control_Options(), era redundante
+- **CORREGIDO,** en Multiply, espaciado
+- **CAMBIADO,** en Secuencer por caracteres nuevos
+- **CORREGIDO,** en Memory, espaciado
+- **CAMBIADO,** en Memory por caracteres nuevos
+- **CAMBIADO,** en config por caracteres nuevos
+- **CAMBIADO,** en control chaser por caracteres nuevos
+- **CORREGIDO,** en control matrix, el índice empieza en opción 1 y no en 3
+- **CAMBIADO,** en control matrix por caracteres nuevos
+- **CAMBIADO,** en control unitary por caracteres nuevos
+- **CAMBIADO,** en convert por caracteres nuevos
+- **CAMBIADO,** en control options por caracteres nuevos
+- **CAMBIADO,** en about por caracteres nuevos
+- **CAMBIADO,** en menú memory init por caracteres nuevos
+- **CAMBIADO,** en menú memory bank por caracteres nuevos
+- **AGREGADO,** carácter para LCD de exit
+- **AGREGADO,** carácter para LCD de archivo
+- **ELIMINADO,** a numeric write, * y # como control de números 
+- **AGREGADO,** tabuladores al código
+- **CORREGIDO,** Link de about de wiki al de Bitbucket https://goo.gl/7RsKo1
+- **CORREGIDO,** about, versión de firmware de 1.9 a 2.0
+- **AGREGADO,** a inicio, Load Bank:-, se quita b-
+- **AGREGADO,** a Memory, Bank:-, se quita b-
+- **CORREGIDO,** en Memory Bank, la leyenda Bank esta recorrida
+- **CORREGIDO,** en Initial Memory, faltaba:
+- **CORREGIDO,** en Memory, espacios y :
+- **CORREGIDO,** en Secuencer, faltaba:
+- **CORREGIDO,** DMX_Controller.ino:5747: warning: 'numero_total' may be used uninitialized in this function, se corrigió poniendo = 0
 
 ***
 
