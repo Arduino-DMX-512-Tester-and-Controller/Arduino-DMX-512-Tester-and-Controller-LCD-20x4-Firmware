@@ -2,7 +2,7 @@
 
 ## **Firmware - LCD 20x4**
 
-[![version](https://img.shields.io/badge/version-2.1_release-brightgreen.svg)](CHANGELOG.md)
+[![version](https://img.shields.io/badge/version-2.2_release-brightgreen.svg)](CHANGELOG.md)
 [![license](https://img.shields.io/badge/licence-GNU_GPL_v3.0-blue)](https://github.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/blob/master/LICENCE.md)
 
 ![GitHub issues](https://img.shields.io/github/issues/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware)
@@ -90,23 +90,8 @@ Herramienta Open Hardware, para pruebas y control de iluminación de espectácul
 
 ### ![**Changelog**](CHANGELOG.md)
 
-- Tamaño binario del Sketch: 41,590 bytes (de un máximo de 258,048 bytes)
-- **CORREGIR,** void Numeric_Write, lo remplazo void Numerico_Print, esta función ya no se utiliza
-- **AGREGADO,** a menú config, eeprom default
-- **CAMBIADO,** menú config, reorganización de items
-- **AGREGADO,** a menú 2, about
-- **AGREGADO,** a menú 2, config
-- **AGREGADO,** a menú 2, botón de back
-- **AGREGADO,** menú 2
-- **AGREGADO,** menú 1, botón de next
-- **CAMBIADO,** menú 1, reubicación de items
-- **CAMBIADO,** Config ya no tiene la opción de About, about, queda en el menú principal
-- **CORREGIDO,** GUI_Control_Options a GUI_Menu_1, se agregaron más menús de funciones
-- **CORREGIDO,** Contrast_Init a Init_Contrast, se busca más rápido
-- **CORREGIDO,** Back_Light_Init a Init_Back_Light, se busca más rápido
-- **CORREGIDO,** EEPROM_Load_Init a Init_EEPROM_Load, se busca más rápido
-- **AGREGADO,** carácter next
-- **AGREGADO,** carácter back 
+- Tamaño binario del Sketch: 41.998 bytes (de un máximo de 258.048 bytes)
+- **CORREGIDO,** se agregó a serial.print, F() para que cadena se guarde en la flash y no en la RAM
 
 ***
 

@@ -3,11 +3,7 @@
 // **				                                                                                                        **
 // **											Arduino DMX-512 Tester Controller				                            **
 // **																	                                                    **
-<<<<<<< HEAD
-// **	- Firmware v2.1 																									**
-=======
-// **	- Firmware v2.0 																									**
->>>>>>> master
+// **	- Firmware v2.2 																									**
 // **	- Hardware v0.7																										**
 // **																														**
 // **	- Compilado en Arduino IDE v1.0.6																					**
@@ -128,11 +124,7 @@ byte LCD_D6 				= 51;	// pin
 byte LCD_D7					= 53;	// pin
 byte Back_Light_PWM			= 13;	// pin, salida para PWM de Back Light de LCD
 byte Contrast_PWM			= 12;	// pin, salida para pwm de contraste de LCD
-<<<<<<< HEAD
 LiquidCrystal 				lcd		(LCD_RS, LCD_E, LCD_D4, LCD_D5, LCD_D6, LCD_D7);  //LCD setup
-=======
-LiquidCrystal lcd			(LCD_RS, LCD_E, LCD_D4, LCD_D5, LCD_D6, LCD_D7);  //LCD setup
->>>>>>> master
 byte Contrast_Value			= 0;	// valor en real time
 
 	// lights
@@ -201,7 +193,6 @@ byte Caracter_exit[8] 		= 	{
  									B10001,
   									B11111
 								};
-<<<<<<< HEAD
 
 	// Caracter Next
 byte Caracter_next[8] 		= 	{
@@ -226,8 +217,6 @@ byte Caracter_back[8] 		= 	{
  									B00000,
   									B00000
 								};
-=======
->>>>>>> master
 
 	// Key Light
 byte Key_Light_PWM			= 11;	// pin
@@ -276,21 +265,14 @@ void setup 						()
 	pinMode			(Back_Light_PWM,		OUTPUT);
 	pinMode			(Contrast_PWM,			OUTPUT);
 
-<<<<<<< HEAD
 	lcd.begin								(20, 4);		//tamaño de LCD
-=======
-	lcd.begin		(20, 					4);				//tamaño de LCD
->>>>>>> master
 	lcd.createChar	(0, 					Caracter_Nav); 	//void LCD::createChar(uint8_t location, uint8_t charmap[]) 
 	lcd.createChar	(1, 					Caracter_On); 	//void LCD::createChar(uint8_t location, uint8_t charmap[]) 
 	lcd.createChar	(2, 					Caracter_Off); 	//void LCD::createChar(uint8_t location, uint8_t charmap[]) 
 	lcd.createChar	(3, 					Caracter_file); //void LCD::createChar(uint8_t location, uint8_t charmap[]) 
 	lcd.createChar	(4, 					Caracter_exit); //void LCD::createChar(uint8_t location, uint8_t charmap[]) 
-<<<<<<< HEAD
 	lcd.createChar	(5, 					Caracter_next); //void LCD::createChar(uint8_t location, uint8_t charmap[]) 
 	lcd.createChar	(6, 					Caracter_back); //void LCD::createChar(uint8_t location, uint8_t charmap[]) 
-=======
->>>>>>> master
 
 		// Key Light
 	pinMode 		(Key_Light_PWM,			OUTPUT);
@@ -385,7 +367,6 @@ void setup 						()
 
 void loop 						()
 {
-<<<<<<< HEAD
 	Init_EEPROM_Load();	// valores desde eeprom
 	Init_Back_Light	();	// inicializador de Backlight desde eeprom
 	Init_Contrast	();	// inicializador de EEPROM desde eeprom
@@ -396,12 +377,6 @@ void loop 						()
 		EEPROM_Default	();	// jumper para default eeprom
 	}
 
-=======
-	EEPROM_Load_Init();	// valores desde eeprom
-	Back_Light_Init	();	// inicializador de Backlight desde eeprom
-	Contrast_Init	();	// inicializador de EEPROM desde eeprom
-	EEPROM_Default	();	// jumper para default eeprom
->>>>>>> master
 	GUI_About		();	// interface grafica de about
 	GUI_Memory_Init	();	// interface grafica de memoria
 }
@@ -436,7 +411,7 @@ void EEPROM_Default 			()	// jumper cerrado, eeprom a default
 
 	lcd.clear ();
 	lcd.setCursor(1, 1);
-	lcd.print("EEPROM Default:");
+	lcd.print(F("EEPROM Default:"));
 
 		// canales DMX
 	for (int ch = 0; ch <= EEPROM_Limit; ch ++)
@@ -449,7 +424,6 @@ void EEPROM_Default 			()	// jumper cerrado, eeprom a default
 		// backlight
 	EEPROM.write(BackLight_Add, Backlight_Def);
 
-<<<<<<< HEAD
 		// contraste
 	EEPROM.write(Contrast_Add,  Contrast_Def);
 
@@ -468,50 +442,16 @@ void EEPROM_Default 			()	// jumper cerrado, eeprom a default
 
 	lcd.clear ();
 	lcd.setCursor(1, 0);
-	lcd.print("EEPROM Default ok!");
+	lcd.print(F("EEPROM Default ok!"));
 	lcd.setCursor(3, 2);
-	lcd.print("Remove jumper");
+	lcd.print(F("Remove jumper"));
 	lcd.setCursor(4, 3);
-	lcd.print("and reset!");
+	lcd.print(F("and reset!"));
 
 	while(1);
 }
 
 void Init_Back_Light 			()	// lee y aplica el ultimo estado del backlight
-=======
-			// backlight
-		EEPROM.write(BackLight_Add, Backlight_Def);
-
-			// contraste
-		EEPROM.write(Contrast_Add,  Contrast_Def);
-
-			// Bank init
-		EEPROM.write(Bank_Init_Add, Initial_Bank_Def);
-
-			// Key light
-		EEPROM.write(Key_Light_Add, Key_Light_Val_Def);
-
-			// Light Ext
-		EEPROM.write(Light_Ext_Add, Ext_Light_Def);
-
-			// canal actual
-		EEPROM.write(Canal_Actual_1_Add, Canal_Actual_Def);
-		EEPROM.write(Canal_Actual_2_Add, 0);
-
-		lcd.clear ();
-		lcd.setCursor(1, 0);
-		lcd.print("EEPROM Default ok!");
-		lcd.setCursor(3, 2);
-		lcd.print("Remove jumper");
-		lcd.setCursor(4, 3);
-		lcd.print("and reset!");
-
-		while(1);
-	}
-}
-
-void Back_Light_Init 			()	// lee y aplica el ultimo estado del backlight
->>>>>>> master
 {	
 	// dimmer de pantalla
 	for (int dim = 0; dim <= Back_Light_Value; dim ++)
@@ -531,11 +471,7 @@ void Back_Light_Init 			()	// lee y aplica el ultimo estado del backlight
 	}
 }
 
-<<<<<<< HEAD
 void Init_Contrast 				()	// lee y aplica el ultimo estado del contrast
-=======
-void Contrast_Init 				()	// lee y aplica el ultimo estado del contrast
->>>>>>> master
 {
 	if (Contrast_Value < 60)
 	{
@@ -656,21 +592,12 @@ void External_light_En 			()	// encender back y key desde teclado
 		analogWrite(Light_PWM, 0);
 		External_Light_On_Off = 0;
 	}
-<<<<<<< HEAD
 
 	salida:
 
 	delay(300);												// para impedir repeticion del comando
 }
 
-=======
-
-	salida:
-
-	delay(300);												// para impedir repeticion del comando
-}
-
->>>>>>> master
 void GUI_Licence 				()	// imprimir licencia LCD
 {
 	int retardo = 4000;
@@ -678,13 +605,13 @@ void GUI_Licence 				()	// imprimir licencia LCD
 	lcd.clear 		();
 	lcd.blink 		();
 	lcd.setCursor	(6, 0);
-	lcd.print 		("Create by");
+	lcd.print 		(F("Create by"));
 	lcd.setCursor	(3, 1);
-	lcd.print 		("Daniel Becerril");
+	lcd.print 		(F("Daniel Becerril"));
 	lcd.setCursor 	(4, 2);
-	lcd.print 		("goo.gl/7RsKo1");
+	lcd.print 		(F("goo.gl/7RsKo1"));
 	lcd.setCursor 	(0, 3);
-	lcd.print 		("daniel3514@gmail.com");
+	lcd.print 		(F("daniel3514@gmail.com"));
 	lcd.setCursor 	(19, 0);
 
 		// lectura del boton centro
@@ -693,59 +620,59 @@ void GUI_Licence 				()	// imprimir licencia LCD
 	lcd.clear  		();
 	lcd.noBlink		();
 	lcd.setCursor 	(0, 0);
-	lcd.print 		(" This program is");
+	lcd.print 		(F(" This program is"));
 	lcd.setCursor 	(0, 1);
-	lcd.print 		("distributed in the");
+	lcd.print 		(F("distributed in the"));
 	lcd.setCursor 	(0, 2);
-	lcd.print 		("hope that it will be");
+	lcd.print 		(F("hope that it will be"));
 	lcd.setCursor 	(0, 3);
-	lcd.print 		("useful, but");
+	lcd.print 		(F("useful, but"));
 
 	delay(retardo);
 
 	lcd.clear 		();
 	lcd.setCursor 	(0, 0);
-	lcd.print 		("WITHOUT ANY WARRANTY");
+	lcd.print 		(F("WITHOUT ANY WARRANTY"));
 	lcd.setCursor 	(0, 1);
-	lcd.print 		("without even the");
+	lcd.print 		(F("without even the"));
 	lcd.setCursor 	(0, 2);
-	lcd.print 		("implied warranty of");
+	lcd.print 		(F("implied warranty of"));
 	lcd.setCursor 	(0, 3);
-	lcd.print 		("MERCHANTABILITY of");
+	lcd.print 		(F("MERCHANTABILITY of"));
 
 	delay(retardo);
 
 	lcd.clear 		();
 	lcd.setCursor 	(0, 0);
-	lcd.print 		("FITNESS FOR A");
+	lcd.print 		(F("FITNESS FOR A"));
 	lcd.setCursor 	(0, 1);
-	lcd.print 		("PARTICULAR PORPUSE.");
+	lcd.print 		(F("PARTICULAR PORPUSE."));
 	lcd.setCursor 	(0, 2);
-	lcd.print 		("    This is free ");
+	lcd.print 		(F("    This is free "));
 	lcd.setCursor 	(0, 3);
-	lcd.print 		("software and you are");
+	lcd.print 		(F("software and you are"));
 
 	delay(retardo);
 
 	lcd.clear 		();
 	lcd.setCursor 	(0, 0);
-	lcd.print 		("welcome to");
+	lcd.print 		(F("welcome to"));
 	lcd.setCursor 	(0, 1);
-	lcd.print 		("redistribute it");
+	lcd.print 		(F("redistribute it"));
 	lcd.setCursor 	(0, 2);
-	lcd.print 		("under certain");
+	lcd.print 		(F("under certain"));
 	lcd.setCursor  	(0, 3);
-	lcd.print 		("conditions");
+	lcd.print 		(F("conditions"));
 
 	delay(retardo);
 
 	lcd.clear 		();
 	lcd.setCursor 	(0, 0);
-	lcd.print 		("See the GNU GENERAL");
+	lcd.print 		(F("See the GNU GENERAL"));
 	lcd.setCursor 	(0, 1);
-	lcd.print 		("PUBLIC LICENCE");
+	lcd.print 		(F("PUBLIC LICENCE"));
 	lcd.setCursor 	(0, 2);
-	lcd.print 		("for more details...");
+	lcd.print 		(F("for more details..."));
 
 	delay(retardo);
 }
@@ -753,11 +680,7 @@ void GUI_Licence 				()	// imprimir licencia LCD
 void GUI_About 					()	// imprimir about LCD
 {
 	byte Firm_Ver_Ent = 2;	// version firmware ----------------------------
-<<<<<<< HEAD
-	byte Firm_Ver_Dec = 1;
-=======
-	byte Firm_Ver_Dec = 0;
->>>>>>> master
+	byte Firm_Ver_Dec = 2;
 	byte Hard_Ver_Ent = 0;	// version hardware ----------------------------
 	byte Hard_Ver_Dec = 7;
 	byte Key_Light_Value 	= EEPROM.read(Key_Light_Add);
@@ -799,22 +722,22 @@ void GUI_About 					()	// imprimir about LCD
 	lcd.clear  		();
 	lcd.blink 		();
 	lcd.setCursor	(3, 0);
-	lcd.print 		("Arduino DMX-512");
+	lcd.print 		(F("Arduino DMX-512"));
 	lcd.setCursor 	(1, 1);
-	lcd.print 		("Tester & Controller");
+	lcd.print 		(F("Tester & Controller"));
 
 		// Firmware
 	lcd.setCursor 	(0, 3);
-	lcd.print 		("Firm v");
+	lcd.print 		(F("Firm v"));
 	lcd.print 		(Firm_Ver_Ent);
-	lcd.print 		(".");
+	lcd.print 		(F("."));
 	lcd.print 		(Firm_Ver_Dec);
 
 		// Hardware
 	lcd.setCursor 	(11, 3);
-	lcd.print 		("Hard v");
+	lcd.print 		(F("Hard v"));
 	lcd.print 		(Hard_Ver_Ent);
-	lcd.print 		(".");
+	lcd.print 		(F("."));
 	lcd.print 		(Hard_Ver_Dec);
 
 		// bank
@@ -823,7 +746,7 @@ void GUI_About 					()	// imprimir about LCD
 
 	if (Universo_Actual == 0)
 	{
-		lcd.print 	("-");
+		lcd.print 	(F("-"));
 	}
 	else
 	{
@@ -839,13 +762,13 @@ void GUI_About 					()	// imprimir about LCD
 
 	lcd.clear 		();
 	lcd.setCursor 	(0, 0);
-	lcd.print 		("Open Source License");
+	lcd.print 		(F("Open Source License"));
 	lcd.setCursor 	(0, 1);
-	lcd.print 		("Firm: GNU GPL v3");
+	lcd.print 		(F("Firm: GNU GPL v3"));
 	lcd.setCursor 	(0, 2);
-	lcd.print 		("Hard: OSHW    v1");
+	lcd.print 		(F("Hard: OSHW    v1"));
 	lcd.setCursor 	(0, 3);
-	lcd.print 		("Wiki: goo.gl/7RsKo1");
+	lcd.print 		(F("Wiki: goo.gl/7RsKo1"));
 	lcd.setCursor 	(2, 1);
 	lcd.setCursor	(19, 1);
 
@@ -889,10 +812,10 @@ void GUI_Control_Matrix 		()	// control en matriz
 	lcd.clear 		();
 
 	lcd.setCursor 	(0, 0);
-	lcd.print 		("c---");
+	lcd.print 		(F("c---"));
 
 	lcd.setCursor 	(16, 0);
-	lcd.print 		("-");
+	lcd.print 		(F("-"));
 
 	lcd.setCursor 	(6, 0);
 	lcd.write 		(3);	// caracter: 1 on, 2 off, 3 file, 4 exit
@@ -907,7 +830,7 @@ void GUI_Control_Matrix 		()	// control en matriz
 
 	if (Universo_Actual == 0)
 	{
-		lcd.print 	("-");
+		lcd.print 	(F("-"));
 	}
 	else
 	{
@@ -961,7 +884,7 @@ void GUI_Control_Matrix 		()	// control en matriz
 
 		// pintar gion de ventana de canales
 	lcd.setCursor 	(16, 0);
-	lcd.print 		("-");
+	lcd.print 		(F("-"));
 
 	int valor_nuevo = 0;
 
@@ -1704,13 +1627,13 @@ void GUI_Memory_Init 			()	// inicial de memoria
 
   		// Texto
   	lcd.setCursor 	(0, 0);
-  	lcd.print 		("Initial Memory:");
+  	lcd.print 		(F("Initial Memory:"));
   	lcd.setCursor 	(2, 2);
-  	lcd.print 		("Empty");
+  	lcd.print 		(F("Empty"));
   	lcd.setCursor 	(9, 2);
-  	lcd.print 		("Load");
+  	lcd.print 		(F("Load"));
   	lcd.setCursor 	(15, 2);
-  	lcd.print 		("Clear");
+  	lcd.print 		(F("Clear"));
 
   		// bank
   	lcd.setCursor 	(18, 0);
@@ -1718,7 +1641,7 @@ void GUI_Memory_Init 			()	// inicial de memoria
 
   	if (Universo_Actual == 0)
   	{
-    	lcd.print 	("-");
+    	lcd.print 	(F("-"));
   	}
   	else
   	{
@@ -1763,11 +1686,7 @@ void GUI_Memory_Init 			()	// inicial de memoria
 			break;
 	}
 
-<<<<<<< HEAD
 	GUI_Menu_1();
-=======
-	GUI_Control_Options();
->>>>>>> master
 }
 
 int  GUI_Memory_Bank 			(byte Opcion)
@@ -1782,19 +1701,19 @@ int  GUI_Memory_Bank 			(byte Opcion)
 
   		// Texto
   	lcd.setCursor 	(6, 0);
-  	lcd.print 		("Memory");
+  	lcd.print 		(F("Memory"));
 
   	lcd.setCursor 	(18, 0);
   	lcd.write 		(byte(3));	// caracter file
 
   	lcd.setCursor 	(1, 1);
-  	lcd.print 		("Bank1  Bank4  Bank7");
+  	lcd.print 		(F("Bank1  Bank4  Bank7"));
 
   	lcd.setCursor 	(1, 2);
-  	lcd.print 		("Bank2  Bank5  Bank8");
+  	lcd.print 		(F("Bank2  Bank5  Bank8"));
 
   	lcd.setCursor 	(1, 3);
-  	lcd.print 		("Bank3  Bank6");
+  	lcd.print 		(F("Bank3  Bank6"));
 
   	lcd.setCursor 	(19, 3);
   	lcd.write 		(byte(4));	// caracter exit
@@ -1803,17 +1722,17 @@ int  GUI_Memory_Bank 			(byte Opcion)
   	{
     	case 1:
       		lcd.setCursor (1, 0);
-      		lcd.print("Save");
+      		lcd.print(F("Save"));
       		break;
 
     	case 2:
       		lcd.setCursor (1, 0);
-      		lcd.print("Load");
+      		lcd.print(F("Load"));
       		break;
 
     	case 3:
       		lcd.setCursor (0, 0);
-      		lcd.print("Clear");
+      		lcd.print(F("Clear"));
       		break;
   	}
 
@@ -1822,7 +1741,7 @@ int  GUI_Memory_Bank 			(byte Opcion)
 
   	if (Universo_Actual == 0)
   	{
-    	lcd.print("-");
+    	lcd.print(F("-"));
   	}
   	else
   	{
@@ -1908,14 +1827,14 @@ void GUI_Memory 				()
   	lcd.clear 		();
 
   	lcd.setCursor 	(0, 0);
-  	lcd.print 		("Memory");
+  	lcd.print 		(F("Memory"));
 
   	lcd.setCursor 	(18, 0);
   	lcd.write 		(3);	// caracter: 1 on, 2 off, 3 file, 4 exit
 
   	if (Universo_Actual == 0)
   	{
-    	lcd.print("-");
+    	lcd.print(F("-"));
   	}
   	else
   	{
@@ -1923,25 +1842,25 @@ void GUI_Memory 				()
   	}
 
   	lcd.setCursor 	(1, 1);
-  	lcd.print 		("Save");
+  	lcd.print 		(F("Save"));
 
   	lcd.setCursor 	(1, 2);
-  	lcd.print 		("Load");
+  	lcd.print 		(F("Load"));
 
   	lcd.setCursor 	(1, 3);
-  	lcd.print 		("Clear");
+  	lcd.print 		(F("Clear"));
 
   	lcd.setCursor 	(8, 1);
-  	lcd.print 		("Clear All");
+  	lcd.print 		(F("Clear All"));
 
   	lcd.setCursor 	(8, 2);
-  	lcd.print 		("Empty RAM");
+  	lcd.print 		(F("Empty RAM"));
 
   	lcd.setCursor 	(19, 3);
   	lcd.write 		(4);	// caracter: 1 on, 2 off, 3 file, 4 exit
 
   	lcd.setCursor 	(8, 3);
-  	lcd.print 		("BlackOut");
+  	lcd.print 		(F("BlackOut"));
 
   		// borrar datos previos en el indice
 	Cursor_Index_Clear();
@@ -2038,34 +1957,23 @@ void GUI_Control_Secuencer 		() // secuenciador de bancos guardados en eeprom
 
   		// Texto
   	lcd.setCursor 	(0, 0);
-  	lcd.print 		("Secuencer");
-<<<<<<< HEAD
+  	lcd.print 		(F("Secuencer"));
 
   	lcd.setCursor 	(18, 0);
   	lcd.write 		(3);	// caracter: 1 on, 2 off, 3 file, 4 exit
   	lcd.print 		(Universo_Actual);
 
   	lcd.setCursor 	(4, 1);
-  	lcd.print 		("Delay 001x100=mS");
+  	lcd.print 		(F("Delay 001x100=mS"));
 
-=======
-
-  	lcd.setCursor 	(18, 0);
-  	lcd.write 		(3);	// caracter: 1 on, 2 off, 3 file, 4 exit
-  	lcd.print 		(Universo_Actual);
-
-  	lcd.setCursor 	(4, 1);
-  	lcd.print 		("Delay 001x100=mS");
-
->>>>>>> master
   	lcd.setCursor 	(0, 2);
-  	lcd.print 		("FirstBank 1");
+  	lcd.print 		(F("FirstBank 1"));
 
   	lcd.setCursor 	(19, 2);
   	lcd.write 		(4);	// caracter: 1 on, 2 off, 3 file, 4 exit
 
   	lcd.setCursor 	(0, 3);
-  	lcd.print 		("FinalBank 8    Start");
+  	lcd.print 		(F("FinalBank 8    Start"));
 
   		// seleccional universo first
   	for (int canal = 0; canal <= 511; canal ++)
@@ -2090,7 +1998,7 @@ void GUI_Control_Secuencer 		() // secuenciador de bancos guardados en eeprom
 
 	lcd.noBlink 	();
 	lcd.setCursor 	(15, 3);
-  	lcd.print 		("Start");
+  	lcd.print 		(F("Start"));
 
   		// iniciar navegacion y evaluar el index seleccionado
 	Navegar(0, 0);	// actualiza Cursor_Index_Pos
@@ -2209,7 +2117,7 @@ void GUI_Control_Secuencer 		() // secuenciador de bancos guardados en eeprom
 	    	}
 
 	    	lcd.setCursor 	(15, 3);
-    		lcd.print 		("Stop ");
+    		lcd.print 		(F("Stop "));
 
 			// establecer reversa o adelante
 
@@ -2490,9 +2398,9 @@ int  EEPROM_Save 				()	// guarda el universo en la eeprom
 
   	lcd.clear ();
   	lcd.setCursor (1, 1);
-  	lcd.print ("Memory Saving...");
+  	lcd.print (F("Memory Saving..."));
   	lcd.setCursor (1, 2);
-  	lcd.print ("Bank: ");
+  	lcd.print (F("Bank: "));
   	lcd.setCursor (7, 2);
   	lcd.print (Universo_Actual);
   	lcd.setCursor (19, 3);
@@ -2547,9 +2455,9 @@ int  EEPROM_Save 				()	// guarda el universo en la eeprom
 
   	lcd.clear 		();
   	lcd.setCursor 	(3, 1);
-  	lcd.print 		("Memory Saved!");
+  	lcd.print 		(F("Memory Saved!"));
   	lcd.setCursor 	(3, 2);
-  	lcd.print 		("Bank: ");
+  	lcd.print 		(F("Bank: "));
   	lcd.print 		(Universo_Actual);
   	lcd.setCursor 	(19, 3);
 
@@ -2630,9 +2538,9 @@ int  EEPROM_Load 				() 	// guarda los valores en la eeprom
 
 	lcd.clear 		();
   	lcd.setCursor 	(3, 1);
-  	lcd.print 		("Memory Loaded!");
+  	lcd.print 		(F("Memory Loaded!"));
   	lcd.setCursor 	(3, 2);
-  	lcd.print 		("Bank: ");
+  	lcd.print 		(F("Bank: "));
   	lcd.print 		(Universo_Actual);
   	lcd.setCursor 	(19, 3);
   	lcd.blink 		();
@@ -2646,11 +2554,7 @@ int  EEPROM_Load 				() 	// guarda los valores en la eeprom
   	return cancel;
 }
 
-<<<<<<< HEAD
 void Init_EEPROM_Load 			() // carga los valores de los canales DMX de la eeprom al inicio e inicia el streaming de dmx
-=======
-void EEPROM_Load_Init 			() // carga los valores de los canales DMX de la eeprom al inicio e inicia el streaming de dmx
->>>>>>> master
 {
   	int EEPROM_Add = 0;
   	
@@ -2718,9 +2622,9 @@ void EEPROM_Load_Init 			() // carga los valores de los canales DMX de la eeprom
 
   	lcd.clear 		();
   	lcd.setCursor 	(3, 1);
-  	lcd.print 		("Memory Loaded!");
+  	lcd.print 		(F("Memory Loaded!"));
   	lcd.setCursor 	(3, 2);
-  	lcd.print 		("Bank: ");
+  	lcd.print 		(F("Bank: "));
   	lcd.print 		(Universo_Actual);
   	lcd.setCursor 	(10, 2);
   	lcd.blink 		();
@@ -2746,9 +2650,9 @@ void EEPROM_Empty 				() // solo borra la ram
 
   	lcd.clear 		();
   	lcd.setCursor 	(3, 1);
-  	lcd.print 		("Memory Emptied!");
+  	lcd.print 		(F("Memory Emptied!"));
   	lcd.setCursor 	(3, 2);
-  	lcd.print 		("Bank: RAM");
+  	lcd.print 		(F("Bank: RAM"));
   	lcd.setCursor 	(19, 3);
   	lcd.blink 		();
 
@@ -2775,9 +2679,9 @@ int  EEPROM_Clear 				() // Pone en ceros la memoria EEPROM
 
   	lcd.clear 		();
   	lcd.setCursor 	(1, 1);
-  	lcd.print 		("Memory Cleaning...");
+  	lcd.print 		(F("Memory Cleaning..."));
   	lcd.setCursor 	(1, 2);
-  	lcd.print 		("Bank: ");
+  	lcd.print 		(F("Bank: "));
   	lcd.setCursor 	(7, 2);
   	lcd.print 		(Universo_Actual);
   	lcd.setCursor 	(19, 3);
@@ -2832,9 +2736,9 @@ int  EEPROM_Clear 				() // Pone en ceros la memoria EEPROM
 
   	lcd.clear 		();
   	lcd.setCursor 	(2, 1);
-  	lcd.print 		("Memory Cleaned!");
+  	lcd.print 		(F("Memory Cleaned!"));
   	lcd.setCursor 	(2, 2);
-  	lcd.print 		("Bank: ");
+  	lcd.print 		(F("Bank: "));
   	lcd.print 		(Universo_Actual);
   	lcd.setCursor 	(19, 3);
 
@@ -2851,9 +2755,9 @@ void EEPROM_Clear_All 			() // Pone en ceros la memoria EEPROM toda
 {
   	lcd.clear 		();
   	lcd.setCursor 	(1, 1);
-  	lcd.print 		("All");
+  	lcd.print 		(F("All"));
   	lcd.setCursor 	(1, 2);
-  	lcd.print 		("Memory Cleaning...");
+  	lcd.print 		(F("Memory Cleaning..."));
   	lcd.setCursor 	(19, 2);
   	lcd.blink 		();
 
@@ -2871,85 +2775,55 @@ void EEPROM_Clear_All 			() // Pone en ceros la memoria EEPROM toda
   	lcd.clear 		();
   	lcd.noBlink		();
   	lcd.setCursor 	(2, 2);
-  	lcd.print 		("Memory Cleaned!");
+  	lcd.print 		(F("Memory Cleaned!"));
   	lcd.setCursor 	(2, 1);
-  	lcd.print 		("All");
+  	lcd.print 		(F("All"));
 
   	Universo_Actual = 0;
 
   	delay (1000);
 }
 
-<<<<<<< HEAD
 void GUI_Menu_1 				() // menu de opciones
-=======
-void GUI_Control_Options 		()
->>>>>>> master
 {
 	inicio:
 
   		// LCD
   	lcd.clear 		();
-<<<<<<< HEAD
-=======
-
-  	lcd.setCursor 	(18, 0);
-	lcd.write 		(3);	// carater file
->>>>>>> master
 
   	lcd.setCursor 	(2, 0);
-  	lcd.print 		("Convert");
+  	lcd.print 		(F("Convert"));
 
   	lcd.setCursor 	(2, 1);
-  	lcd.print 		("Unitary");
+  	lcd.print 		(F("Unitary"));
 
 	lcd.setCursor 	(2, 2);
-	lcd.print 		("Matrix");
+	lcd.print 		(F("Matrix"));
 
 	lcd.setCursor 	(2, 3);
-	lcd.print 		("Chaser");
+	lcd.print 		(F("Chaser"));
 
 	lcd.setCursor 	(11, 3);
-	lcd.print 		("Multiply");
+	lcd.print 		(F("Multiply"));
 
 	lcd.setCursor 	(11, 2);
-	lcd.print 		("Secuencer");
+	lcd.print 		(F("Secuencer"));
 
 	lcd.setCursor 	(16, 0);
 	lcd.write 		(3);	// carater file
 
 	if (Universo_Actual == 0)
   	{
-    	lcd.print 	("-");
+    	lcd.print 	(F("-"));
   	}
   	else
   	{
     	lcd.print (Universo_Actual);
   	}
 
-<<<<<<< HEAD
 	lcd.setCursor 	(19, 0);
 	lcd.write 		(5);	// carater next
 	
-=======
-  	lcd.setCursor 	(2, 0);
-  	lcd.print 		("Convert");
-  	lcd.setCursor 	(2, 1);
-  	lcd.print 		("Unitary");
-	lcd.setCursor 	(2, 2);
-	lcd.print 		("Matrix");
-	lcd.setCursor 	(2, 3);
-	lcd.print 		("Chaser");
-	lcd.setCursor 	(11, 3);
-	lcd.print 		("Multiply");
-	lcd.setCursor 	(11, 0);
-	lcd.print 		("Config");
-	lcd.setCursor 	(11, 2);
-	lcd.print 		("Secuencer");
-	lcd.setCursor 	(11, 1);
-	lcd.print 		("Memory");
-
->>>>>>> master
   		// borrar datos previos en el indice
 	Cursor_Index_Clear();
 
@@ -3028,17 +2902,17 @@ void GUI_Menu_2					() // menu de opciones
   	lcd.clear 		();
 
   	lcd.setCursor 	(2, 0);
-  	lcd.print 		("Config");
+  	lcd.print 		(F("Config"));
 
   	lcd.setCursor 	(2, 1);
-  	lcd.print 		("About");
+  	lcd.print 		(F("About"));
 
 	lcd.setCursor 	(16, 0);
 	lcd.write 		(3);	// carater file
 
 	if (Universo_Actual == 0)
   	{
-    	lcd.print 	("-");
+    	lcd.print 	(F("-"));
   	}
   	else
   	{
@@ -3102,31 +2976,31 @@ void GUI_Convert 				()
 	lcd.clear 		();
 
 	lcd.setCursor 	(0, 0);
-	lcd.print 		("Bin:");
+	lcd.print 		(F("Bin:"));
 
 	lcd.setCursor 	(16, 0);
 	lcd.write 		(byte(1));	// caracter on
 
 	lcd.setCursor 	(17, 0);
-	lcd.print 		("On");
+	lcd.print 		(F("On"));
 
 	lcd.setCursor 	(16, 1);
 	lcd.write 		(byte(2));	// caracter off
 
 	lcd.setCursor 	(5, 1);
-	lcd.print 		("124813612");
+	lcd.print 		(F("124813612"));
 
 	lcd.setCursor 	(17, 1);
-	lcd.print 		("Off");
+	lcd.print 		(F("Off"));
 
 	lcd.setCursor 	(9, 2);
-	lcd.print  		("62425");
+	lcd.print  		(F("62425"));
 
 	lcd.setCursor 	(0, 3);
-	lcd.print 		("Dec:");
+	lcd.print 		(F("Dec:"));
 
 	lcd.setCursor 	(12, 3);
-	lcd.print 		("86");
+	lcd.print 		(F("86"));
 
 	lcd.setCursor 	(19, 3);
 	lcd.write 		(4);	// carater exit
@@ -3611,34 +3485,33 @@ void GUI_Config 				()
 
 		// GUI
 	lcd.clear 		();
-<<<<<<< HEAD
 
 	lcd.setCursor 	(0, 0);
-	lcd.print 		("Config");
+	lcd.print 		(F("Config"));
 
 	lcd.setCursor 	(1, 1);
-	lcd.print 		("Key");
+	lcd.print 		(F("Key"));
 	Numeric_Write 	(Key_Light_Value, 5, 1);
 
 	lcd.setCursor 	(0, 2);
-	lcd.print 		("Back");
+	lcd.print 		(F("Back"));
 	Numeric_Write 	(Back_Light_Value, 5, 2);
 
 	lcd.setCursor 	(1, 3);
-	lcd.print 		("Ext");
+	lcd.print 		(F("Ext"));
 	Numeric_Write 	(Light_Ext_Value, 5, 3);
 
 	lcd.setCursor 	(9, 1);
-	lcd.print 		("Cont");
+	lcd.print 		(F("Cont"));
 	Numeric_Write 	(Contrast_Value, 14, 1);
 
 	lcd.setCursor 	(9, 2);
 	lcd.write 		(3);	// caracter: 1 on, 2 off, 3 file, 4 exit
-	lcd.print 		("ini ");
+	lcd.print 		(F("ini "));
 
 	if (Universo_Actual < 1)
 	{
-		lcd.print 	("-");
+		lcd.print 	(F("-"));
 	}
 	else
 	{
@@ -3646,61 +3519,27 @@ void GUI_Config 				()
 	}
 
 	lcd.setCursor 	(14, 3);
-	lcd.print 		("EEdef");
+	lcd.print 		(F("EEdef"));
 
 	lcd.setCursor 	(16, 0);
 	lcd.write 		(3);	// caracter: 1 on, 2 off, 3 file, 4 exit
-=======
 
-	lcd.setCursor 	(0, 0);
-	lcd.print 		("Config");
-
-	lcd.setCursor 	(1, 1);
-	lcd.print 		("Key:");
-	Numeric_Write 	(Key_Light_Value, 6, 1);
-
-	lcd.setCursor 	(0, 2);
-	lcd.print 		("Back:");
-	Numeric_Write 	(Back_Light_Value, 6, 2);
-
-	lcd.setCursor 	(1, 3);
-	lcd.print 		("Ext:");
-	Numeric_Write 	(Light_Ext_Value, 6, 3);
-
-	lcd.setCursor 	(10, 0);
-	lcd.write 		(3);	// caracter: 1 on, 2 off, 3 file, 4 exit
-	lcd.print 		("Ini:");
->>>>>>> master
-
-	lcd.setCursor 	(16, 0);
 	if (Universo_Actual < 1)
 	{
-		lcd.print 	("-");
+		lcd.print 	(F("-"));
 	}
 	else
 	{
 		lcd.print(Universo_Actual);
 	}
 
-<<<<<<< HEAD
 	lcd.setCursor 	(19, 0);
-=======
-	lcd.setCursor 	(10, 1);
-	lcd.print 		("Cont:");
-	Numeric_Write 	(Contrast_Value, 16, 1);
-
-	lcd.setCursor 	(11, 3);
-	lcd.print 		("About");
-
-	lcd.setCursor 	(19, 3);
->>>>>>> master
 	lcd.write 		(4);	// caracter: 1 on, 2 off, 3 file, 4 exit
 
 		// borrar datos previos en el indice
 	Cursor_Index_Clear();
 
 		// establecer el indice
-<<<<<<< HEAD
 	Cursor_Index[4][1]  = 1;	// Key Light Value  	// y x
 	Cursor_Index[4][2]  = 2;	// Back Light Value 
 	Cursor_Index[4][3]  = 3;	// External Light Value 
@@ -3709,15 +3548,6 @@ void GUI_Config 				()
 	Cursor_Index[13][3] = 6;	// EEPROM default
 	Cursor_Index[15][0] = 7;	// memory
 	Cursor_Index[18][0] = 8;	// Exit
-=======
-	Cursor_Index[5][1]  = 1;	// Key Light Value  	// y x
-	Cursor_Index[5][2]  = 2;	// Back Light Value 
-	Cursor_Index[5][3]  = 3;	// External Light Value 
-	Cursor_Index[15][0] = 4;	// Bank init Value
-	Cursor_Index[15][1] = 5;	// Contrast Value 
-	Cursor_Index[10][3] = 6;	// About
-	Cursor_Index[18][3] = 7;	// Exit
->>>>>>> master
 
 	navegacion:
 
@@ -3727,16 +3557,9 @@ void GUI_Config 				()
 	Navegar(0, 0);	// actualiza Cursor_Index_Pos
 
 	switch (Cursor_Index_Pos)
-<<<<<<< HEAD
 	{			
 		case 1:	// Key Light Value
 			valor_nuevo = Numerico_Write(0, 255, 5, 1, 1, Key_Light_Value); 
-=======
-	{
-			// Key Light Value
-		case 1:
-			valor_nuevo = Numerico_Write(0, 255, 6, 1, 1, Key_Light_Value); 
->>>>>>> master
 
 				// menor o igual al limites
 			if (valor_nuevo <= 255)			// poner limite max
@@ -3750,11 +3573,7 @@ void GUI_Config 				()
 			{
 				while(1)
 				{
-<<<<<<< HEAD
 					valor_nuevo = Numerico_Enc_Write(0, 255, 5, 1, 1, Key_Light_Value);
-=======
-					valor_nuevo = Numerico_Enc_Write(0, 255, 6, 1, 1, Key_Light_Value);
->>>>>>> master
 					
 					if (valor_nuevo > 255)	// poner limite max
 					{
@@ -3766,26 +3585,15 @@ void GUI_Config 				()
 		
 				}
 					// acomodar numero 	
-<<<<<<< HEAD
 				Numerico_Print(5, 1, Key_Light_Value, 255, 1);	// poner max 	// Numerico_Print(byte LCD_x, byte LCD_y, int valor, int max, byte Dec_Hex)
-=======
-				Numerico_Print(6, 1, Key_Light_Value, 255, 1);	// poner max 	// Numerico_Print(byte LCD_x, byte LCD_y, int valor, int max, byte Dec_Hex)
->>>>>>> master
 			}
 
 			EEPROM.write(Key_Light_Add, Key_Light_Value);
 
 			break;
-<<<<<<< HEAD
 			
 		case 2:	// Back Light Value 
 			valor_nuevo = Numerico_Write(1, 255, 5, 2, 1, Back_Light_Value);
-=======
-
-			// Back Light Value 
-		case 2:
-			valor_nuevo = Numerico_Write(1, 255, 6, 2, 1, Back_Light_Value);
->>>>>>> master
 
 				// menor o igual al limites
 			if (valor_nuevo <= 255)			// poner limite max
@@ -3799,11 +3607,7 @@ void GUI_Config 				()
 			{
 				while(1)
 				{
-<<<<<<< HEAD
 					valor_nuevo = Numerico_Enc_Write(1, 255, 5, 2, 1, Back_Light_Value);
-=======
-					valor_nuevo = Numerico_Enc_Write(1, 255, 6, 2, 1, Back_Light_Value);
->>>>>>> master
 					
 					if (valor_nuevo > 255)	// poner limite max
 					{
@@ -3815,17 +3619,12 @@ void GUI_Config 				()
 		
 				}
 					// acomodar numero 	
-<<<<<<< HEAD
 				Numerico_Print(5, 2, Back_Light_Value, 255, 1);	// poner max 	// Numerico_Print(byte LCD_x, byte LCD_y, int valor, int max, byte Dec_Hex)
-=======
-				Numerico_Print(6, 2, Back_Light_Value, 255, 1);	// poner max 	// Numerico_Print(byte LCD_x, byte LCD_y, int valor, int max, byte Dec_Hex)
->>>>>>> master
 			}
 
 			EEPROM.write(BackLight_Add, Back_Light_Value);
 			break;
 
-<<<<<<< HEAD
 		case 3: // External Light
 			valor_nuevo = Numerico_Write(1, 255, 5, 3, 1, Light_Ext_Value);	// (int min, int max, byte LCD_x, byte LCD_y, byte Dec_Hex, int num_ant) // regresa el numero tecleado
 
@@ -3861,11 +3660,6 @@ void GUI_Config 				()
 
 		case 4: // Contrast Value
 			valor_nuevo = Numerico_Write(1, 255, 14, 1, 1, Contrast_Value);
-=======
-			// Contrast Value
-		case 5:
-			valor_nuevo = Numerico_Write(1, 255, 16, 1, 1, Contrast_Value);
->>>>>>> master
 
 				// menor o igual al limites
 			if (valor_nuevo <= 255)			// poner limite max
@@ -3879,11 +3673,7 @@ void GUI_Config 				()
 			{
 				while(1)
 				{
-<<<<<<< HEAD
 					valor_nuevo = Numerico_Enc_Write(1, 255, 14, 1, 1, Contrast_Value);
-=======
-					valor_nuevo = Numerico_Enc_Write(1, 255, 16, 1, 1, Contrast_Value);
->>>>>>> master
 					
 					if (valor_nuevo > 255)	// poner limite max
 					{
@@ -3895,24 +3685,14 @@ void GUI_Config 				()
 		
 				}
 					// acomodar numero 	
-<<<<<<< HEAD
 				Numerico_Print(14, 1, Contrast_Value, 255, 1);	// poner max 	// Numerico_Print(byte LCD_x, byte LCD_y, int valor, int max, byte Dec_Hex)
-=======
-				Numerico_Print(16, 1, Contrast_Value, 255, 1);	// poner max 	// Numerico_Print(byte LCD_x, byte LCD_y, int valor, int max, byte Dec_Hex)
->>>>>>> master
 			}
 
 			EEPROM.write(Contrast_Add, Contrast_Value);
 			break;
 
-<<<<<<< HEAD
 		case 5: // Bank init Value
 			valor_nuevo = Numerico_Write(1, 8, 14, 2, 1, Universo_Actual);
-=======
-			// Bank init Value
-		case 4:
-			valor_nuevo = Numerico_Write(0, 8, 16, 0, 1, Universo_Actual);
->>>>>>> master
 
 				// menor o igual al limites
 			if (valor_nuevo <= 8)			// poner limite max
@@ -3925,11 +3705,7 @@ void GUI_Config 				()
 			{
 				while(1)
 				{
-<<<<<<< HEAD
 					valor_nuevo = Numerico_Enc_Write(1, 8, 14, 2, 1, Universo_Actual);
-=======
-					valor_nuevo = Numerico_Enc_Write(0, 8, 16, 0, 1, Universo_Actual);
->>>>>>> master
 					
 					if (valor_nuevo > 8)	// poner limite max
 					{
@@ -3940,17 +3716,12 @@ void GUI_Config 				()
 		
 				}
 					// acomodar numero 	
-<<<<<<< HEAD
 				Numerico_Print(14, 2, Universo_Actual, 8, 1);	// poner max 	// Numerico_Print(byte LCD_x, byte LCD_y, int valor, int max, byte Dec_Hex)
-=======
-				Numerico_Print(16, 0, Universo_Actual, 8, 1);	// poner max 	// Numerico_Print(byte LCD_x, byte LCD_y, int valor, int max, byte Dec_Hex)
->>>>>>> master
 			}
 
 			EEPROM.write(Bank_Init_Add, Universo_Actual);
 			break;
 
-<<<<<<< HEAD
 		case 6: // EEPROM default
 			EEPROM_Default();
 			break;
@@ -3962,52 +3733,6 @@ void GUI_Config 				()
 			break;
 
 		case 8: // exit
-=======
-			// About
-		case 6:
-			GUI_About();
-			GUI_Licence();
-			Cursor_Index_Pos = 5;
-			goto Inicio;
-			break;
-
-			// External Light
-		case 3:
-			valor_nuevo = Numerico_Write(1, 255, 6, 3, 1, Light_Ext_Value);	// (int min, int max, byte LCD_x, byte LCD_y, byte Dec_Hex, int num_ant) // regresa el numero tecleado
-
-				// menor o igual al limites
-			if (valor_nuevo <= 255)			// poner limite max
-			{
-				analogWrite(Light_PWM, valor_nuevo);
-				Light_Ext_Value = valor_nuevo;
-			}
-
-				// mayor al limite
-			if (valor_nuevo > 255)			// poner limite max
-			{
-				while(1)
-				{
-					valor_nuevo = Numerico_Enc_Write(1, 255, 6, 3, 1, Light_Ext_Value); // (int min, int max, byte LCD_x, byte LCD_y, byte Dec_Hex, int num_ant) // regresa el numero tecleado
-					
-					if (valor_nuevo > 255)	// poner limite max
-					{
-						break; // enter
-					}
-
-					analogWrite(Light_PWM, valor_nuevo);	// accion
-					Light_Ext_Value = valor_nuevo;
-		
-				}
-					// acomodar numero 	
-				Numerico_Print(6, 3, Light_Ext_Value, 255, 1);	// poner max 	// Numerico_Print(byte LCD_x, byte LCD_y, int valor, int max, byte Dec_Hex)
-			}
-
-			EEPROM.write(Light_Ext_Add, Light_Ext_Value);
-			break;
-		
-			// Exit
-		case 7:
->>>>>>> master
 			goto salida;
 			break;
 	}
@@ -4032,14 +3757,14 @@ void GUI_Control_Multiply 		()
   	lcd.clear 		();
 
   	lcd.setCursor 	(3, 0);
-  	lcd.print 		("Value");
+  	lcd.print 		(F("Value"));
 
   	lcd.setCursor 	(18, 2);
   	lcd.write 		(3);	// caracter: 1 on, 2 off, 3 file, 4 exit
 
   	if (Universo_Actual == 0)
   	{
-    	lcd.print 	("-");
+    	lcd.print 	(F("-"));
   	}
   	else
   	{
@@ -4047,13 +3772,13 @@ void GUI_Control_Multiply 		()
   	}
 
   	lcd.setCursor	(0, 1);
-  	lcd.print 		("First CH");
+  	lcd.print 		(F("First CH"));
 
   	lcd.setCursor 	(0, 2);
-  	lcd.print 		("Multiply");
+  	lcd.print 		(F("Multiply"));
 
   	lcd.setCursor 	(0, 3);
-  	lcd.print 		("Quantity      Apply");
+  	lcd.print 		(F("Quantity      Apply"));
 
   	lcd.setCursor 	(19, 1);
   	lcd.write 		(4);	// caracter: 1 on, 2 off, 3 file, 4 exit
@@ -4219,15 +3944,15 @@ void GUI_Control_Multiply 		()
 	    	if (valid > 512)	// si no es valido
 	    	{
 	      		lcd.setCursor 	(13, 0);
-	      		lcd.print 		("Error! ");
+	      		lcd.print 		(F("Error! "));
 	      		break;
 	    	}
 
 	    		// calcular
 	    	lcd.setCursor 		(13, 0);
-	    	lcd.print 			("       ");
+	    	lcd.print 			(F("       "));
 	    	lcd.setCursor 		(14, 3);
-	    	lcd.print 			("Calc..");
+	    	lcd.print 			(F("Calc.."));
 
 	    	for (long conteo = 1; conteo <= Quantity; conteo++)
 	    	{
@@ -4255,9 +3980,9 @@ void GUI_Control_Multiply 		()
 	    	}
 
 	    	lcd.setCursor 	(13, 0);
-	    	lcd.print 		("Ok!");
+	    	lcd.print 		(F("Ok!"));
 	    	lcd.setCursor 	(14, 3);
-	    	lcd.print 		("Apply ");
+	    	lcd.print 		(F("Apply "));
 
 			break;
 
@@ -4294,28 +4019,28 @@ void GUI_Control_Chaser 		()
   	lcd.clear 		();
 
   	lcd.setCursor 	(0, 0);
-  	lcd.print 		("Chaser");
+  	lcd.print 		(F("Chaser"));
 
   	lcd.setCursor 	(13, 0);
-  	lcd.print 		("Ch:");
+  	lcd.print 		(F("Ch:"));
 
   	lcd.setCursor 	(2, 1);
-  	lcd.print 		("Delay:");
+  	lcd.print 		(F("Delay:"));
 
   	lcd.setCursor 	(12, 1);
-  	lcd.print 		("x10=mS");
+  	lcd.print 		(F("x10=mS"));
 
   	lcd.setCursor 	(0, 2);
-  	lcd.print 		("FirstCh:");
+  	lcd.print 		(F("FirstCh:"));
 
   	lcd.setCursor 	(19, 2);
   	lcd.write 		(4);	// caracter: 1 on, 2 off, 3 file, 4 exit
 
   	lcd.setCursor 	(0, 3);
-  	lcd.print 		("FinalCh:");
+  	lcd.print 		(F("FinalCh:"));
 
   	lcd.setCursor 	(15, 3);
-  	lcd.print 		("Start");
+  	lcd.print 		(F("Start"));
 
   	Numerico_Print(9, 1, Delay, 100, 1);	//void Numerico_Print(byte LCD_x, byte LCD_y, int valor, int max, byte Dec_Hex)
   	Numerico_Print(9, 2, First, 100, 1);	//void Numerico_Print(byte LCD_x, byte LCD_y, int valor, int max, byte Dec_Hex)
@@ -4356,7 +4081,7 @@ void GUI_Control_Chaser 		()
 			// start
 		case 4:
 	    	lcd.setCursor 	(15, 3);
-	    	lcd.print 		("Stop ");
+	    	lcd.print 		(F("Stop "));
 
 	    		// borrar canales previos
 	    	for (int Canales = 0; Canales <= 511; Canales ++)
@@ -4394,7 +4119,7 @@ void GUI_Control_Chaser 		()
 	    	}
 
 	    	lcd.setCursor 	(15, 3);
-	    	lcd.print 		("Start");
+	    	lcd.print 		(F("Start"));
 
 	    	delay (300); 		// evita que le gane la descarga del capacitor
 
@@ -4600,7 +4325,7 @@ void GUI_Control_Unit 			()
 
   	if (Universo_Actual == 0)
   	{
-    	lcd.print 	("-");
+    	lcd.print 	(F("-"));
   	}
   	else
   	{
@@ -5365,7 +5090,7 @@ void Ubicar 					(byte y, byte x, byte val_ant)	// parpadea el canal actual
 void Numeric_Write 				(int valor, int col, int row)	// posicionar el valor en los campos 000
 {
 	lcd.setCursor 	(col, row);
-	lcd.print 		("000");
+	lcd.print 		(F("000"));
 
 	if (valor < 10)
 	{
@@ -5425,13 +5150,13 @@ void Numerico_Print 			(byte LCD_x, byte LCD_y, int valor, int max, byte Dec_Hex
 		{
 			if (valor < 10)
 			{
-				lcd.print("00");
+				lcd.print(F("00"));
 				lcd.print(valor);
 			}
 
 			if (valor > 9 && valor < 100)
 			{
-				lcd.print("0");
+				lcd.print(F("0"));
 				lcd.print(valor);
 			}
 
@@ -5447,19 +5172,19 @@ void Numerico_Print 			(byte LCD_x, byte LCD_y, int valor, int max, byte Dec_Hex
 		{
 			if (valor < 10)
 			{
-				lcd.print("000");
+				lcd.print(F("000"));
 				lcd.print(valor);
 			}
 
 			if (valor > 9 && valor < 100)
 			{
-				lcd.print("00");
+				lcd.print(F("00"));
 				lcd.print(valor);
 			}
 
 			if (valor > 99)
 			{
-				lcd.print("0");
+				lcd.print(F("0"));
 				lcd.print(valor);
 			}
 
@@ -5476,7 +5201,7 @@ void Numerico_Print 			(byte LCD_x, byte LCD_y, int valor, int max, byte Dec_Hex
 	{
 		if (valor < 16)
 		{
-			lcd.print("0");
+			lcd.print(F("0"));
 			lcd.print(valor, HEX);
 			goto salir;
 		}
@@ -5499,7 +5224,7 @@ void Navegar_Matrix 			(byte Y, byte X, int Canal_init)
 	if (Y == 4 && X == 0)
 	{
 		lcd.setCursor 	(1, 0);
-		lcd.print 		("---");
+		lcd.print 		(F("---"));
 		goto salida;
 	}
 
@@ -5507,7 +5232,7 @@ void Navegar_Matrix 			(byte Y, byte X, int Canal_init)
 	if (Y == 8 && X == 0)
 	{
 		lcd.setCursor 	(1, 0);
-		lcd.print 		("---");
+		lcd.print 		(F("---"));
 		goto salida;
 	}
 
@@ -5752,7 +5477,7 @@ void Navegar 					(byte matrix, byte matrix_ch_init) // actualiza Cursor_Index_P
 					if (Cursor_Index[Conteo_Y][Conteo_X] == Cursor_Index_Pos_ant)
 					{
 						lcd.setCursor (Conteo_Y, Conteo_X);
-						lcd.print(" ");
+						lcd.print(F(" "));
 					}
 				}
 			}
@@ -5886,17 +5611,17 @@ int  Numerico_Enc_Write 		(int min, int max, byte LCD_x, byte LCD_y, byte Dec_He
 
 	if (numero_lenght == 2)
 	{
-		lcd.print("  ");
+		lcd.print(F("  "));
 	}
 
 	if (numero_lenght == 3)
 	{
-		lcd.print("   ");
+		lcd.print(F("   "));
 	}
 
 	if (numero_lenght == 4)
 	{
-		lcd.print("    ");
+		lcd.print(F("    "));
 	}
 
 	// dibujar numero
@@ -5989,22 +5714,22 @@ int  Numerico_Write 			(int min, int max, byte LCD_x, byte LCD_y, byte Dec_Hex, 
 	lcd.setCursor(LCD_x, LCD_y);
 	if (numero_lenght == 1)
 	{
-		lcd.print 		("_");
+		lcd.print 		(F("_"));
 		lcd.setCursor	(LCD_x, LCD_y);
 	}
 	if (numero_lenght == 2)
 	{
-		lcd.print 		("__");
+		lcd.print 		(F("__"));
 		lcd.setCursor 	(LCD_x + 1, LCD_y);
 	}
 	if (numero_lenght == 3)
 	{
-		lcd.print 		("___");
+		lcd.print 		(F("___"));
 		lcd.setCursor 	(LCD_x + 2, LCD_y);
 	}
 	if (numero_lenght == 4)
 	{
-		lcd.print 		("____");
+		lcd.print 		(F("____"));
 		lcd.setCursor 	(LCD_x + 3, LCD_y);
 	}
 	
@@ -6130,7 +5855,7 @@ int  Numerico_Write 			(int min, int max, byte LCD_x, byte LCD_y, byte Dec_Hex, 
 		if (lectura == 16 || lectura == 14)	// enter, numero 1
 		{
 			lcd.setCursor(LCD_x, LCD_y);
-			lcd.print("0");
+			lcd.print(F("0"));
 			numero_2 = 0;
 			numero_unidades = 1;
 			goto salida;
@@ -6152,7 +5877,7 @@ int  Numerico_Write 			(int min, int max, byte LCD_x, byte LCD_y, byte Dec_Hex, 
 		if (lectura == 16)					// enter encoder, solo numero 1
 		{
 			lcd.setCursor(LCD_x, LCD_y);
-			lcd.print("0");
+			lcd.print(F("0"));
 			numero_2 = 0;
 			numero_unidades = 1;
 			goto salida;
@@ -6296,7 +6021,7 @@ int  Numerico_Write 			(int min, int max, byte LCD_x, byte LCD_y, byte Dec_Hex, 
 		{
 			if (numero < 10)
 			{
-				lcd.print("0");
+				lcd.print(F("0"));
 			}
 		}
 			// hexadecimal
@@ -6304,7 +6029,7 @@ int  Numerico_Write 			(int min, int max, byte LCD_x, byte LCD_y, byte Dec_Hex, 
 		{
 			if (numero < 16)
 			{
-				lcd.print("0");
+				lcd.print(F("0"));
 			}
 		}
 	}
@@ -6313,12 +6038,12 @@ int  Numerico_Write 			(int min, int max, byte LCD_x, byte LCD_y, byte Dec_Hex, 
 	{
 		if (numero < 10)
 		{
-			lcd.print("00");
+			lcd.print(F("00"));
 		}
 
 		if (numero > 9 && numero < 100)
 		{
-			lcd.print("0");
+			lcd.print(F("0"));
 		}
 	}
 		// 4 digitos
@@ -6326,17 +6051,17 @@ int  Numerico_Write 			(int min, int max, byte LCD_x, byte LCD_y, byte Dec_Hex, 
 	{
 		if (numero < 10)
 		{
-			lcd.print("000");
+			lcd.print(F("000"));
 		}
 
 		if (numero > 9 && numero< 100)
 		{
-			lcd.print("00");
+			lcd.print(F("00"));
 		}
 
 		if (numero > 99 && numero < 1000)
 		{
-			lcd.print("0");
+			lcd.print(F("0"));
 		}		
 	}
 		// dibujar numero
@@ -6367,7 +6092,7 @@ int  Numerico_Write 			(int min, int max, byte LCD_x, byte LCD_y, byte Dec_Hex, 
 		{
 			if (num_ant < 10)
 			{
-				lcd.print("0");
+				lcd.print(F("0"));
 			}
 		}
 
@@ -6376,7 +6101,7 @@ int  Numerico_Write 			(int min, int max, byte LCD_x, byte LCD_y, byte Dec_Hex, 
 		{
 			if (num_ant < 16)
 			{
-				lcd.print("0");
+				lcd.print(F("0"));
 			}
 		}
 	}
@@ -6386,12 +6111,12 @@ int  Numerico_Write 			(int min, int max, byte LCD_x, byte LCD_y, byte Dec_Hex, 
 	{
 		if (num_ant < 10)
 		{
-			lcd.print("00");
+			lcd.print(F("00"));
 		}
 
 		if (num_ant > 9 && num_ant < 100)
 		{
-			lcd.print("0");
+			lcd.print(F("0"));
 		}
 	}
 
@@ -6400,17 +6125,17 @@ int  Numerico_Write 			(int min, int max, byte LCD_x, byte LCD_y, byte Dec_Hex, 
 	{
 		if (num_ant < 10)
 		{
-			lcd.print("000");
+			lcd.print(F("000"));
 		}
 
 		if (num_ant > 9 && num_ant < 100)
 		{
-			lcd.print("00");
+			lcd.print(F("00"));
 		}
 
 		if (num_ant > 99 && num_ant < 1000)
 		{
-			lcd.print("0");
+			lcd.print(F("0"));
 		}		
 	}
 
@@ -6516,7 +6241,7 @@ int  Numerico_Write 			(int min, int max, byte LCD_x, byte LCD_y, byte Dec_Hex, 
 		lcd.setCursor(LCD_x, LCD_y);
 		if (numero_total < 10)
 		{
-			lcd.print("0");
+			lcd.print(F("0"));
 			if (Dec_Hex == 1)	// decimal
 			{
 				lcd.print(numero_total);
@@ -6543,7 +6268,7 @@ int  Numerico_Write 			(int min, int max, byte LCD_x, byte LCD_y, byte Dec_Hex, 
 				}
 				else
 				{
-					lcd.print("0");
+					lcd.print(F("0"));
 					lcd.print(numero_total, HEX);
 				}
 				
@@ -6589,13 +6314,13 @@ int  Numerico_Write 			(int min, int max, byte LCD_x, byte LCD_y, byte Dec_Hex, 
 		lcd.setCursor(LCD_x, LCD_y);
 		if (numero_total < 10)
 		{
-			lcd.print("00");
+			lcd.print(F("00"));
 			lcd.print(numero_total);
 		}
 
 		if (numero_total > 9 && numero_total < 100)
 		{
-			lcd.print("0");
+			lcd.print(F("0"));
 			lcd.print(numero_total);
 		}
 
@@ -6652,19 +6377,19 @@ int  Numerico_Write 			(int min, int max, byte LCD_x, byte LCD_y, byte Dec_Hex, 
 
 		if (numero_total < 10)
 		{
-			lcd.print("000");
+			lcd.print(F("000"));
 			lcd.print(numero_total);
 		}
 
 		if (numero_total > 9 && numero_total < 100)
 		{
-			lcd.print("00");
+			lcd.print(F("00"));
 			lcd.print(numero_total);
 		}
 
 		if (numero_total > 99 && numero_total < 1000)
 		{
-			lcd.print("0");
+			lcd.print(F("0"));
 			lcd.print(numero_total);
 		}
 
