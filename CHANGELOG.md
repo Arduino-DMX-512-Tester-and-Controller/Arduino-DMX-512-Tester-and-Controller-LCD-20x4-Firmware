@@ -1,675 +1,409 @@
-                    GNU GENERAL PUBLIC LICENSE
-                       Version 3, 29 June 2007
-
- Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>
- Everyone is permitted to copy and distribute verbatim copies
- of this license document, but changing it is not allowed.
-
-                            Preamble
-
-  The GNU General Public License is a free, copyleft license for
-software and other kinds of works.
-
-  The licenses for most software and other practical works are designed
-to take away your freedom to share and change the works.  By contrast,
-the GNU General Public License is intended to guarantee your freedom to
-share and change all versions of a program--to make sure it remains free
-software for all its users.  We, the Free Software Foundation, use the
-GNU General Public License for most of our software; it applies also to
-any other work released this way by its authors.  You can apply it to
-your programs, too.
-
-  When we speak of free software, we are referring to freedom, not
-price.  Our General Public Licenses are designed to make sure that you
-have the freedom to distribute copies of free software (and charge for
-them if you wish), that you receive source code or can get it if you
-want it, that you can change the software or use pieces of it in new
-free programs, and that you know you can do these things.
-
-  To protect your rights, we need to prevent others from denying you
-these rights or asking you to surrender the rights.  Therefore, you have
-certain responsibilities if you distribute copies of the software, or if
-you modify it: responsibilities to respect the freedom of others.
-
-  For example, if you distribute copies of such a program, whether
-gratis or for a fee, you must pass on to the recipients the same
-freedoms that you received.  You must make sure that they, too, receive
-or can get the source code.  And you must show them these terms so they
-know their rights.
-
-  Developers that use the GNU GPL protect your rights with two steps:
-(1) assert copyright on the software, and (2) offer you this License
-giving you legal permission to copy, distribute and/or modify it.
-
-  For the developers' and authors' protection, the GPL clearly explains
-that there is no warranty for this free software.  For both users' and
-authors' sake, the GPL requires that modified versions be marked as
-changed, so that their problems will not be attributed erroneously to
-authors of previous versions.
-
-  Some devices are designed to deny users access to install or run
-modified versions of the software inside them, although the manufacturer
-can do so.  This is fundamentally incompatible with the aim of
-protecting users' freedom to change the software.  The systematic
-pattern of such abuse occurs in the area of products for individuals to
-use, which is precisely where it is most unacceptable.  Therefore, we
-have designed this version of the GPL to prohibit the practice for those
-products.  If such problems arise substantially in other domains, we
-stand ready to extend this provision to those domains in future versions
-of the GPL, as needed to protect the freedom of users.
-
-  Finally, every program is threatened constantly by software patents.
-States should not allow patents to restrict development and use of
-software on general-purpose computers, but in those that do, we wish to
-avoid the special danger that patents applied to a free program could
-make it effectively proprietary.  To prevent this, the GPL assures that
-patents cannot be used to render the program non-free.
-
-  The precise terms and conditions for copying, distribution and
-modification follow.
-
-                       TERMS AND CONDITIONS
-
-  0. Definitions.
-
-  "This License" refers to version 3 of the GNU General Public License.
-
-  "Copyright" also means copyright-like laws that apply to other kinds of
-works, such as semiconductor masks.
-
-  "The Program" refers to any copyrightable work licensed under this
-License.  Each licensee is addressed as "you".  "Licensees" and
-"recipients" may be individuals or organizations.
-
-  To "modify" a work means to copy from or adapt all or part of the work
-in a fashion requiring copyright permission, other than the making of an
-exact copy.  The resulting work is called a "modified version" of the
-earlier work or a work "based on" the earlier work.
-
-  A "covered work" means either the unmodified Program or a work based
-on the Program.
-
-  To "propagate" a work means to do anything with it that, without
-permission, would make you directly or secondarily liable for
-infringement under applicable copyright law, except executing it on a
-computer or modifying a private copy.  Propagation includes copying,
-distribution (with or without modification), making available to the
-public, and in some countries other activities as well.
-
-  To "convey" a work means any kind of propagation that enables other
-parties to make or receive copies.  Mere interaction with a user through
-a computer network, with no transfer of a copy, is not conveying.
-
-  An interactive user interface displays "Appropriate Legal Notices"
-to the extent that it includes a convenient and prominently visible
-feature that (1) displays an appropriate copyright notice, and (2)
-tells the user that there is no warranty for the work (except to the
-extent that warranties are provided), that licensees may convey the
-work under this License, and how to view a copy of this License.  If
-the interface presents a list of user commands or options, such as a
-menu, a prominent item in the list meets this criterion.
-
-  1. Source Code.
-
-  The "source code" for a work means the preferred form of the work
-for making modifications to it.  "Object code" means any non-source
-form of a work.
-
-  A "Standard Interface" means an interface that either is an official
-standard defined by a recognized standards body, or, in the case of
-interfaces specified for a particular programming language, one that
-is widely used among developers working in that language.
-
-  The "System Libraries" of an executable work include anything, other
-than the work as a whole, that (a) is included in the normal form of
-packaging a Major Component, but which is not part of that Major
-Component, and (b) serves only to enable use of the work with that
-Major Component, or to implement a Standard Interface for which an
-implementation is available to the public in source code form.  A
-"Major Component", in this context, means a major essential component
-(kernel, window system, and so on) of the specific operating system
-(if any) on which the executable work runs, or a compiler used to
-produce the work, or an object code interpreter used to run it.
-
-  The "Corresponding Source" for a work in object code form means all
-the source code needed to generate, install, and (for an executable
-work) run the object code and to modify the work, including scripts to
-control those activities.  However, it does not include the work's
-System Libraries, or general-purpose tools or generally available free
-programs which are used unmodified in performing those activities but
-which are not part of the work.  For example, Corresponding Source
-includes interface definition files associated with source files for
-the work, and the source code for shared libraries and dynamically
-linked subprograms that the work is specifically designed to require,
-such as by intimate data communication or control flow between those
-subprograms and other parts of the work.
-
-  The Corresponding Source need not include anything that users
-can regenerate automatically from other parts of the Corresponding
-Source.
-
-  The Corresponding Source for a work in source code form is that
-same work.
-
-  2. Basic Permissions.
-
-  All rights granted under this License are granted for the term of
-copyright on the Program, and are irrevocable provided the stated
-conditions are met.  This License explicitly affirms your unlimited
-permission to run the unmodified Program.  The output from running a
-covered work is covered by this License only if the output, given its
-content, constitutes a covered work.  This License acknowledges your
-rights of fair use or other equivalent, as provided by copyright law.
-
-  You may make, run and propagate covered works that you do not
-convey, without conditions so long as your license otherwise remains
-in force.  You may convey covered works to others for the sole purpose
-of having them make modifications exclusively for you, or provide you
-with facilities for running those works, provided that you comply with
-the terms of this License in conveying all material for which you do
-not control copyright.  Those thus making or running the covered works
-for you must do so exclusively on your behalf, under your direction
-and control, on terms that prohibit them from making any copies of
-your copyrighted material outside their relationship with you.
-
-  Conveying under any other circumstances is permitted solely under
-the conditions stated below.  Sublicensing is not allowed; section 10
-makes it unnecessary.
-
-  3. Protecting Users' Legal Rights From Anti-Circumvention Law.
-
-  No covered work shall be deemed part of an effective technological
-measure under any applicable law fulfilling obligations under article
-11 of the WIPO copyright treaty adopted on 20 December 1996, or
-similar laws prohibiting or restricting circumvention of such
-measures.
-
-  When you convey a covered work, you waive any legal power to forbid
-circumvention of technological measures to the extent such circumvention
-is effected by exercising rights under this License with respect to
-the covered work, and you disclaim any intention to limit operation or
-modification of the work as a means of enforcing, against the work's
-users, your or third parties' legal rights to forbid circumvention of
-technological measures.
-
-  4. Conveying Verbatim Copies.
-
-  You may convey verbatim copies of the Program's source code as you
-receive it, in any medium, provided that you conspicuously and
-appropriately publish on each copy an appropriate copyright notice;
-keep intact all notices stating that this License and any
-non-permissive terms added in accord with section 7 apply to the code;
-keep intact all notices of the absence of any warranty; and give all
-recipients a copy of this License along with the Program.
-
-  You may charge any price or no price for each copy that you convey,
-and you may offer support or warranty protection for a fee.
-
-  5. Conveying Modified Source Versions.
-
-  You may convey a work based on the Program, or the modifications to
-produce it from the Program, in the form of source code under the
-terms of section 4, provided that you also meet all of these conditions:
-
-    a) The work must carry prominent notices stating that you modified
-    it, and giving a relevant date.
-
-    b) The work must carry prominent notices stating that it is
-    released under this License and any conditions added under section
-    7.  This requirement modifies the requirement in section 4 to
-    "keep intact all notices".
-
-    c) You must license the entire work, as a whole, under this
-    License to anyone who comes into possession of a copy.  This
-    License will therefore apply, along with any applicable section 7
-    additional terms, to the whole of the work, and all its parts,
-    regardless of how they are packaged.  This License gives no
-    permission to license the work in any other way, but it does not
-    invalidate such permission if you have separately received it.
-
-    d) If the work has interactive user interfaces, each must display
-    Appropriate Legal Notices; however, if the Program has interactive
-    interfaces that do not display Appropriate Legal Notices, your
-    work need not make them do so.
-
-  A compilation of a covered work with other separate and independent
-works, which are not by their nature extensions of the covered work,
-and which are not combined with it such as to form a larger program,
-in or on a volume of a storage or distribution medium, is called an
-"aggregate" if the compilation and its resulting copyright are not
-used to limit the access or legal rights of the compilation's users
-beyond what the individual works permit.  Inclusion of a covered work
-in an aggregate does not cause this License to apply to the other
-parts of the aggregate.
-
-  6. Conveying Non-Source Forms.
-
-  You may convey a covered work in object code form under the terms
-of sections 4 and 5, provided that you also convey the
-machine-readable Corresponding Source under the terms of this License,
-in one of these ways:
-
-    a) Convey the object code in, or embodied in, a physical product
-    (including a physical distribution medium), accompanied by the
-    Corresponding Source fixed on a durable physical medium
-    customarily used for software interchange.
-
-    b) Convey the object code in, or embodied in, a physical product
-    (including a physical distribution medium), accompanied by a
-    written offer, valid for at least three years and valid for as
-    long as you offer spare parts or customer support for that product
-    model, to give anyone who possesses the object code either (1) a
-    copy of the Corresponding Source for all the software in the
-    product that is covered by this License, on a durable physical
-    medium customarily used for software interchange, for a price no
-    more than your reasonable cost of physically performing this
-    conveying of source, or (2) access to copy the
-    Corresponding Source from a network server at no charge.
-
-    c) Convey individual copies of the object code with a copy of the
-    written offer to provide the Corresponding Source.  This
-    alternative is allowed only occasionally and noncommercially, and
-    only if you received the object code with such an offer, in accord
-    with subsection 6b.
-
-    d) Convey the object code by offering access from a designated
-    place (gratis or for a charge), and offer equivalent access to the
-    Corresponding Source in the same way through the same place at no
-    further charge.  You need not require recipients to copy the
-    Corresponding Source along with the object code.  If the place to
-    copy the object code is a network server, the Corresponding Source
-    may be on a different server (operated by you or a third party)
-    that supports equivalent copying facilities, provided you maintain
-    clear directions next to the object code saying where to find the
-    Corresponding Source.  Regardless of what server hosts the
-    Corresponding Source, you remain obligated to ensure that it is
-    available for as long as needed to satisfy these requirements.
-
-    e) Convey the object code using peer-to-peer transmission, provided
-    you inform other peers where the object code and Corresponding
-    Source of the work are being offered to the general public at no
-    charge under subsection 6d.
-
-  A separable portion of the object code, whose source code is excluded
-from the Corresponding Source as a System Library, need not be
-included in conveying the object code work.
-
-  A "User Product" is either (1) a "consumer product", which means any
-tangible personal property which is normally used for personal, family,
-or household purposes, or (2) anything designed or sold for incorporation
-into a dwelling.  In determining whether a product is a consumer product,
-doubtful cases shall be resolved in favor of coverage.  For a particular
-product received by a particular user, "normally used" refers to a
-typical or common use of that class of product, regardless of the status
-of the particular user or of the way in which the particular user
-actually uses, or expects or is expected to use, the product.  A product
-is a consumer product regardless of whether the product has substantial
-commercial, industrial or non-consumer uses, unless such uses represent
-the only significant mode of use of the product.
-
-  "Installation Information" for a User Product means any methods,
-procedures, authorization keys, or other information required to install
-and execute modified versions of a covered work in that User Product from
-a modified version of its Corresponding Source.  The information must
-suffice to ensure that the continued functioning of the modified object
-code is in no case prevented or interfered with solely because
-modification has been made.
-
-  If you convey an object code work under this section in, or with, or
-specifically for use in, a User Product, and the conveying occurs as
-part of a transaction in which the right of possession and use of the
-User Product is transferred to the recipient in perpetuity or for a
-fixed term (regardless of how the transaction is characterized), the
-Corresponding Source conveyed under this section must be accompanied
-by the Installation Information.  But this requirement does not apply
-if neither you nor any third party retains the ability to install
-modified object code on the User Product (for example, the work has
-been installed in ROM).
-
-  The requirement to provide Installation Information does not include a
-requirement to continue to provide support service, warranty, or updates
-for a work that has been modified or installed by the recipient, or for
-the User Product in which it has been modified or installed.  Access to a
-network may be denied when the modification itself materially and
-adversely affects the operation of the network or violates the rules and
-protocols for communication across the network.
-
-  Corresponding Source conveyed, and Installation Information provided,
-in accord with this section must be in a format that is publicly
-documented (and with an implementation available to the public in
-source code form), and must require no special password or key for
-unpacking, reading or copying.
-
-  7. Additional Terms.
-
-  "Additional permissions" are terms that supplement the terms of this
-License by making exceptions from one or more of its conditions.
-Additional permissions that are applicable to the entire Program shall
-be treated as though they were included in this License, to the extent
-that they are valid under applicable law.  If additional permissions
-apply only to part of the Program, that part may be used separately
-under those permissions, but the entire Program remains governed by
-this License without regard to the additional permissions.
-
-  When you convey a copy of a covered work, you may at your option
-remove any additional permissions from that copy, or from any part of
-it.  (Additional permissions may be written to require their own
-removal in certain cases when you modify the work.)  You may place
-additional permissions on material, added by you to a covered work,
-for which you have or can give appropriate copyright permission.
-
-  Notwithstanding any other provision of this License, for material you
-add to a covered work, you may (if authorized by the copyright holders of
-that material) supplement the terms of this License with terms:
-
-    a) Disclaiming warranty or limiting liability differently from the
-    terms of sections 15 and 16 of this License; or
-
-    b) Requiring preservation of specified reasonable legal notices or
-    author attributions in that material or in the Appropriate Legal
-    Notices displayed by works containing it; or
-
-    c) Prohibiting misrepresentation of the origin of that material, or
-    requiring that modified versions of such material be marked in
-    reasonable ways as different from the original version; or
-
-    d) Limiting the use for publicity purposes of names of licensors or
-    authors of the material; or
-
-    e) Declining to grant rights under trademark law for use of some
-    trade names, trademarks, or service marks; or
-
-    f) Requiring indemnification of licensors and authors of that
-    material by anyone who conveys the material (or modified versions of
-    it) with contractual assumptions of liability to the recipient, for
-    any liability that these contractual assumptions directly impose on
-    those licensors and authors.
-
-  All other non-permissive additional terms are considered "further
-restrictions" within the meaning of section 10.  If the Program as you
-received it, or any part of it, contains a notice stating that it is
-governed by this License along with a term that is a further
-restriction, you may remove that term.  If a license document contains
-a further restriction but permits relicensing or conveying under this
-License, you may add to a covered work material governed by the terms
-of that license document, provided that the further restriction does
-not survive such relicensing or conveying.
-
-  If you add terms to a covered work in accord with this section, you
-must place, in the relevant source files, a statement of the
-additional terms that apply to those files, or a notice indicating
-where to find the applicable terms.
-
-  Additional terms, permissive or non-permissive, may be stated in the
-form of a separately written license, or stated as exceptions;
-the above requirements apply either way.
-
-  8. Termination.
-
-  You may not propagate or modify a covered work except as expressly
-provided under this License.  Any attempt otherwise to propagate or
-modify it is void, and will automatically terminate your rights under
-this License (including any patent licenses granted under the third
-paragraph of section 11).
-
-  However, if you cease all violation of this License, then your
-license from a particular copyright holder is reinstated (a)
-provisionally, unless and until the copyright holder explicitly and
-finally terminates your license, and (b) permanently, if the copyright
-holder fails to notify you of the violation by some reasonable means
-prior to 60 days after the cessation.
-
-  Moreover, your license from a particular copyright holder is
-reinstated permanently if the copyright holder notifies you of the
-violation by some reasonable means, this is the first time you have
-received notice of violation of this License (for any work) from that
-copyright holder, and you cure the violation prior to 30 days after
-your receipt of the notice.
-
-  Termination of your rights under this section does not terminate the
-licenses of parties who have received copies or rights from you under
-this License.  If your rights have been terminated and not permanently
-reinstated, you do not qualify to receive new licenses for the same
-material under section 10.
-
-  9. Acceptance Not Required for Having Copies.
-
-  You are not required to accept this License in order to receive or
-run a copy of the Program.  Ancillary propagation of a covered work
-occurring solely as a consequence of using peer-to-peer transmission
-to receive a copy likewise does not require acceptance.  However,
-nothing other than this License grants you permission to propagate or
-modify any covered work.  These actions infringe copyright if you do
-not accept this License.  Therefore, by modifying or propagating a
-covered work, you indicate your acceptance of this License to do so.
-
-  10. Automatic Licensing of Downstream Recipients.
-
-  Each time you convey a covered work, the recipient automatically
-receives a license from the original licensors, to run, modify and
-propagate that work, subject to this License.  You are not responsible
-for enforcing compliance by third parties with this License.
-
-  An "entity transaction" is a transaction transferring control of an
-organization, or substantially all assets of one, or subdividing an
-organization, or merging organizations.  If propagation of a covered
-work results from an entity transaction, each party to that
-transaction who receives a copy of the work also receives whatever
-licenses to the work the party's predecessor in interest had or could
-give under the previous paragraph, plus a right to possession of the
-Corresponding Source of the work from the predecessor in interest, if
-the predecessor has it or can get it with reasonable efforts.
-
-  You may not impose any further restrictions on the exercise of the
-rights granted or affirmed under this License.  For example, you may
-not impose a license fee, royalty, or other charge for exercise of
-rights granted under this License, and you may not initiate litigation
-(including a cross-claim or counterclaim in a lawsuit) alleging that
-any patent claim is infringed by making, using, selling, offering for
-sale, or importing the Program or any portion of it.
-
-  11. Patents.
-
-  A "contributor" is a copyright holder who authorizes use under this
-License of the Program or a work on which the Program is based.  The
-work thus licensed is called the contributor's "contributor version".
-
-  A contributor's "essential patent claims" are all patent claims
-owned or controlled by the contributor, whether already acquired or
-hereafter acquired, that would be infringed by some manner, permitted
-by this License, of making, using, or selling its contributor version,
-but do not include claims that would be infringed only as a
-consequence of further modification of the contributor version.  For
-purposes of this definition, "control" includes the right to grant
-patent sublicenses in a manner consistent with the requirements of
-this License.
-
-  Each contributor grants you a non-exclusive, worldwide, royalty-free
-patent license under the contributor's essential patent claims, to
-make, use, sell, offer for sale, import and otherwise run, modify and
-propagate the contents of its contributor version.
-
-  In the following three paragraphs, a "patent license" is any express
-agreement or commitment, however denominated, not to enforce a patent
-(such as an express permission to practice a patent or covenant not to
-sue for patent infringement).  To "grant" such a patent license to a
-party means to make such an agreement or commitment not to enforce a
-patent against the party.
-
-  If you convey a covered work, knowingly relying on a patent license,
-and the Corresponding Source of the work is not available for anyone
-to copy, free of charge and under the terms of this License, through a
-publicly available network server or other readily accessible means,
-then you must either (1) cause the Corresponding Source to be so
-available, or (2) arrange to deprive yourself of the benefit of the
-patent license for this particular work, or (3) arrange, in a manner
-consistent with the requirements of this License, to extend the patent
-license to downstream recipients.  "Knowingly relying" means you have
-actual knowledge that, but for the patent license, your conveying the
-covered work in a country, or your recipient's use of the covered work
-in a country, would infringe one or more identifiable patents in that
-country that you have reason to believe are valid.
-
-  If, pursuant to or in connection with a single transaction or
-arrangement, you convey, or propagate by procuring conveyance of, a
-covered work, and grant a patent license to some of the parties
-receiving the covered work authorizing them to use, propagate, modify
-or convey a specific copy of the covered work, then the patent license
-you grant is automatically extended to all recipients of the covered
-work and works based on it.
-
-  A patent license is "discriminatory" if it does not include within
-the scope of its coverage, prohibits the exercise of, or is
-conditioned on the non-exercise of one or more of the rights that are
-specifically granted under this License.  You may not convey a covered
-work if you are a party to an arrangement with a third party that is
-in the business of distributing software, under which you make payment
-to the third party based on the extent of your activity of conveying
-the work, and under which the third party grants, to any of the
-parties who would receive the covered work from you, a discriminatory
-patent license (a) in connection with copies of the covered work
-conveyed by you (or copies made from those copies), or (b) primarily
-for and in connection with specific products or compilations that
-contain the covered work, unless you entered into that arrangement,
-or that patent license was granted, prior to 28 March 2007.
-
-  Nothing in this License shall be construed as excluding or limiting
-any implied license or other defenses to infringement that may
-otherwise be available to you under applicable patent law.
-
-  12. No Surrender of Others' Freedom.
-
-  If conditions are imposed on you (whether by court order, agreement or
-otherwise) that contradict the conditions of this License, they do not
-excuse you from the conditions of this License.  If you cannot convey a
-covered work so as to satisfy simultaneously your obligations under this
-License and any other pertinent obligations, then as a consequence you may
-not convey it at all.  For example, if you agree to terms that obligate you
-to collect a royalty for further conveying from those to whom you convey
-the Program, the only way you could satisfy both those terms and this
-License would be to refrain entirely from conveying the Program.
-
-  13. Use with the GNU Affero General Public License.
-
-  Notwithstanding any other provision of this License, you have
-permission to link or combine any covered work with a work licensed
-under version 3 of the GNU Affero General Public License into a single
-combined work, and to convey the resulting work.  The terms of this
-License will continue to apply to the part which is the covered work,
-but the special requirements of the GNU Affero General Public License,
-section 13, concerning interaction through a network will apply to the
-combination as such.
-
-  14. Revised Versions of this License.
-
-  The Free Software Foundation may publish revised and/or new versions of
-the GNU General Public License from time to time.  Such new versions will
-be similar in spirit to the present version, but may differ in detail to
-address new problems or concerns.
-
-  Each version is given a distinguishing version number.  If the
-Program specifies that a certain numbered version of the GNU General
-Public License "or any later version" applies to it, you have the
-option of following the terms and conditions either of that numbered
-version or of any later version published by the Free Software
-Foundation.  If the Program does not specify a version number of the
-GNU General Public License, you may choose any version ever published
-by the Free Software Foundation.
-
-  If the Program specifies that a proxy can decide which future
-versions of the GNU General Public License can be used, that proxy's
-public statement of acceptance of a version permanently authorizes you
-to choose that version for the Program.
-
-  Later license versions may give you additional or different
-permissions.  However, no additional obligations are imposed on any
-author or copyright holder as a result of your choosing to follow a
-later version.
-
-  15. Disclaimer of Warranty.
-
-  THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY
-APPLICABLE LAW.  EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT
-HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM "AS IS" WITHOUT WARRANTY
-OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,
-THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
-PURPOSE.  THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM
-IS WITH YOU.  SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF
-ALL NECESSARY SERVICING, REPAIR OR CORRECTION.
-
-  16. Limitation of Liability.
-
-  IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
-WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES AND/OR CONVEYS
-THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY
-GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE
-USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED TO LOSS OF
-DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD
-PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER PROGRAMS),
-EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
-SUCH DAMAGES.
-
-  17. Interpretation of Sections 15 and 16.
-
-  If the disclaimer of warranty and limitation of liability provided
-above cannot be given local legal effect according to their terms,
-reviewing courts shall apply local law that most closely approximates
-an absolute waiver of all civil liability in connection with the
-Program, unless a warranty or assumption of liability accompanies a
-copy of the Program in return for a fee.
-
-                     END OF TERMS AND CONDITIONS
-
-            How to Apply These Terms to Your New Programs
-
-  If you develop a new program, and you want it to be of the greatest
-possible use to the public, the best way to achieve this is to make it
-free software which everyone can redistribute and change under these terms.
-
-  To do so, attach the following notices to the program.  It is safest
-to attach them to the start of each source file to most effectively
-state the exclusion of warranty; and each file should have at least
-the "copyright" line and a pointer to where the full notice is found.
-
-    {one line to give the program's name and a brief idea of what it does.}
-    Copyright (C) {year}  {name of author}
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-Also add information on how to contact you by electronic and paper mail.
-
-  If the program does terminal interaction, make it output a short
-notice like this when it starts in an interactive mode:
-
-    {project}  Copyright (C) {year}  {fullname}
-    This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'.
-    This is free software, and you are welcome to redistribute it
-    under certain conditions; type `show c' for details.
-
-The hypothetical commands `show w' and `show c' should show the appropriate
-parts of the General Public License.  Of course, your program's commands
-might be different; for a GUI interface, you would use an "about box".
-
-  You should also get your employer (if you work as a programmer) or school,
-if any, to sign a "copyright disclaimer" for the program, if necessary.
-For more information on this, and how to apply and follow the GNU GPL, see
-<http://www.gnu.org/licenses/>.
-
-  The GNU General Public License does not permit incorporating your program
-into proprietary programs.  If your program is a subroutine library, you
-may consider it more useful to permit linking proprietary applications with
-the library.  If this is what you want to do, use the GNU Lesser General
-Public License instead of this License.  But first, please read
-<http://www.gnu.org/philosophy/why-not-lgpl.html>.
-
+- Compilado en Arduino IDE v1.0.6
+- Instalación de librerías DMX:
+	- Instalar Arduino IDE v1.0.6 (carpeta .../Software/) (Windows 10 64 bits, ok!)
+	- Instalar la librería del encoder:
+		- Menú Sketch, Importar librería, Add Library
+		- Seleccionar el archivo Encoder.zip (carpeta .../Firmware/Documentacion/Librerias/)
+		- Abrir
+		- Mensaje: Library added to you libraries
+	- Instalar la librería del LCD:
+		- Menú Sketch, Importar librería, Add Library
+		- Seleccionar el archivo LiquidCrystal_V1.2.1.zip (carpeta .../Firmware/Documentacion/Librerias/)
+		- Abrir
+		- Mensaje: Library added to you libraries
+	- Instalar la librería del DMX:
+		- Copiar la carpeta DMX desde .../Firmware/Documentacion/Librerias/DMX/Dmx/
+		- Pegarla en la carpeta de .../Arduino/libraries/ el los archivos de programa (para el caso de Windows 10 64 bits, C:\Program Files (x86)\Arduino\libraries)
+		- Reiniciar Arduino IDE
+		- Revisar el menú Sketch, Importar librería..., Dmx
+- Cargando el Firmware:
+	- Seleccionar el firmware que vamos a cargar
+	- Lo abrimos desde Arduino IDE
+	- Menú Herramientas, Tarjeta, Arduino Mega 2560 or Mega ADK
+	- Conectar el Arduino Mega al PC
+	- Verificar que Windows lo dé de alta correctamente:
+		- Panel de control\Sistema y seguridad\Sistema
+		- Administrador de dispositivos
+		- Puertos (COM y LPT)
+		- Arduino Mega 2560 (COMx)
+	- En Arduino IDE seleccionamos nuestro Arduino Mega:
+		- Menú Herramientas, Puerto Serial, COMx
+	- Clic en el icono Cargar...
+	- Salen estos errores:
+		- avrdude: stk500v2_recv(): checksum error
+		- avrdude: stk500v2_recv(): checksum error
+		- avrdude: stk500v2_recv(): checksum error
+		- avrdude: stk500v2_recv(): checksum error
+		- avrdude: stk500v2_recv(): checksum error
+		- avrdude: stk500v2_recv(): checksum error
+		- avrdude: verification error, first mismatch at byte 0x0b60 0x50 != 0xd7
+		- avrdude: verification error; content mismatch
+
+***
+
+## **[v2.2 - Stable - Final Support - Hardware v0.7 - v0.8](https://bitbucket.org/daniel3514/0066-arduino-dmx-512-tester-controller/src/master/Firmware/v2.2/)**
+- Tamaño binario del Sketch: 41.998 bytes (de un máximo de 258.048 bytes)
+- **CORREGIDO,** se agregó a serial.print, F() para que cadena se guarde en la flash y no en la RAM
+***
+
+## **[v2.1 - Stable - Hardware v0.7 - v0.8](https://bitbucket.org/daniel3514/0066-arduino-dmx-512-tester-controller/src/c476548b1773d4190de46427af87cd6a6b826830/Firmware/v2.1/?at=master)**
+- Tamaño binario del Sketch: 41,590 bytes (de un máximo de 258,048 bytes)
+- **CORREGIR,** void Numeric_Write, lo remplazo void Numerico_Print, esta función ya no se utiliza
+- **AGREGADO,** a menú config, eeprom default
+- **CAMBIADO,** menú config, reorganización de items
+- **AGREGADO,** a menú 2, about
+- **AGREGADO,** a menú 2, config
+- **AGREGADO,** a menú 2, botón de back
+- **AGREGADO,** menú 2
+- **AGREGADO,** menú 1, botón de next
+- **CAMBIADO,** menú 1, reubicación de items
+- **CAMBIADO,** Config ya no tiene la opción de About, about, queda en el menú principal
+- **CORREGIDO,** GUI_Control_Options a GUI_Menu_1, se agregaron más menús de funciones
+- **CORREGIDO,** Contrast_Init a Init_Contrast, se busca más rápido
+- **CORREGIDO,** Back_Light_Init a Init_Back_Light, se busca más rápido
+- **CORREGIDO,** EEPROM_Load_Init a Init_EEPROM_Load, se busca más rápido
+- **AGREGADO,** carácter next
+- **AGREGADO,** carácter back 
+***
+
+## **[v2.0 - Stable - Hardware v0.7 - v0.8](https://bitbucket.org/daniel3514/0066-arduino-dmx-512-tester-controller/src/03ac9d7d01c0ac0785e2351d8d0e76eea3e9af66/Firmware/v2.0/?at=master)**
+- **AGREGADO,** a config, external light
+- **CAMBIADO,** en config, redistribución de menú
+- **ELIMINADO,** interruptores de lights, los sustituye teclado
+- **AGREGADO,** en teclado *, on off de external light
+- **AGREGADO,** en teclado #, on off de backlight y key light
+- **AGREGADO,** en Navegar, la lectura de * y # para lights
+- **CORREGIDO,** en GUI_Memory_Init, la llamada a GUI_Control_Options(), era redundante
+- **CORREGIDO,** en Multiply, espaciado
+- **CAMBIADO,** en Secuencer por caracteres nuevos
+- **CORREGIDO,** en Memory, espaciado
+- **CAMBIADO,** en Memory por caracteres nuevos
+- **CAMBIADO,** en config por caracteres nuevos
+- **CAMBIADO,** en control chaser por caracteres nuevos
+- **CORREGIDO,** en control matrix, el índice empieza en opción 1 y no en 3
+- **CAMBIADO,** en control matrix por caracteres nuevos
+- **CAMBIADO,** en control unitary por caracteres nuevos
+- **CAMBIADO,** en convert por caracteres nuevos
+- **CAMBIADO,** en control options por caracteres nuevos
+- **CAMBIADO,** en about por caracteres nuevos
+- **CAMBIADO,** en menú memory init por caracteres nuevos
+- **CAMBIADO,** en menú memory bank por caracteres nuevos
+- **AGREGADO,** carácter para LCD de exit
+- **AGREGADO,** carácter para LCD de archivo
+- **ELIMINADO,** a numeric write, * y # como control de números 
+- **AGREGADO,** tabuladores al código
+- **CORREGIDO,** Link de about de wiki al de Bitbucket https://goo.gl/7RsKo1
+- **CORREGIDO,** about, versión de firmware de 1.9 a 2.0
+- **AGREGADO,** a inicio, Load Bank:-, se quita b-
+- **AGREGADO,** a Memory, Bank:-, se quita b-
+- **CORREGIDO,** en Memory Bank, la leyenda Bank esta recorrida
+- **CORREGIDO,** en Initial Memory, faltaba:
+- **CORREGIDO,** en Memory, espacios y :
+- **CORREGIDO,** en Secuencer, faltaba:
+- **CORREGIDO,** DMX_Controller.ino:5747: warning: 'numero_total' may be used uninitialized in this function, se corrigió poniendo = 0
+***
+
+## **[v1.9 - Stable - Hardware v0.7 - v0.8](https://bitbucket.org/daniel3514/0066-arduino-dmx-512-tester-controller/src/03ac9d7d01c0ac0785e2351d8d0e76eea3e9af66/Firmware/v1.9/?at=master)**
+- **PENDIENTE,** - funciones en teclado back light, agregar a lectura numerico write
+- **PENDIENTE,** - sacar numérico write y remplazar por numérico print
+- **PENDIENTE,** - Convert, cambiar cursor de navegación de binarios
+- **PENDIENTE,** - tecla *, para backlight y key light, en esta versión no está activa
+- **PENDIENTE,** - tecla #, quitarla de enter, no se usa, sustituye encoder center
+- **PENDIENTE,** - DMX_Controller.ino: In function 'int Numerico_Write(int, int, byte, byte, byte, int)':
+	- DMX_Controller.ino:5971: warning: control reaches end of non-void function
+- **PENDIENTE,** - DMX_Controller.ino:5747: warning: 'numero_total' may be used uninitialized in this function
+- **PENDIENTE,** - link de repositorio a bitbucket https://goo.gl/7RsKo1
+- **AGREGADO,**  - modelo de programación de LCD - Encoder - keypad
+	- https://github.com/daniel3514/Arduino-LCD-Encoder-KeyPad-Examples/tree/master/Examples/LCD%20-%20Encoder%20-%20Key%20Pad/v0.0
+- **AGREGADO,** canal actual a eeprom
+- **AGREGADO,** canal actual salvar en eeprom cuando se sale de algún control
+- **AGREGADO,** Control Unit, función para escribir valores repetidos en la matriz, ejemplo si hay dos unos ambos se actualizan
+- **AGREGADO,** Control Matrix, Ubicar, valor anterior al final
+- **AGREGADO,** Control Matrix, ubicar a inicial y final
+- **AGREGADO,** Control Matrix, mostrar canal a inicial y final
+- **CORREGIDO,** menú, memoria, cambio de orden de items
+- **CORREGIDO,** menú, Config, límites y vista
+- **CORREGIDO,** Control Unitary, rediseño de GUI
+- **AGREGADO,** Control Unitary, 8 unitarios distintos no consecutivos
+- **AGREGADO,** Convert, opción de ubicar canal
+- **CORREGIDO,** Convert, rediseño de interface gráfica
+- **CORREGIDO,** Convert, modelo de navegación de binarios
+- **CORREGIDO,** Control Chaser, rediseño de interface gráfica
+- **AGREGADO,** Control Chaser. canal actual como first
+- **AGREGADO,** Control Chaser, canal actual inicia encendido
+- **AGREGADO,** Control Chaser, repasar canales desde encoder
+- **CORREGIDO,** Control Secuencer, rediseño de GUI
+- **CORREGIDO,** Config, la ventana de acción del contraste se queda en los límites de 0 a 255
+- **AGREGADO,** Secuencer, el universo inicial siempre es 1
+- **AGREGADO,** Multiply, valores preestablecidos
+***
+
+## **[v1.8 - beta - Hardware v0.7 - v0.8](https://bitbucket.org/daniel3514/0066-arduino-dmx-512-tester-controller/src/03ac9d7d01c0ac0785e2351d8d0e76eea3e9af66/Firmware/v1.8/?at=master)**
+- **CORREGIR,** cambiar delay por interrupciones de timer
+- **CORREGIDO,** Pin Out para hardware v0.7
+- **CORREGIDO,** Pin encoder center al 6
+- **CORREGIDO,** Quitar la programación del potenciómetro
+- **CORREGIDO,** Quitar la programación de los cursores
+- **CORREGIDO,** pin 6 de encoder center a pull-up
+- **CORREGIDO,** pin key light a 11
+- **CORREGIDO,** pin contraste a 12
+- **AGREGAR,** en multiplicador, el valor en tiempo real desde el potenciómetro o teclado
+- **AGREGAR,** control chaser desde el potenciómetro, al girar recorre los canales
+- **AGREGAR,** EEPROM Default en pin 9 como pull-up
+- **AGREGAR,** dimmer para luz led como lámpara en pin 10
+- **AGREGADO,** a EEPROM, espacio para Ext Light
+- **AGREGADO,** función para jumper de eeprom default
+- **AGREGADO,** dimmer de pantalla al inicio
+- **AGREGADO,** índices a posiciones de LCD en el Excel
+***
+
+## **[v1.7 - Stable - Hardware v0.3 - v0.5](https://bitbucket.org/daniel3514/0066-arduino-dmx-512-tester-controller/src/03ac9d7d01c0ac0785e2351d8d0e76eea3e9af66/Firmware/v1.7/?at=master)**
+- **CORREGIDO,** se separa la lectura desde el encoder como función
+- **CORREGIDO,** en analogy read "a" cambia por encoder read "e"
+- **AGREGADO,** control desde encoder a value de dmx
+- **AGREGADO,** control desde encoder a config contraste 
+- **AGREGADO,** control desde encoder a config backlight
+- **AGREGADO,** control desde encoder a config bank init
+***
+
+## **[v1.6 - Stable - Hardware v0.3 - v0.5](https://bitbucket.org/daniel3514/0066-arduino-dmx-512-tester-controller/src/03ac9d7d01c0ac0785e2351d8d0e76eea3e9af66/Firmware/v1.6/?at=master)**
+- **CORREGIDO,** se agrega un encoder KEYES Rotary encoder module KY-040 para remplazar el potenciómetro
+- **AGREGADO,** el botón del centro es el mismo del encoder
+- **AGREGADO,** encoder CLK en 6 DT en 7
+- **CORREGIDO,** el pin del potenciómetro se elimina
+- **AGREGADO,** encoder library 
+	- https://www.pjrc.com/teensy/td_libs_Encoder.html
+- **CORREGIDO,** lectura análoga de valor, se agrega el valor anterior en la escritura del LCD
+- **CORREGIDO,** lectura análoga en valor el cursor blink se queda en la "a" y no sobre el numero
+***
+
+## **[v1.5 - Stable - Hardware v0.3 - v0.4](https://bitbucket.org/daniel3514/0066-arduino-dmx-512-tester-controller/src/03ac9d7d01c0ac0785e2351d8d0e76eea3e9af66/Firmware/v1.5/?at=master)**
+- Ultima versión con potenciómetro
+- **CORREGIDO,** el cursor en el análogo se mostraba el blink fuera del numero y se encimaba
+***
+
+## **[v1.4 - Stable - Hardware v0.3 - v0.4](https://bitbucket.org/daniel3514/0066-arduino-dmx-512-tester-controller/src/03ac9d7d01c0ac0785e2351d8d0e76eea3e9af66/Firmware/v1.4/?at=master)**
+- **CORREGIDO,** en about la versión actual
+- **CORREGIDO,** las leyendas Ctrl cambian por Exit, el menú control ya no tiene la leyenda
+- **CORREGIDO,** en control unitary Ctrl cambia por Exit
+- **CORREGIDO,** en control Matrix Ctr cambia por Exi
+- **CORREGIDO,** en control chaser Ctrl por Exit
+- **CORREGIDO,** en control secuencer Ctrl por Exit
+- **CORREGIDO,** en control multiply Ctrl por Exit
+- **CORREGIDO,** en control options se quitó la leyenda Control:
+- **AGREGADO,** Convert, convierte entre binario y decimal para address dip switch
+- **AGREGADO,** a control options la opción Convert
+- **AGREGADO,** a Convert binario a decimal botón de centro para salir, botón de lados para navegar, botón arriba abajo para cambiar valor
+***
+
+## **[v1.3 - Stable - Hardware v0.3 - v0.4](https://bitbucket.org/daniel3514/0066-arduino-dmx-512-tester-controller/src/03ac9d7d01c0ac0785e2351d8d0e76eea3e9af66/Firmware/v1.3/?at=master)**
+- **CORREGIR,** en control matrix cuando se selecciona un canal de la esquina el cursor parpadeando queda fuera de lugar
+- **AGREGADO,** Control de iluminación para teclado
+- **AGREGADO,** a EEPROM la posición 4092 para guardar key light
+- **AGREGADO,** la variable global int EEPROM_Limit para controlar el límite de escritura de eeprom de universos
+- **AGREGADO,** EEPROM_Limit a todas las funciones de memoria EEPROM
+- **AGREGADO,** el control * en el teclado controla el back light y el key light 
+- **AGREGADO,** variable global Light_On_Off para control desde tecla * de la iluminacion de teclado y back
+- **AGREGADO,** al about un dimmer en key y back durante el efecto binario
+- **AGREGADO,** a la tecla de light * un dimmer de on y off para key y back
+- **CORREGIDO,** en Back_Light_En, byte Back_Light_Value = EEPROM.read(513); el valor esta fuera de rango
+- **CORREGIDO,** unused variable 'EEPROM_Add'
+- **CORREGIDO,** en about "open hardware!" por "Open Source License:"
+***
+
+## **[v1.2 - Stable - Hardware v0.3 - v0.4](https://bitbucket.org/daniel3514/0066-arduino-dmx-512-tester-controller/src/03ac9d7d01c0ac0785e2351d8d0e76eea3e9af66/Firmware/v1.2/?at=master)**
+- **AGREGADO,** al arranque toma el banco de la eeprom previamente elegido desde config
+- **AGREGADO,** a config el banco que lee a arranque
+- **AGREGADO,** al about el banco actual
+- **AGREGADO,** a about reacomodo de datos
+- **AGREGADO,** a about licencias open source
+- **AGREGADO,** a initial memory el bank actual
+- **AGREGADO,** en EEPROM add 4093 para guardar banco a correr al inicio
+- **AGREGADO,** Bank 8 solo tiene 509 canales disponibles
+- **AGREGADO,** a EEPROM Load el límite en bank 8 de 4092
+- **AGREGADO,** a EEPROM Save el límite en bank 8 de 4092
+- **CORREGIDO,** GUI Config de LCD config solo a config
+- **CORREGIDO,** GUI Config de Control a exit
+- **AGREGADO,** a GUI Config opción bank init
+- **AGREGADO,** EEPROM_Load_Init para cargar el universo pre configurado al inicio
+- **CORREGIDO,** GUI about cambio de disposición y url por wiki
+- **AGREGADO,** GUI_Licence a config
+***
+
+## **[v1.1 - Beta - Hardware v0.3 - v0.4](https://bitbucket.org/daniel3514/0066-arduino-dmx-512-tester-controller/src/03ac9d7d01c0ac0785e2351d8d0e76eea3e9af66/Firmware/v1.1/?at=master)**
+- **AGREGADO,** memory a control options
+- **AGREGADO,** a memory gui ClearAll para borrar todos los bancos de la eeprom
+- **AGREGADO,** a memory gui reacomodo de menús
+***
+
+## **[v1.0 - Beta - Hardware v0.3 - v0.4](https://bitbucket.org/daniel3514/0066-arduino-dmx-512-tester-controller/src/03ac9d7d01c0ac0785e2351d8d0e76eea3e9af66/Firmware/v1.0/?at=master)**
+- **CORREGIDO,** seceuncer no tiene reversa
+- **CORREGIDO,** secuencer no tiene salida de dmx, el uso de memoria eeprom descartaba valores
+- **CORREGIDO,** GUI_Secuencer se cambió el método de lectura de memoria, se hace en tiempo real, evita over flow
+- **CORREGIDO,** GUI_Secuencer se cambió a GUI_Control_Secuencer
+- **CORREGIDO,** tabulacion
+- **CORREGIDO,** manejo de memoria EEPROM al guardar y leer el conteo es en 1 y no en 0
+- **CORREGIDO,** GUI_Chasser el cursor blink no se mostraba después de stop 
+- **CORREGIDO,** GUI_Control_Options, el cursor no se mostraba en unitary
+- **CORREGIDO,** disminución de tiempo mensaje final de opciones de acceso a eeprom
+- **AGREGADO,** lectura de botón "center" en el about
+- **AGREGADO,** a GUI_Secuencer límite de delay a 100
+- **AGREGADO,** a GUI_Secuencer en la salida a control regresa al dmx los datos desde la RAM
+- **AGREGADO,** a GUI_Unitary el canal anterior y siguiente en el gui
+***
+
+## **[v0.9 - Beta - Hardware v0.3 - v0.4](https://bitbucket.org/daniel3514/0066-arduino-dmx-512-tester-controller/src/03ac9d7d01c0ac0785e2351d8d0e76eea3e9af66/Firmware/v0.9/?at=master)**
+- **CORREGIR,** GUI_Secuencer provoca over flow y se reinicia, demasiada RAM usada
+- **CORREGIDO,** GUI_Navegar se cambió la variable Boton_Delay_Cursor de long a int
+- **CORREGIDO,** Contrast_Init se limita a no menor de 150 el valor del pwm
+- **CORREGIDO,** GUI_Config solo en control options
+- **CORREGIDO,** esta encimado en control options unitary
+- **CORREGIDO,** GUI Control Options se quitó iniciar:, no se usa
+- **CORREGIDO,** se agregó variable global BackLight_Add para dirección de EEPROM
+- **CORREGIDO,** se agregó variable global Contrast_Add para dirección de EEPROM
+- **CORREGIDO,** Se quitó el efecto binario cuando se usa la memoria EEPROM
+- **AGREGADO,** GUI_Secuencer limitado delay entre 0 y 999 x 100 mS
+- **AGREGADO,** GUI_Secuencer limitado final y first entre 1 y 8
+- **AGREGADO,** a GUI_About bink del cursor
+- **AGREGADO,** GUI_Memory_Bank
+- **AGREGADO,** GUI_Memory_Bank, regresa 1 si se selecciona salir para regresar al menú anterior
+- **AGREGADO,** a GUI_Memory_Bank, retardo cuando entra al banco de memoria
+- **AGREGADO,** a matrix el número de banco actual, si el banco no se seleccionó muestra "-"
+- **AGREGADO,** a memory options el número de banco actual, si el banco no se seleccionó muestra "-"
+- **AGREGADO,** a unitary control el número de banco actual, si el banco no se seleccionó muestra "-"
+- **AGREGADO,** a multiply control el número de banco actual, si el banco no se seleccionó muestra "-"
+- **AGREGADO,** a GUI Memory la configuración
+- **AGREGADO,** a GUI Control Options el número de banco actual, si el banco no se seleccionó muestra "-"
+- **AGREGADO,** a GUI Control Options la configuración
+- **AGREGADO,** a GUI_EEPROM_Empty la leyenda del banco que se está modificando "RAM"
+- **AGREGADO,** a GUI_EEPROM_Empty el blink del lcd para saber que está trabajando
+- **AGREGADO,** a EEPROM_Clear control de universos guardados
+- **AGREGADO,** a EEPROM_Clear al final y al principio el número de banco
+- **AGREGADO,** a EEPROM_Clear el blink del lcd para saber que está trabajando
+- **AGREGADO,** a EEPROM_Clear regresa 1 si se selecciona exit
+- **AGREGADO,** a EEPROM_Clear más tiempo para mensaje final
+- **AGREGADO,** a EEPROM_Load control de universos guardados
+- **AGREGADO,** a EEPROM_Load, regresa 1 si se selecciona exit
+- **AGREGADO,** a EEPROM_Load al final el número de banco
+- **AGREGADO,** a EEPROM_Load el blink del lcd para saber que está trabajando
+- **AGREGADO,** a EEPROM_Load más tiempo para mensaje final
+- **AGREGADO,** a EEPROM_Save control de universos guardados
+- **AGREGADO,** a EEPROM_Save al final el número de banco
+- **AGREGADO,** a EEPROM_Save, regresa 1 si se selecciona exit
+- **AGREGADO,** a EEPROM_Save el blink del lcd para saber que está trabajando
+- **AGREGADO,** a EEPROM_Save más tiempo para mensaje final
+- **AGREGADO,** a GUI_Memory_Init control de universos
+- **AGREGADO,** a GUI_Memory_Init manejo cuando se selecciona exit en los bancos de memoria
+- **AGREGADO,** a GUI_Memory control de salida desde bancos de memoria
+- **AGREGADO,** a GUI_Memory salida inmediata después de la lectura de opción
+- **AGREGADO,** a GUI_About la leyenda open hardware
+- **AGREGADO,** a GUI_About más tiempo para mostrar
+- **AGREGADO,** GUI Secuencer
+- **AGREGADO,** el banco 8 solo llegaría a 500 por el contraste y el backlight
+- **AGREGADO,** Los bancos de memoria no aplican a memory empty
+- **AGREGADO,** GUI_Memory_Bank solo activa en cambios de EEPROM
+***
+
+## **[v0.8 - Stable - Hardware v0.3 - v0.4](https://bitbucket.org/daniel3514/0066-arduino-dmx-512-tester-controller/src/03ac9d7d01c0ac0785e2351d8d0e76eea3e9af66/Firmware/v0.8/?at=master)**
+- **AGREGADO,** compatibilidad con Hardware v0.3 - v0.4
+***
+
+## **[v0.7 - Stable - Hardware v0.0 - v0.2](https://bitbucket.org/daniel3514/0066-arduino-dmx-512-tester-controller/src/03ac9d7d01c0ac0785e2351d8d0e76eea3e9af66/Firmware/v0.7/?at=master)**
+- **AGREGADO,** en chaser el cursor en blink cuando hace la secuencia
+- **AGREGADO,** función de Black Out desde el menú de Memory, pone todos los canales en 0 y los regresa a lo que tenían, para salir dar en center
+- **CORREGIDO,** en config contraste el límite inferior no se mostraba
+- **CORREGIDO,** en gui about se retiró variable id, no se usa
+- **CORREGIDO,** en chaser se quitó el label iniciar, no se usa
+- **CORREGIDO,** en numérico calc se quitó la variable salida, no se usa
+- **CORREGIDO,** en numérico calc se quitó la variable Num_Val_Temp_3, no se usa
+- **CORREGIDO,** en chaser ya no guarda los valores de los cambios aplicados, al salir los regresa a su lugar
+- **CORREGIDO,** en multiply cuando hace en calculó se cambia apply por calc..
+- **CORREGIDO,** en ubicar se agrega cancelar con center
+- **CORREGIDO,** se cambió la url del about apuntando al Wiki
+***
+
+## **[v0.6 - Stable - Hardware v0.0 - v0.2](https://bitbucket.org/daniel3514/0066-arduino-dmx-512-tester-controller/src/03ac9d7d01c0ac0785e2351d8d0e76eea3e9af66/Firmware/v0.6/?at=master)**
+- **CORREGIDO,** los valores limites superiores de config se escribían un carácter después
+- **CORREGIDO,** hacer a partir de 155 el dimmer del contraste
+- **CORREGIDO,** botón * de back light funciona errático - faltaba delay para evitar repetición
+- **CORREGIDO,** quitar en config el dimmer 0-255, no aplica al contraste
+- **CORREGIDO,** las io no usadas son salidas low
+- **CORREGIDO,** no inicializa el contraste
+- **CORREGIDO,** en matrix no se aplican los cambios en los bancos
+- **CORREGIDO,** en matrix el valor final del banco se pasa de 512
+- **CORREGIDO,** en config backlight el valor no se guardaba en eeprom
+- **CORREGIDO,** en config backlight se recorrían todas las opciones de botones, se agregó mecanismo para sacar del bucle
+- **CORREGIDO,** se bajó el delay de la lectura análoga para evitar pasos escalonados
+- **AGREGADO,** potenciómetro para valores DMX con tecla "D" solo en valores, para detenerlo presionar # o center
+- **AGREGADO,** análogo a unitary
+- **AGREGADO,** análogo a matrix
+- **AGREGADO,** análogo a config back light
+- **AGREGADO,** an-alogo a config contrast
+- **AGREGADO,** en la lectura análogo mecanismo para escribir el valor solo cuando cambia y no todo el tiempo
+***
+
+## **[v0.5 - Stable - Hardware v0.0 - v0.2](https://bitbucket.org/daniel3514/0066-arduino-dmx-512-tester-controller/src/03ac9d7d01c0ac0785e2351d8d0e76eea3e9af66/Firmware/v0.5/?at=master)**
+- **AGREGADO,** la función para cuando se da enter en un numero para cambiarlo, si de da enter de nuevo se quede el número que estaba
+
+## **[v0.4 - Stable - Hardware v0.0 - v0.2](https://bitbucket.org/daniel3514/0066-arduino-dmx-512-tester-controller/src/03ac9d7d01c0ac0785e2351d8d0e76eea3e9af66/Firmware/v0.4/?at=master)**
+- **CORREGIDO,** se retira del about el ID
+- **CORREGIDO,** se cambia en config el menú exit por Ctrl
+- **AGREGADO,** void Back_Light_En() para encender o apagar el back light desde el teclado numúrico
+- **AGREGADO,** void Back_Light_Init() para encender o apagar el back light desde la última configuración
+- **AGREGADO,** a Control Options el menú Config
+- **AGREGADO,** void GUI_Config() con las opciones de la configuración, el LCD y la salida al pwm
+- **AGREGADO,** control del back light a gui_navegar, siempre está activo
+- **AGREGADO,** se actualiza el about con el nombre del proyecto
+- **AGREGADO,** al config el about
+- **AGREGADO,** al about desde config espera a que se presione center para salir
+- **AGREGADO,** al config mas info sobre el backlight
+- **AGREGADO,** a control options Memory options
+- **AGREGADO,** en matrix la opción de poner el valor final de la matriz
+- **AGREGADO,** a la lectura numúrica centro como enter
+***
+
+## ** [v0.3 - Stable - Hardware v0.0 - v0.2](https://bitbucket.org/daniel3514/0066-arduino-dmx-512-tester-controller/src/03ac9d7d01c0ac0785e2351d8d0e76eea3e9af66/Firmware/v0.3/?at=master)**
+- **CORREGIDO,** retirar de setup las variables de la versión y pasarlas directamente a su void (no hay razón para que sean globales)
+- **CORREGIDO,** en gui about retirar el delay en el efecto binario
+- **CORREGIDO,** eeprom save, load empty y clear retirar delay de efecto (se retiró en todos los casos)
+- **CORREGIDO,** agregar al inicio del programa .ino un about
+- **CORREGIDO,** en control chaser se quitó el espacio entre delay el número y x10=mS, parece que fuera una opción
+***
+
+## **[v0.2 - Stable - Hardware v0.0 - v0.2](https://bitbucket.org/daniel3514/0066-arduino-dmx-512-tester-controller/src/03ac9d7d01c0ac0785e2351d8d0e76eea3e9af66/Firmware/v0.2/?at=master)**
+- **CORREGIR,** retirar del setup las variables de la versión y pasarlas directamente a su void
+- **CORREGIR,** en GUI_About se retirar el delay en el efecto binario
+- **CORREGIR,** eeprom save, load empty y clear retirar el delay de efecto binario
+- **CORREGIR,** agregar al inicio del programa un about
+- **CORREGIR,** checar el tema del puerto de data flux, no se asigna
+- **CORREGIDO,** se cambió gui_init por gui_about
+- **CORREGIDO,** se cambia en unitary control, matrix por control y apunta a gui control options
+- **CORREGIDO,** se cambia en matrix control, ubi por con y apunta a gui control options
+- **CORREGIDO,** se quita la opción about es muy repetitiva
+- **AGREGADO,** control options about
+- **AGREGADO,** control options Chaser
+- **AGREGADO,** control options multiply
+- **AGREGADO,** actualización del texto "about"
+- **AGREGADO,** actualización del texto "memory initial"
+- **AGREGADO,** al GUI_Memory "empty" para borrar la RAM
+- **AGREGADO,** el control multiply
+- **AGREGADO,** a about al inicio el efecto del binario corriendo
+***
+
+## **[v0.1 - Stable - Hardware v0.0 - v0.2](https://bitbucket.org/daniel3514/0066-arduino-dmx-512-tester-controller/src/03ac9d7d01c0ac0785e2351d8d0e76eea3e9af66/Firmware/v0.1/DMX_Controller/?at=master)**
+- **CORREGIDO,** cambiar en gui unit a "Unitary"
+- **CORREGIDO,** cambiar en GUI multi a "Matrix"
+- **CORREGIDO,** hacer los barridos de la memoria más rápidos, se agrega efecto de carga y no baja la velocidad
+- **CORREGIDO,** agregar al menú memory "Cancel"
+- **CORREGIDO,** se agrega 100ms mas a la lectura de los cursores
+- **CORREGIDO,** cuando se escribe un numero en la matriz o en unit, mayor o menor al límite la variable funciona pero el visual no
+- **CORREGIR,** en GUI_Multi no hay vista de posición
+- **AGREGADO,** líneas bajas cuando se está escribiendo un número, se quitaron los ceros
+- **AGREGADO,** se implementa para el caso de los valores "A" para 255 y "B" para 000
+- **AGREGADO,** se implementa para los valores la tecla "C" para ubicar la lámpara, parpadea y deja de hacerlo al volverla a presionar
+- **AGREGADO,** se implementa en la matriz el valor "C" que indica el canal donde está posicionado el cursor
+***
+
+## **v0.0 - Beta - Hardware v0.0 - v0.2**
+- **AGREGADO,** Hello World !!
+***
