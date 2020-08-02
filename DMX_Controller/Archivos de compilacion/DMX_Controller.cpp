@@ -1,3 +1,4 @@
+#line 1 "DMX_Controller.ino"
 // ***************************************************************************************************************************
 // ***************************************************************************************************************************
 // **				                                                                                                        **
@@ -40,18 +41,18 @@
 // **		http://freedomdefined.org/OSHW#Licenses_and_Hardware															**
 // **		http://www.oshwa.org/definition/																				**
 // **																														**
-// **	Este programa es software libre: usted puede redistribuirlo y / o modificarlo bajo los términos de la 				**
-// **	Licencia Pública General GNU publicada por la Free Software Foundation, bien de la versión 3 de la Licencia, 		**
-// **	o (A su elección) cualquier versión posterior.																		**
+// **	Este programa es software libre: usted puede redistribuirlo y / o modificarlo bajo los t\u00e9rminos de la 				**
+// **	Licencia P\u00fablica General GNU publicada por la Free Software Foundation, bien de la versi\u00f3n 3 de la Licencia, 		**
+// **	o (A su elecci\u00f3n) cualquier versi\u00f3n posterior.																		**
 // **																														**
-// **	Este programa se distribuye con la esperanza de que sea útil, pero SIN NINGUNA GARANTIA; ni siquiera la garantía 	**
-// **	implícita de COMERCIALIZACION o IDONEIDAD PARA UN PROPOSITO PARTICULAR. Vea el GNU General Public License 			**
-// **	para más detalles.																									**
+// **	Este programa se distribuye con la esperanza de que sea \u00fatil, pero SIN NINGUNA GARANTIA; ni siquiera la garant\u00eda 	**
+// **	impl\u00edcita de COMERCIALIZACION o IDONEIDAD PARA UN PROPOSITO PARTICULAR. Vea el GNU General Public License 			**
+// **	para m\u00e1s detalles.																									**
 // **																														**
 // ** 	Esto es software libre, y le invitamos a redistribuirlo bajo ciertas condiciones									**
 // **																														**
-// **	Deberá haber recibido una copia de la Licencia Pública General GNU													**
-// **	junto con este programa. Si no es así, consulte <http://www.gnu.org/licenses/>.										**
+// **	Deber\u00e1 haber recibido una copia de la Licencia P\u00fablica General GNU													**
+// **	junto con este programa. Si no es as\u00ed, consulte <http://www.gnu.org/licenses/>.										**
 // **																														**
 // ***************************************************************************************************************************
 // ***************************************************************************************************************************
@@ -70,6 +71,46 @@
 //#define  DMX2048    		(2)   	// (1000 kbaud - 2 to 2048 channels) called by manufacturers DMX1000K, DMX 4x or DMX 1M ???
 
 	// DMX
+#include "Arduino.h"
+void setup 						();
+void loop 						();
+void Canal_Actual_EEPROM_Save	();
+void EEPROM_Default 			();
+void Back_Light_Init 			();
+void Contrast_Init 				();
+void Back_light_Key_light_En 	();
+void External_light_En 			();
+void GUI_Licence 				();
+void GUI_About 					();
+void Multi_Matrix 				(int inicial);
+void GUI_Control_Matrix 		();
+void GUI_Memory_Init 			();
+int  GUI_Memory_Bank 			(byte Opcion);
+void GUI_Memory 				();
+void GUI_Control_Secuencer 		();
+void Black_Out 					();
+int  EEPROM_Save 				();
+int  EEPROM_Load 				();
+void EEPROM_Load_Init 			();
+void EEPROM_Empty 				();
+int  EEPROM_Clear 				();
+void EEPROM_Clear_All 			();
+void GUI_Control_Options 		();
+void GUI_Convert 				();
+void GUI_Config 				();
+void GUI_Control_Multiply 		();
+void GUI_Control_Chaser 		();
+void GUI_Control_Unit 			();
+void Ubicar 					(byte y, byte x, byte val_ant);
+void Numeric_Write 				(int valor, int col, int row);
+void Numerico_Print 			(byte LCD_x, byte LCD_y, int valor, int max, byte Dec_Hex);
+void Navegar_Matrix 			(byte Y, byte X, int Canal_init);
+void Navegar 					(byte matrix, byte matrix_ch_init);
+void Cursor_Index_Clear			();
+int  Numerico_Enc_Write 		(int min, int max, byte LCD_x, byte LCD_y, byte Dec_Hex, long num_ant);
+int  Numerico_Write 			(int min, int max, byte LCD_x, byte LCD_y, byte Dec_Hex, int num_ant);
+int  Numerico_Key 				();
+#line 73
 int  	DMX_Values 			[515];  // array de valores actuales DMX
 int  	Canal_Actual 		= 0;	// canal actual de dmx, valor real del canal, inicia en 1
 byte 	Universo_Actual		= 0;	// universo actual de dmx
@@ -241,7 +282,7 @@ void setup 						()
 	pinMode			(Back_Light_PWM,		OUTPUT);
 	pinMode			(Contrast_PWM,			OUTPUT);
 
-	lcd.begin		(20, 					4);				//tamaño de LCD
+	lcd.begin		(20, 					4);				//tama\u00f1o de LCD
 	lcd.createChar	(0, 					Caracter_Nav); 	//void LCD::createChar(uint8_t location, uint8_t charmap[]) 
 	lcd.createChar	(1, 					Caracter_On); 	//void LCD::createChar(uint8_t location, uint8_t charmap[]) 
 	lcd.createChar	(2, 					Caracter_Off); 	//void LCD::createChar(uint8_t location, uint8_t charmap[]) 
@@ -5006,7 +5047,7 @@ void Numerico_Print 			(byte LCD_x, byte LCD_y, int valor, int max, byte Dec_Hex
 	// LCD_x: cursor
 	// LCD_y: cursor
 
-	// calcular tamaño
+	// calcular tama\u00f1o
 	lcd.noBlink 	();						// no parpadear cursor
 	lcd.setCursor	(LCD_x, LCD_y);
 
@@ -5453,7 +5494,7 @@ int  Numerico_Enc_Write 		(int min, int max, byte LCD_x, byte LCD_y, byte Dec_He
 	
 	calculo:
 
-	// calcular tamaños maximos del numero
+	// calcular tama\u00f1os maximos del numero
 
 		// decimal
 	if (Dec_Hex == 1)				
@@ -5538,7 +5579,7 @@ int  Numerico_Write 			(int min, int max, byte LCD_x, byte LCD_y, byte Dec_Hex, 
 	// A regresa max
 	// B regresa min
 	// numero minimo a escribir - numero maximo a escribir - x y de pantalla donde se escribe
-	// el calculo del tamaño del numero lo hace en automatico
+	// el calculo del tama\u00f1o del numero lo hace en automatico
 	// num_ant, el numero que estaba impreso
 	// Dec_Hex decimal 1, hexadecimal 2
 	// enter: encoder centro
@@ -5559,7 +5600,7 @@ int  Numerico_Write 			(int min, int max, byte LCD_x, byte LCD_y, byte Dec_Hex, 
 	
 	lcd.blink();	// parpadear cursor
 	
-	// calcular tamaño de numero de espacios que ve a utilizar el numero maximo
+	// calcular tama\u00f1o de numero de espacios que ve a utilizar el numero maximo
 
 		// decimal
 	if (Dec_Hex == 1)				
@@ -6445,3 +6486,4 @@ int  Numerico_Key 				() // devuelve el numero de la tecla precionada o el centr
 	
 	return numero;
 }
+
