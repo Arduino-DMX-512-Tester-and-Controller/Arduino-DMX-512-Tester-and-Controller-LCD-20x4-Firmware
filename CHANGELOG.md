@@ -1,3 +1,7 @@
+# **Notas sobre la versión**
+
+***
+
 - Compilado en Arduino IDE v1.0.6
 - Instalación de librerías DMX:
 	- Instalar Arduino IDE v1.0.6 (carpeta .../Software/) (Windows 10 64 bits, ok!)
@@ -42,29 +46,34 @@
 ***
 
 ### **v2.2**
+
 - Hardware v0.7 - v0.8
 - Tamaño binario del Sketch: 41.998 bytes (de un máximo de 258.048 bytes)
 - **CORREGIDO** - se agregó a serial.print, F() para que cadena se guarde en la flash y no en la RAM
+
 ***
 
-## **[v2.1 - Stable - Hardware v0.7 - v0.8](https://bitbucket.org/daniel3514/0066-arduino-dmx-512-tester-controller/src/c476548b1773d4190de46427af87cd6a6b826830/Firmware/v2.1/?at=master)**
+### **v2.1**
+
+- Hardware v0.7 - v0.8
 - Tamaño binario del Sketch: 41,590 bytes (de un máximo de 258,048 bytes)
-- **CORREGIR,** void Numeric_Write, lo remplazo void Numerico_Print, esta función ya no se utiliza
-- **AGREGADO,** a menú config, eeprom default
-- **CAMBIADO,** menú config, reorganización de items
-- **AGREGADO,** a menú 2, about
-- **AGREGADO,** a menú 2, config
-- **AGREGADO,** a menú 2, botón de back
-- **AGREGADO,** menú 2
-- **AGREGADO,** menú 1, botón de next
-- **CAMBIADO,** menú 1, reubicación de items
-- **CAMBIADO,** Config ya no tiene la opción de About, about, queda en el menú principal
-- **CORREGIDO,** GUI_Control_Options a GUI_Menu_1, se agregaron más menús de funciones
-- **CORREGIDO,** Contrast_Init a Init_Contrast, se busca más rápido
-- **CORREGIDO,** Back_Light_Init a Init_Back_Light, se busca más rápido
-- **CORREGIDO,** EEPROM_Load_Init a Init_EEPROM_Load, se busca más rápido
-- **AGREGADO,** carácter next
-- **AGREGADO,** carácter back 
+- **CORREGIR**  - void Numeric_Write, lo remplazo void Numerico_Print, esta función ya no se utiliza
+- **AGREGADO**  - a menú config, eeprom default
+- **CAMBIADO**  - menú config, reorganización de items
+- **AGREGADO**  - a menú 2, about
+- **AGREGADO**  - a menú 2, config
+- **AGREGADO**  - a menú 2, botón de back
+- **AGREGADO**  - menú 2
+- **AGREGADO**  - menú 1, botón de next
+- **CAMBIADO**  - menú 1, reubicación de items
+- **CAMBIADO**  - Config ya no tiene la opción de About, about, queda en el menú principal
+- **CORREGIDO** - GUI_Control_Options a GUI_Menu_1, se agregaron más menús de funciones
+- **CORREGIDO** - Contrast_Init a Init_Contrast, se busca más rápido
+- **CORREGIDO** - Back_Light_Init a Init_Back_Light, se busca más rápido
+- **CORREGIDO** - EEPROM_Load_Init a Init_EEPROM_Load, se busca más rápido
+- **AGREGADO**  - carácter next
+- **AGREGADO**  - carácter back 
+
 ***
 
 ## **[v2.0 - Stable - Hardware v0.7 - v0.8](https://bitbucket.org/daniel3514/0066-arduino-dmx-512-tester-controller/src/03ac9d7d01c0ac0785e2351d8d0e76eea3e9af66/Firmware/v2.0/?at=master)**
