@@ -2,7 +2,7 @@
 
 ## **Firmware - LCD 20x4**
 
-[![version](https://img.shields.io/badge/version-1.8_release-brightgreen.svg)](CHANGELOG.md)
+[![version](https://img.shields.io/badge/version-1.9_release-brightgreen.svg)](CHANGELOG.md)
 [![license](https://img.shields.io/badge/licence-GNU_GPL_v3.0-blue)](https://github.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/blob/master/LICENCE.md)
 
 ![GitHub issues](https://img.shields.io/github/issues/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware)
@@ -90,28 +90,52 @@ Herramienta Open Hardware, para pruebas y control de iluminación de espectácul
 
 ### ![**Changelog**](CHANGELOG.md)
 
-- **CORREGIR,** cambiar delay por interrupciones de timer
-- **CORREGIDO,** Pin Out para hardware v0.7
-- **CORREGIDO,** Pin encoder center al 6
-- **CORREGIDO,** Quitar la programación del potenciómetro
-- **CORREGIDO,** Quitar la programación de los cursores
-- **CORREGIDO,** pin 6 de encoder center a pull-up
-- **CORREGIDO,** pin key light a 11
-- **CORREGIDO,** pin contraste a 12
-- **AGREGAR,** en multiplicador, el valor en tiempo real desde el potenciómetro o teclado
-- **AGREGAR,** control chaser desde el potenciómetro, al girar recorre los canales
-- **AGREGAR,** EEPROM Default en pin 9 como pull-up
-- **AGREGAR,** dimmer para luz led como lámpara en pin 10
-- **AGREGADO,** a EEPROM, espacio para Ext Light
-- **AGREGADO,** función para jumper de eeprom default
-- **AGREGADO,** dimmer de pantalla al inicio
-- **AGREGADO,** índices a posiciones de LCD en el Excel
+- **PENDIENTE,** - funciones en teclado back light, agregar a lectura numerico write
+- **PENDIENTE,** - sacar numérico write y remplazar por numérico print
+- **PENDIENTE,** - Convert, cambiar cursor de navegación de binarios
+- **PENDIENTE,** - tecla *, para backlight y key light, en esta versión no está activa
+- **PENDIENTE,** - tecla #, quitarla de enter, no se usa, sustituye encoder center
+- **PENDIENTE,** - DMX_Controller.ino: In function 'int Numerico_Write(int, int, byte, byte, byte, int)':
+	- DMX_Controller.ino:5971: warning: control reaches end of non-void function
+- **PENDIENTE,** - DMX_Controller.ino:5747: warning: 'numero_total' may be used uninitialized in this function
+- **PENDIENTE,** - link de repositorio a bitbucket https://goo.gl/7RsKo1
+- **AGREGADO,**  - modelo de programación de LCD - Encoder - keypad
+	- https://github.com/daniel3514/Arduino-LCD-Encoder-KeyPad-Examples/tree/master/Examples/LCD%20-%20Encoder%20-%20Key%20Pad/v0.0
+- **AGREGADO,** canal actual a eeprom
+- **AGREGADO,** canal actual salvar en eeprom cuando se sale de algún control
+- **AGREGADO,** Control Unit, función para escribir valores repetidos en la matriz, ejemplo si hay dos unos ambos se actualizan
+- **AGREGADO,** Control Matrix, Ubicar, valor anterior al final
+- **AGREGADO,** Control Matrix, ubicar a inicial y final
+- **AGREGADO,** Control Matrix, mostrar canal a inicial y final
+- **CORREGIDO,** menú, memoria, cambio de orden de items
+- **CORREGIDO,** menú, Config, límites y vista
+- **CORREGIDO,** Control Unitary, rediseño de GUI
+- **AGREGADO,** Control Unitary, 8 unitarios distintos no consecutivos
+- **AGREGADO,** Convert, opción de ubicar canal
+- **CORREGIDO,** Convert, rediseño de interface gráfica
+- **CORREGIDO,** Convert, modelo de navegación de binarios
+- **CORREGIDO,** Control Chaser, rediseño de interface gráfica
+- **AGREGADO,** Control Chaser. canal actual como first
+- **AGREGADO,** Control Chaser, canal actual inicia encendido
+- **AGREGADO,** Control Chaser, repasar canales desde encoder
+- **CORREGIDO,** Control Secuencer, rediseño de GUI
+- **CORREGIDO,** Config, la ventana de acción del contraste se queda en los límites de 0 a 255
+- **AGREGADO,** Secuencer, el universo inicial siempre es 1
+- **AGREGADO,** Multiply, valores preestablecidos
 
 ***
 
 ### ![**Hardware**](https://github.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Hardware)
 
 - v0.7 a v0.8
+
+***
+
+### **Navegación**
+
+![navegacion](https://raw.githubusercontent.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/v1.9/User%20Case%20Diagram/User%20Case%20Diagram%20-%20previo.PNG)
+
+[version en PDF](https://raw.githubusercontent.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/v1.9/User%20Case%20Diagram/User%20Case%20Diagram.pdf)
 
 ***
 
