@@ -76,41 +76,44 @@
 
 ***
 
-## **[v2.0 - Stable - Hardware v0.7 - v0.8](https://bitbucket.org/daniel3514/0066-arduino-dmx-512-tester-controller/src/03ac9d7d01c0ac0785e2351d8d0e76eea3e9af66/Firmware/v2.0/?at=master)**
-- **AGREGADO,** a config, external light
-- **CAMBIADO,** en config, redistribución de menú
-- **ELIMINADO,** interruptores de lights, los sustituye teclado
-- **AGREGADO,** en teclado *, on off de external light
-- **AGREGADO,** en teclado #, on off de backlight y key light
-- **AGREGADO,** en Navegar, la lectura de * y # para lights
-- **CORREGIDO,** en GUI_Memory_Init, la llamada a GUI_Control_Options(), era redundante
-- **CORREGIDO,** en Multiply, espaciado
-- **CAMBIADO,** en Secuencer por caracteres nuevos
-- **CORREGIDO,** en Memory, espaciado
-- **CAMBIADO,** en Memory por caracteres nuevos
-- **CAMBIADO,** en config por caracteres nuevos
-- **CAMBIADO,** en control chaser por caracteres nuevos
-- **CORREGIDO,** en control matrix, el índice empieza en opción 1 y no en 3
-- **CAMBIADO,** en control matrix por caracteres nuevos
-- **CAMBIADO,** en control unitary por caracteres nuevos
-- **CAMBIADO,** en convert por caracteres nuevos
-- **CAMBIADO,** en control options por caracteres nuevos
-- **CAMBIADO,** en about por caracteres nuevos
-- **CAMBIADO,** en menú memory init por caracteres nuevos
-- **CAMBIADO,** en menú memory bank por caracteres nuevos
-- **AGREGADO,** carácter para LCD de exit
-- **AGREGADO,** carácter para LCD de archivo
-- **ELIMINADO,** a numeric write, * y # como control de números 
-- **AGREGADO,** tabuladores al código
-- **CORREGIDO,** Link de about de wiki al de Bitbucket https://goo.gl/7RsKo1
-- **CORREGIDO,** about, versión de firmware de 1.9 a 2.0
-- **AGREGADO,** a inicio, Load Bank:-, se quita b-
-- **AGREGADO,** a Memory, Bank:-, se quita b-
-- **CORREGIDO,** en Memory Bank, la leyenda Bank esta recorrida
-- **CORREGIDO,** en Initial Memory, faltaba:
-- **CORREGIDO,** en Memory, espacios y :
-- **CORREGIDO,** en Secuencer, faltaba:
-- **CORREGIDO,** DMX_Controller.ino:5747: warning: 'numero_total' may be used uninitialized in this function, se corrigió poniendo = 0
+### **v2.0**
+
+- Hardware v0.7 - v0.8
+- **AGREGADO**  - a config, external light
+- **CAMBIADO**  - en config, redistribución de menú
+- **ELIMINADO** - interruptores de lights, los sustituye teclado
+- **AGREGADO**  - en teclado *, on off de external light
+- **AGREGADO**  - en teclado #, on off de backlight y key light
+- **AGREGADO**  - en Navegar, la lectura de * y # para lights
+- **CORREGIDO** - en GUI_Memory_Init, la llamada a GUI_Control_Options(), era redundante
+- **CORREGIDO** - en Multiply, espaciado
+- **CAMBIADO**  - en Secuencer por caracteres nuevos
+- **CORREGIDO** - en Memory, espaciado
+- **CAMBIADO**  - en Memory por caracteres nuevos
+- **CAMBIADO**  - en config por caracteres nuevos
+- **CAMBIADO**  - en control chaser por caracteres nuevos
+- **CORREGIDO** - en control matrix, el índice empieza en opción 1 y no en 3
+- **CAMBIADO**  - en control matrix por caracteres nuevos
+- **CAMBIADO**  - en control unitary por caracteres nuevos
+- **CAMBIADO**  - en convert por caracteres nuevos
+- **CAMBIADO**  - en control options por caracteres nuevos
+- **CAMBIADO**  - en about por caracteres nuevos
+- **CAMBIADO**  - en menú memory init por caracteres nuevos
+- **CAMBIADO**  - en menú memory bank por caracteres nuevos
+- **AGREGADO**  - carácter para LCD de exit
+- **AGREGADO**  - carácter para LCD de archivo
+- **ELIMINADO** - a numeric write, * y # como control de números 
+- **AGREGADO**  - tabuladores al código
+- **CORREGIDO** - Link de about de wiki al de Bitbucket https://goo.gl/7RsKo1
+- **CORREGIDO** - about, versión de firmware de 1.9 a 2.0
+- **AGREGADO**  - a inicio, Load Bank:-, se quita b-
+- **AGREGADO**  - a Memory, Bank:-, se quita b-
+- **CORREGIDO** - en Memory Bank, la leyenda Bank esta recorrida
+- **CORREGIDO** - en Initial Memory, faltaba:
+- **CORREGIDO** - en Memory, espacios y :
+- **CORREGIDO** - en Secuencer, faltaba:
+- **CORREGIDO** - DMX_Controller.ino:5747: warning: 'numero_total' may be used uninitialized in this function, se corrigió poniendo = 0
+
 ***
 
 ## **[v1.9 - Stable - Hardware v0.7 - v0.8](https://bitbucket.org/daniel3514/0066-arduino-dmx-512-tester-controller/src/03ac9d7d01c0ac0785e2351d8d0e76eea3e9af66/Firmware/v1.9/?at=master)**
