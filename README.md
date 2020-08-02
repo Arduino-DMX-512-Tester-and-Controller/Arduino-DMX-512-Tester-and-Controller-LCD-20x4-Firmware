@@ -133,7 +133,7 @@ Mas informacion en la Wiki
 - Las tecla "D" activa solo para los valores el potenciometro análogo, con el se puede ingresar el valor al girarlo
 - La opción "Ctrl" regresa al menú de Control Options
 
-![Teclado](https://raw.githubusercontent.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/master/Documentacion/Teclado/Teclado.JPG)
+![Teclado](https://raw.githubusercontent.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/master/Teclado/Teclado.PNG)
 
 ***
 
@@ -145,11 +145,13 @@ Establece los valores iniciales de la memoria RAM, leídos desde la EEPROM:
 - Load (cargar los valores guardados en la EEPROM del universo DMX)
 - Clear (borrar los valores guardados en la EEPROM y dejar los canales en "000")
 
-![Initial Memory](https://raw.githubusercontent.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/master/media/Initial%20Memory.JPG)
+![Initial Memory](https://raw.githubusercontent.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/master/media/Initial%20Memory.PNG)
 
 ***
 
 ### **Control Options**
+
+![Options](https://raw.githubusercontent.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/master/media/Options.PNG)
 
 El usuario selecciona el método de control de los distintos canales DMX
 
@@ -164,6 +166,8 @@ El usuario selecciona el método de control de los distintos canales DMX
 
 ### **Unitary Control**
 
+![unitary](https://raw.githubusercontent.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/master/media/Control%20Unitary.PNG)
+
 Permite el acceso rápido a un canal en específico
 
 - Channel - acceso al canal
@@ -171,11 +175,11 @@ Permite el acceso rápido a un canal en específico
 - Ctrl    - acceso al menu Control Options
 - Memory  - acceso al menú de Memory Options
 
-![Unitary Control](https://github.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/blob/master/media/Control%20Unitary.JPG)
-
 ***
 
 ### **Matrix Control**
+
+![Matrix](https://raw.githubusercontent.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/master/media/Control%20Matrix.PNG)
 
 Permite visualizar una matriz de 3 x 5 con los valores actuales de los diferentes canales DMX
 
@@ -184,11 +188,11 @@ Permite visualizar una matriz de 3 x 5 con los valores actuales de los diferente
 - Ctrl    - acceso a Control Options
 - 001-015 - acceso al numero de canales a mostrar en la matriz de 3 x 5, el primer numero representa el primer canal y el segundo el ultimo canal
 
-![Matrix](https://raw.githubusercontent.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/master/media/Control%20Matrix.JPG)
-
 ***
 
 ### **Chaser Control**
+
+![Chaser Control](https://raw.githubusercontent.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/master/media/Control%20Chaser.PNG)
 
 Permite hacer una secuencia entre canales específicos
 
@@ -204,11 +208,11 @@ Permite hacer una secuencia entre canales específicos
 Selecciono "Delay" de 100 (100x10= 1000 mS), "First CH" 001 y "Final CH" 512
 El resultado es una secuencia desde el canal 1 hasta el 512 y el paso entre los canales lo hace cada segundo
 
-![Chaser Control](https://raw.githubusercontent.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/master/media/Control%20Chaser.JPG)
-
 ***
 
 ### **Multiply Control**
+
+![Control Multiply](https://raw.githubusercontent.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/master/media/Control%20Multiply.PNG)
 
 Permite asignar un valor a un número de canales específico, con un salto numérico especifico
 
@@ -226,11 +230,11 @@ Seleccionamos: "Value" = 255, "First CH" = 001, "Multiply" = 003, "Quantity" = 1
 
 El resultado es: 170 canales a partir del canal 1 hasta el 510, de 3 en 3 con el valor 255
 
-![Control Multiply](https://github.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/blob/master/media/Control%20Multiply.JPG)
-
 ***
 
 ### **Memory Options**
+
+![Memory Options](https://raw.githubusercontent.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/master/media/Memory.PNG)
 
 Acceso fácil a las opciones de la memoria EEPROM
 
@@ -241,11 +245,11 @@ Acceso fácil a las opciones de la memoria EEPROM
 - Black  - Opcion "Black Out", pone todos los canales del universo DMX con valor "000", sin afectar la memoria, para salir presionar "enter" o "central" y regresa los valores anteriores 
 - Cancel - regresar al menú anterior sin cambios
 
-![Memory Options](https://raw.githubusercontent.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/master/media/Memory%20Options.JPG)
-
 ***
 
 ### **Config**
+
+![Config](https://raw.githubusercontent.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/master/media/Config.PNG)
 
 Configuración general del sistema
 
