@@ -135,7 +135,7 @@ Herramienta Open Hardware, para pruebas y control de iluminación de espectácul
 
 ![navegacion](https://raw.githubusercontent.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/v1.9/User%20Case%20Diagram/User%20Case%20Diagram%20-%20previo.PNG)
 
-[version en PDF](https://raw.githubusercontent.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/v1.9/User%20Case%20Diagram/User%20Case%20Diagram.PDF)
+[version en PDF](https://raw.githubusercontent.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/v1.9/User%20Case%20Diagram/User%20Case%20Diagram.pdf)
 
 ***
 
