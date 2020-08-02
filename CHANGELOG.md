@@ -41,9 +41,10 @@
 
 ***
 
-## **[v2.2 - Stable - Final Support - Hardware v0.7 - v0.8](https://bitbucket.org/daniel3514/0066-arduino-dmx-512-tester-controller/src/master/Firmware/v2.2/)**
+### **v2.2**
+- Hardware v0.7 - v0.8
 - Tamaño binario del Sketch: 41.998 bytes (de un máximo de 258.048 bytes)
-- **CORREGIDO,** se agregó a serial.print, F() para que cadena se guarde en la flash y no en la RAM
+- **CORREGIDO** - se agregó a serial.print, F() para que cadena se guarde en la flash y no en la RAM
 ***
 
 ## **[v2.1 - Stable - Hardware v0.7 - v0.8](https://bitbucket.org/daniel3514/0066-arduino-dmx-512-tester-controller/src/c476548b1773d4190de46427af87cd6a6b826830/Firmware/v2.1/?at=master)**
