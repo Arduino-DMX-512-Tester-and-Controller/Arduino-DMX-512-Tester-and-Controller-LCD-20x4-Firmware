@@ -2,7 +2,7 @@
 
 ## **Firmware - LCD 20x4**
 
-[![version](https://img.shields.io/badge/version-2.0_release-brightgreen.svg)](CHANGELOG.md)
+[![version](https://img.shields.io/badge/version-2.1_release-brightgreen.svg)](CHANGELOG.md)
 [![license](https://img.shields.io/badge/licence-GNU_GPL_v3.0-blue)](https://github.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/blob/master/LICENCE.md)
 
 ![GitHub issues](https://img.shields.io/github/issues/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware)
@@ -90,40 +90,23 @@ Herramienta Open Hardware, para pruebas y control de iluminación de espectácul
 
 ### ![**Changelog**](CHANGELOG.md)
 
-- **AGREGADO,** a config, external light
-- **CAMBIADO,** en config, redistribución de menú
-- **ELIMINADO,** interruptores de lights, los sustituye teclado
-- **AGREGADO,** en teclado *, on off de external light
-- **AGREGADO,** en teclado #, on off de backlight y key light
-- **AGREGADO,** en Navegar, la lectura de * y # para lights
-- **CORREGIDO,** en GUI_Memory_Init, la llamada a GUI_Control_Options(), era redundante
-- **CORREGIDO,** en Multiply, espaciado
-- **CAMBIADO,** en Secuencer por caracteres nuevos
-- **CORREGIDO,** en Memory, espaciado
-- **CAMBIADO,** en Memory por caracteres nuevos
-- **CAMBIADO,** en config por caracteres nuevos
-- **CAMBIADO,** en control chaser por caracteres nuevos
-- **CORREGIDO,** en control matrix, el índice empieza en opción 1 y no en 3
-- **CAMBIADO,** en control matrix por caracteres nuevos
-- **CAMBIADO,** en control unitary por caracteres nuevos
-- **CAMBIADO,** en convert por caracteres nuevos
-- **CAMBIADO,** en control options por caracteres nuevos
-- **CAMBIADO,** en about por caracteres nuevos
-- **CAMBIADO,** en menú memory init por caracteres nuevos
-- **CAMBIADO,** en menú memory bank por caracteres nuevos
-- **AGREGADO,** carácter para LCD de exit
-- **AGREGADO,** carácter para LCD de archivo
-- **ELIMINADO,** a numeric write, * y # como control de números 
-- **AGREGADO,** tabuladores al código
-- **CORREGIDO,** Link de about de wiki al de Bitbucket https://goo.gl/7RsKo1
-- **CORREGIDO,** about, versión de firmware de 1.9 a 2.0
-- **AGREGADO,** a inicio, Load Bank:-, se quita b-
-- **AGREGADO,** a Memory, Bank:-, se quita b-
-- **CORREGIDO,** en Memory Bank, la leyenda Bank esta recorrida
-- **CORREGIDO,** en Initial Memory, faltaba:
-- **CORREGIDO,** en Memory, espacios y :
-- **CORREGIDO,** en Secuencer, faltaba:
-- **CORREGIDO,** DMX_Controller.ino:5747: warning: 'numero_total' may be used uninitialized in this function, se corrigió poniendo = 0
+- Tamaño binario del Sketch: 41,590 bytes (de un máximo de 258,048 bytes)
+- **CORREGIR,** void Numeric_Write, lo remplazo void Numerico_Print, esta función ya no se utiliza
+- **AGREGADO,** a menú config, eeprom default
+- **CAMBIADO,** menú config, reorganización de items
+- **AGREGADO,** a menú 2, about
+- **AGREGADO,** a menú 2, config
+- **AGREGADO,** a menú 2, botón de back
+- **AGREGADO,** menú 2
+- **AGREGADO,** menú 1, botón de next
+- **CAMBIADO,** menú 1, reubicación de items
+- **CAMBIADO,** Config ya no tiene la opción de About, about, queda en el menú principal
+- **CORREGIDO,** GUI_Control_Options a GUI_Menu_1, se agregaron más menús de funciones
+- **CORREGIDO,** Contrast_Init a Init_Contrast, se busca más rápido
+- **CORREGIDO,** Back_Light_Init a Init_Back_Light, se busca más rápido
+- **CORREGIDO,** EEPROM_Load_Init a Init_EEPROM_Load, se busca más rápido
+- **AGREGADO,** carácter next
+- **AGREGADO,** carácter back 
 
 ***
 
