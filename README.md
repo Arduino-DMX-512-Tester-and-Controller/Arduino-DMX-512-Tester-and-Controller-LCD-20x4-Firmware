@@ -21,6 +21,12 @@ Herramienta Open Hardware, para pruebas y control de iluminación de espectácul
 
 ***
 
+Mas informacion en la Wiki
+
+[![wiki](https://github.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Hardware/blob/master/Social/Logos/wiki%2050x50.png)](https://github.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/wiki)
+
+***
+
 ### **Basado en:**
 
 - [Arduino Mega 2560 Rev-3](http://www.arduino.cc/en/Main/ArduinoBoardMega2560)
