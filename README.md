@@ -2,7 +2,7 @@
 
 ## **Firmware - LCD 20x4**
 
-[![version](https://img.shields.io/badge/version-1.7_release-brightgreen.svg)](CHANGELOG.md)
+[![version](https://img.shields.io/badge/version-1.8_release-brightgreen.svg)](CHANGELOG.md)
 [![license](https://img.shields.io/badge/licence-GNU_GPL_v3.0-blue)](https://github.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/blob/master/LICENCE.md)
 
 ![GitHub issues](https://img.shields.io/github/issues/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware)
@@ -90,18 +90,28 @@ Herramienta Open Hardware, para pruebas y control de iluminación de espectácul
 
 ### ![**Changelog**](CHANGELOG.md)
 
-- **CORREGIDO,** se separa la lectura desde el encoder como función
-- **CORREGIDO,** en analogy read "a" cambia por encoder read "e"
-- **AGREGADO,** control desde encoder a value de dmx
-- **AGREGADO,** control desde encoder a config contraste 
-- **AGREGADO,** control desde encoder a config backlight
-- **AGREGADO,** control desde encoder a config bank init
+- **CORREGIR,** cambiar delay por interrupciones de timer
+- **CORREGIDO,** Pin Out para hardware v0.7
+- **CORREGIDO,** Pin encoder center al 6
+- **CORREGIDO,** Quitar la programación del potenciómetro
+- **CORREGIDO,** Quitar la programación de los cursores
+- **CORREGIDO,** pin 6 de encoder center a pull-up
+- **CORREGIDO,** pin key light a 11
+- **CORREGIDO,** pin contraste a 12
+- **AGREGAR,** en multiplicador, el valor en tiempo real desde el potenciómetro o teclado
+- **AGREGAR,** control chaser desde el potenciómetro, al girar recorre los canales
+- **AGREGAR,** EEPROM Default en pin 9 como pull-up
+- **AGREGAR,** dimmer para luz led como lámpara en pin 10
+- **AGREGADO,** a EEPROM, espacio para Ext Light
+- **AGREGADO,** función para jumper de eeprom default
+- **AGREGADO,** dimmer de pantalla al inicio
+- **AGREGADO,** índices a posiciones de LCD en el Excel
 
 ***
 
 ### ![**Hardware**](https://github.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Hardware)
 
-- v0.5 a v0.6
+- v0.7 a v0.8
 
 ***
 
