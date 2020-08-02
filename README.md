@@ -2,7 +2,7 @@
 
 ## **Firmware - LCD 20x4**
 
-[![version](https://img.shields.io/badge/version-1.9_release-brightgreen.svg)](CHANGELOG.md)
+[![version](https://img.shields.io/badge/version-2.1_release-brightgreen.svg)](CHANGELOG.md)
 [![license](https://img.shields.io/badge/licence-GNU_GPL_v3.0-blue)](https://github.com/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware/blob/master/LICENCE.md)
 
 ![GitHub issues](https://img.shields.io/github/issues/Arduino-DMX-512-Tester-and-Controller/Arduino-DMX-512-Tester-and-Controller-LCD-20x4-Firmware)
@@ -90,38 +90,23 @@ Herramienta Open Hardware, para pruebas y control de iluminación de espectácul
 
 ### ![**Changelog**](CHANGELOG.md)
 
-- **PENDIENTE,** - funciones en teclado back light, agregar a lectura numerico write
-- **PENDIENTE,** - sacar numérico write y remplazar por numérico print
-- **PENDIENTE,** - Convert, cambiar cursor de navegación de binarios
-- **PENDIENTE,** - tecla *, para backlight y key light, en esta versión no está activa
-- **PENDIENTE,** - tecla #, quitarla de enter, no se usa, sustituye encoder center
-- **PENDIENTE,** - DMX_Controller.ino: In function 'int Numerico_Write(int, int, byte, byte, byte, int)':
-	- DMX_Controller.ino:5971: warning: control reaches end of non-void function
-- **PENDIENTE,** - DMX_Controller.ino:5747: warning: 'numero_total' may be used uninitialized in this function
-- **PENDIENTE,** - link de repositorio a bitbucket https://goo.gl/7RsKo1
-- **AGREGADO,**  - modelo de programación de LCD - Encoder - keypad
-	- https://github.com/daniel3514/Arduino-LCD-Encoder-KeyPad-Examples/tree/master/Examples/LCD%20-%20Encoder%20-%20Key%20Pad/v0.0
-- **AGREGADO,** canal actual a eeprom
-- **AGREGADO,** canal actual salvar en eeprom cuando se sale de algún control
-- **AGREGADO,** Control Unit, función para escribir valores repetidos en la matriz, ejemplo si hay dos unos ambos se actualizan
-- **AGREGADO,** Control Matrix, Ubicar, valor anterior al final
-- **AGREGADO,** Control Matrix, ubicar a inicial y final
-- **AGREGADO,** Control Matrix, mostrar canal a inicial y final
-- **CORREGIDO,** menú, memoria, cambio de orden de items
-- **CORREGIDO,** menú, Config, límites y vista
-- **CORREGIDO,** Control Unitary, rediseño de GUI
-- **AGREGADO,** Control Unitary, 8 unitarios distintos no consecutivos
-- **AGREGADO,** Convert, opción de ubicar canal
-- **CORREGIDO,** Convert, rediseño de interface gráfica
-- **CORREGIDO,** Convert, modelo de navegación de binarios
-- **CORREGIDO,** Control Chaser, rediseño de interface gráfica
-- **AGREGADO,** Control Chaser. canal actual como first
-- **AGREGADO,** Control Chaser, canal actual inicia encendido
-- **AGREGADO,** Control Chaser, repasar canales desde encoder
-- **CORREGIDO,** Control Secuencer, rediseño de GUI
-- **CORREGIDO,** Config, la ventana de acción del contraste se queda en los límites de 0 a 255
-- **AGREGADO,** Secuencer, el universo inicial siempre es 1
-- **AGREGADO,** Multiply, valores preestablecidos
+- Tamaño binario del Sketch: 41,590 bytes (de un máximo de 258,048 bytes)
+- **CORREGIR,** void Numeric_Write, lo remplazo void Numerico_Print, esta función ya no se utiliza
+- **AGREGADO,** a menú config, eeprom default
+- **CAMBIADO,** menú config, reorganización de items
+- **AGREGADO,** a menú 2, about
+- **AGREGADO,** a menú 2, config
+- **AGREGADO,** a menú 2, botón de back
+- **AGREGADO,** menú 2
+- **AGREGADO,** menú 1, botón de next
+- **CAMBIADO,** menú 1, reubicación de items
+- **CAMBIADO,** Config ya no tiene la opción de About, about, queda en el menú principal
+- **CORREGIDO,** GUI_Control_Options a GUI_Menu_1, se agregaron más menús de funciones
+- **CORREGIDO,** Contrast_Init a Init_Contrast, se busca más rápido
+- **CORREGIDO,** Back_Light_Init a Init_Back_Light, se busca más rápido
+- **CORREGIDO,** EEPROM_Load_Init a Init_EEPROM_Load, se busca más rápido
+- **AGREGADO,** carácter next
+- **AGREGADO,** carácter back 
 
 ***
 
